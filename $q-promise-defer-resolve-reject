@@ -1,0 +1,40 @@
+.factory("queryData", function ($http, $q) {
+        var resultData = {};
+        /* get方法获取数据 */
+        resultData.getData = function (urlParams, params, state) {
+            var deferred = $q.defer();
+            /* get方法获取数据 */
+            $http.get(url + urlParams, {params: params}, {cache: state}).success(function (data) {
+                deferred.resolve(data);
+            }).error(function (data, status) {
+                deferred.reject(data);
+                if (status == 401 || status == -1) {
+                    window.location.href = "../index.html"
+                }
+                else {
+                    alert(status + " 错误");
+                }
+                return false;
+            });
+            return deferred.promise;
+        };
+        /* post方法获取数据 */
+        resultData.postData = function (urlParams, data) {
+            var deferred = $q.defer();
+            /* post方法获取数据 */
+            $http.post(url + urlParams, data).success(function (data) {
+                deferred.resolve(data);
+            }).error(function (data, status) {
+                deferred.reject(data);
+                if (status == 401 || status == -1) {
+                    window.location.href = "../index.html"
+                }
+                else {
+                    alert(status + " 错误");
+                }
+                return false;
+            });
+            return deferred.promise;
+        };
+        return resultData;
+    })
