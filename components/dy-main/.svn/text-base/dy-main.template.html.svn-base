@@ -1,0 +1,27 @@
+<style>
+    .nav-main-main{
+        display: block!important;
+    }
+    .nav-main-other{
+        display: none!important;
+    }
+</style>
+<!--Start--配置页面-->
+<div ng-repeat="t in type" render-finish>
+    <!--Start--首页-->
+    <dy-home-page ng-if="t.type | isInclude:'A'" status="{{t}}" nav-data="{{navData[$index]}}" nav-index="{{$index}}" id="t.id"></dy-home-page>
+    <!--End--首页-->
+
+    <!--Start--招聘类型-->
+    <dy-recruitment-type ng-if="t.type | isInclude:'B'" status="{{t}}" nav-data="{{navData[$index]}}" nav-index="{{$index}}" id="t.id"></dy-recruitment-type>
+    <!--End--招聘类型-->
+
+    <!--Start--关于我们-->
+    <dy-about-us ng-if="t.type | isInclude:'C'" status="{{t}}" nav-data="{{navData[$index]}}" nav-index="{{$index}}" id="t.id"></dy-about-us>
+    <!--End--关于我们-->
+</div>
+<!--End--配置页面-->
+
+<!--Start--屏幕右侧菜单-->
+<dy-right-bar></dy-right-bar>
+<!--End--屏幕右侧菜单-->

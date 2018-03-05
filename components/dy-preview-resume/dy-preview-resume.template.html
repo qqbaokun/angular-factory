@@ -1,0 +1,287 @@
+<style>
+    body{
+        background-color: #f9f9f9;
+    }
+
+    /*内容部分*/
+    .main{
+        width: 1200px;
+        margin: 0 auto;
+        margin-top: 75px;
+        margin-bottom: 25px;
+    }
+    .main-left{
+        width: 223px;
+        height: 100%;
+        background-color: white;
+        border: 1px solid #f3f3f3;
+        float: left;
+    }
+    .qr{
+        text-align: center;
+        margin-top: 80px;
+        margin-bottom: 20px;
+    }
+    .qr p{
+        color: #b7b7b7;
+        text-align: center;
+        line-height: 24px;
+    }
+    .qr p:nth-of-type(1){
+        margin-top: 30px;
+    }
+    .btn-group{
+        width: 173px;
+        margin: 25px;
+    }
+    .btn-group button{
+        width: 100%;
+        border-radius: 0;
+        box-sizing: border-box;
+    }
+    .icon-down{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+        float: right;
+    }
+    .btn-edit{
+        background-color: #ff9f15;
+        margin-top: 15px;
+    }
+    .btn-delivery{
+        background-color: #63b504;
+        margin-top: 25px;
+    }
+    .btn-edit,.btn-delivery{
+        width: 175px;
+        height: 35px;
+        line-height: 35px;
+        margin-left: 25px;
+        color: white;
+    }
+    .button--winona::after {
+        top: -12px;
+    }
+    .main-right{
+        width: 953px;
+        padding: 0 35px;
+        height: 100%;
+        background-color: white;
+        border: 1px solid #f3f3f3;
+        float: right;
+        padding-bottom: 50px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12{
+        padding: 10px 0;
+        color: #260202;
+    }
+    .row{
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    .title{
+        padding: 0;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .title-cell{
+        margin-left: 0;
+    }
+    .work-exp .col-xs-12:first-child{
+        background-color: #F2F2F2;
+    }
+    .work-exp .col-xs-12{
+        padding-left: 15px;
+        padding-right: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .part-7 .row a{
+        color: #63b504;
+        text-decoration: underline;
+    }
+    .load{
+        padding: 0;
+    }
+    .icon-1{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-position:-62px -152px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-2{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-position:-90px -151px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-3{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-position:-122px -151px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-4{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-position:-158px -151px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-5{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-position:-190px -151px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-6{
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        background-position:-113px -81px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-7{
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background-position:-240px -145px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-8{
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background-position:-276px -145px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .icon-9{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background-position:-91px -100px;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
+    .user-head{
+    	position: absolute;
+	    right: 30px;
+	    top: 50px;
+	    max-width: 100px;
+	    height: auto;
+    }
+    .main-right .row div{
+    	line-height: 20px;
+    }
+</style>
+<!-- 简历详情 start-->
+<div class="main clearFloat">
+    <div class="main-left">
+        <!-- Single button -->
+        <!--<div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                中文简历 <span class="icon-down iconfont"></span>
+            </button>
+            &lt;!&ndash;<ul class="dropdown-menu">
+                <li><a href="#">中文简历</a></li>
+                <li><a href="#">英文简历</a></li>
+            </ul>&ndash;&gt;
+        </div>-->
+
+        <!--<button type="button" class="btn-edit">修改简历</button>-->
+        <button ng-show="resumeInfo.canEdit == 0" ng-click="editResume(urlParams);" class="button button--winona btn-edit sc-bgc ng-hide" data-text="{{language.preview.reviseResume}}">
+            <span>{{language.preview.reviseResume}}</span>
+            <div class="after">{{language.preview.reviseResume}}</div>
+        </button>
+        <!--<button type="button" class="btn-delivery">去投递</button>-->
+        <button ng-click="setResume(recruitType);" class="button button--winona btn-delivery mc-bgc" data-text="{{language.preview.goDelivery}}">
+            <span>{{language.preview.goDelivery}}</span>
+            <div class="after">{{language.preview.goDelivery}}</div>
+        </button>
+        <div class="qr">
+            <img ng-src="{{wechatQRUrl}}" alt=""/>
+            <p>{{language.weChat.attentionWeChat}}</p>
+            <p>{{language.weChat.getInformation}}</p>
+        </div>
+
+    </div>
+
+    <div class="main-right container" set-min-height="152">
+    	<img ng-if="!userHeadImage" class="user-head" src="images/userHeadImage.jpg">
+    	<img ng-if="userHeadImage" class="user-head" ng-src="{{userHeadImage}}">
+        <div ng-repeat="infos in resumeInfo.infoSetList track by $index">
+            <div class="row title mc-c">
+<!--
+                <span ng-class="{'icon-1': infos.id == 11,'icon-2':infos.id == 13,'icon-3':infos.id == 19,'icon-4':infos.id == 14,'icon-5':infos.id == 12}" class=""></span>
+-->
+                <span class="title-cell">{{infos.name}}</span>
+            </div>
+
+            <div class="row" ng-if="infos.id != 12" ng-repeat="info in infos.recordList track by $index">
+                <div ng-repeat="i in info.infoItemList" ng-hide="i.fillType == 8" ng-class="{true:'col-xs-5',false:'col-xs-5'}[$index%2 == 0]">
+                	<span>{{i.name}}: </span><span>{{i.valueText}}</span>
+                </div>
+            </div>
+            <!-- 教育经历-->
+            <!--<div class="row work-exp" ng-if="infos.id == 14" ng-repeat="info in infos.recordList track by $index">
+                <div class="col-xs-12"><span ng-repeat="i in info.infoItemList" ng-if="i.id == 49">{{i.valueText}}</span> &#45;&#45; <span ng-repeat="i in info.infoItemList" ng-if="i.id == 50">{{i.valueText}}</span>    <span ng-repeat="i in info.infoItemList" ng-if="i.id !=49 && i.id != 50" title="{{i.valueText}}">&nbsp;&nbsp;{{i.valueText}}</span></div>
+            </div>-->
+            <div class="row" ng-if="infos.id == 12" ng-repeat="info in infos.recordList track by $index">
+                <div class="col-xs-12"><span ng-repeat="i in info.infoItemList" title="{{i.valueText}}">{{i.valueText}}</span></div>
+            </div>
+        </div>
+
+        <div class="part-6" ng-if="fileList.length">
+            <div class="row title"><span class="icon-6"></span><span class="title-cell mc-c">{{language.preview.enclosure}}（{{fileList.length}}个）</span></div>
+        </div>
+
+        <div class="part-7" ng-if="fileList.length">
+            <!--<div class="row"><a class="mc-c" href="">全部下载</a></div>-->
+            <div class="row load">
+                <div class="col-xs-12 load">
+                    <div class="row" ng-repeat="f in fileList track by $index">
+                        <span class="icon-7"></span>
+                        <span>{{f.fileName}}</span>
+                        <span><a class="mc-c" ng-href="{{ServerURL}}/web/mode400/resume/getResumeAttechment?resumeId={{resumeId}}&fileId={{f.fileId}}">下载</a></span>
+                    </div>
+
+                    <!--<div class="row">
+                        <table>
+                            <tr>
+                                <td rowspan="2"><span class="icon-8"></span></td>
+                                <td colspan="3">英文简历.doc(7.59M)</td>
+                            </tr>
+                            <tr>
+
+                                <td><a class="mc-c" href="">下载</a></td>
+                                <td><a class="mc-c" href="">预览</a></td>
+                                <td><a class="mc-c" href="">转存<span class="icon-9"></span></a></td>
+                            </tr>
+                        </table>
+                    </div>-->
+                </div>
+                <div class="col-xs-9"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 简历详情 end-->

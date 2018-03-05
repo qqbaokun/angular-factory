@@ -1,0 +1,193 @@
+<style>
+    body {
+        /* overflow-x: hidden;*/
+    }
+    .main {
+        display: table;
+        width: 1185px;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 56px;
+        background-color: rgba(204, 204, 204, .1);
+        border-left: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        padding: 25px 15px 30px 0;
+    }
+    
+    .main-left {
+        width: 240px;
+        height: 100%;
+        display: table-cell;
+        vertical-align: top;
+    }
+    
+    .main-left ul {
+        margin: 0 auto;
+        margin-top: 20px;
+        display: block;
+        width: 160px;
+    }
+    
+    .main-left ul li span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .main-left ul li span:last-child {
+        margin-left: 30px;
+        cursor: pointer;
+    }
+    
+    .main-left img {
+        margin: 0 auto;
+        display: block;
+        margin-top: 40px;
+    }
+    
+    .main-left p {
+        text-align: center;
+        line-height: 30px;
+        height: 30px;
+    }
+    
+    .title-dotted {
+        width: 10px;
+        height: 40px;       
+    }
+    
+    .title-arrow {
+        display: inline-block;
+        height: 20px;
+        width: 25px;
+        color: #ccc;
+        font-size: 22px;
+    }
+    .title-word{
+    	white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    	width: 100px;
+    }
+	/*自定义企业文化start*/
+			.person-main-right{
+		        width: 945px;
+		        float: right;
+		        background-color: #fff;
+		        border: 1px solid #e1e1e1;
+		        margin-bottom: 20px;
+		        box-sizing: border-box;
+		    }
+		    .person-main-right > div{
+		        margin: 20px 25px;
+		    }
+		    .PMR-myResume .about-title{
+		        width: 100%;
+		    }
+		    .PMR-myResume .about-title:not(:first-child){
+		        margin-top: 40px;
+		    }
+		    .title-m{
+		        width: 190px;
+		    }
+		    .title-l img,.title-r img{
+		        width: 100%;
+		        vertical-align: middle;
+		    }
+		    .developLeft,.officeRight,.officeLeft,.developRight{
+		        width: 420px;
+		        margin-top: 0;
+		    }
+		    .developLeft,.officeLeft{
+		        float: left;
+		        margin-left: 10px;
+		    }
+		    .developRight,.officeRight{
+		        float: right;
+		        margin-right: 10px;
+		    }
+		    .developLeft img,.officeRight img,.officeLeft img,.developRight img{
+		        width: 100%;
+		    }
+		    .cultureCon{
+		        width: 880px;
+		        margin: 0 auto;
+		    }
+		    .person-main-right{
+		        font-size: 14px;
+		        color: #555560;
+		        line-height: 30px;
+		    }
+		    .aboutUsTitle{
+		        font-size: 18px;
+		        color: #2a2a38;
+		        line-height: 42px;
+		        margin-top: 30px;
+		    }
+		    .aboutUsTitle p{
+		    	line-height: 30px;
+		    }
+		    .person-main-right dl{
+		        margin-top: 30px;
+		    }
+		    .PMR-myApply,.PMR-myResume,.PMR-myCollect{
+		        overflow: hidden;
+		    }
+		    .cultureCon img{width:100%;}
+		    .cultureCon table{
+		    	width:100%;
+		    	margin: 10px auto;
+		    }	
+		    .cultureCon table tr{
+	    	    display: table-row;
+		    }
+		    .cultureCon table tr td{
+		    	display: table-cell;
+		    	padding:10px 5px;
+		    }
+</style>
+<div class=" main clearFloat" set-min-height="161">
+    <div class="main-left">
+        <ul>
+            <li ng-repeat="t in option.submenus">
+                <div class="campus-title-l" ng-click="changeSubIndex($index,t.id)"><span ng-class="{'mc-c': $index == subIndex}" class="title-arrow iconfont icon-sanjiao"></span><span ng-class="{'mc-c': $index == subIndex}" class="title-word" title="{{t.title}}">{{t.title}}</span></div>
+                <div ng-hide="$last" class="title-dotted "></div>
+            </li>
+        </ul>
+        <img ng-src="{{wechatQRUrl}}" />
+        <p>{{language.weChat.attentionWeChat}}</p>
+        <p>{{language.weChat.getInformation}}</p>
+    </div>
+    <!--0-职位列表 start-->
+    <dy-position ng-if="subShowIndex == 0" row-count="rowCount" search-result="searchResult"></dy-position>
+    <!--0-职位列表  end-->
+        
+    <!--1-自定义企业文化 start-->
+    <div ng-if="subShowIndex == 1" class="person-main-right" set-min-height="156">
+        <div class="PMR-myResume">
+                <div class="developLeft" >
+                    <dl ng-repeat="a in cultureData.data track by $index" ng-if="a.type == 1 && a.leftOrRight == 0">
+                        <dt><img ng-if="a.imgUrl" ng-src="{{a.imgUrl}}"/></dt>
+                        <dd class="aboutUsTitle">{{a.contentTitle}}</dd>
+                        <dd>{{a.contentDetailed}}</dd>
+                    </dl>
+                </div>
+                <div class="developRight">
+                    <dl ng-repeat="a in cultureData.data track by $index" ng-if="a.type == 1 && a.leftOrRight == 1">
+                        <dt><img ng-if="a.imgUrl" ng-src="{{a.imgUrl}}"/></dt>
+                        <dd class="aboutUsTitle">{{a.contentTitle}}</dd>
+                        <dd>{{a.contentDetailed}}</dd>
+                    </dl>
+                </div>
+
+                <div ng-repeat="a in cultureData.data track by $index" class="cultureCon" ng-if="a.type == 0">
+                    <P class="aboutUsTitle mt30" ng-bind-html="a.contentDetailed | toHtml"></P>
+                </div>         
+        </div>
+    </div>
+    <!--1-自定义企业文化 end-->
+        
+    <!--2-宣讲会 start-->
+    <dy-xuanjianghui ng-if="subShowIndex == 2" meeting-img="meetingImg"></dy-xuanjianghui>
+    <!--2-宣讲会  end-->
+
+</div>

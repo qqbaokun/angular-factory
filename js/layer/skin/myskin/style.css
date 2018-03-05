@@ -1,0 +1,35 @@
+.layui-layer-setwin .layui-layer-close1{
+    width: 25px;
+    height: 25px;
+    background: url("../../../../images/cancle.png") no-repeat;
+    background-size: cover;
+}
+.layui-layer-setwin .layui-layer-close2{
+    width: 25px;
+    height: 25px;
+    background: url("../../../../images/cancle.png") no-repeat;
+    right: 0;
+    top: 0;
+    background-size: cover;
+}
+.layui-layer-setwin .layui-layer-close2:hover{
+    background-position: 0 0 ;
+}
+.layui-layer-title{
+    margin: 0 20px;
+    background-color: inherit;
+    padding: 0;
+    height: auto;
+    line-height: 1.2;
+    font-size: 20px;
+}
+.layui-layer-title p{
+    padding: 0 10px;
+    margin: 15px 0;
+    border-left: 5px solid #62b503;
+}
+
+.layui-layer-page .layui-layer-content{
+    padding: 3%;
+    box-sizing: border-box;
+}

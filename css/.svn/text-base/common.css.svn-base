@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}  /* 初始化标签在所有浏览器中的margin、padding值 */
+fieldset,img {border:0 none}  /* 重置fieldset（表单分组）、图片的边框为0*/
+dl,ul,ol,menu,li {list-style:none}   /* 重置类表前导符号为onne,menu在HTML5中有效 */
+blockquote, q {quotes: none}   /* 重置嵌套引用的引号类型 */
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}  /* 重置嵌套引用*/
+input,select,textarea,button {vertical-align:middle}  /* 重置表单控件垂直居中*/
+button {border:0 none;background-color:transparent;cursor:pointer}  /* 重置表单button按钮效果 */
+body {}   /* 重置body 页面背景为白色 */
+body,th,td,input,select,textarea,button {font-size:16px;line-height:1 ;font-family:"微软雅黑", "黑体","宋体";color:#666} /* 重置页面文字属性 */
+a {color:#666;text-decoration:none}  /* 重置链接a标签 */ 
+a:active, a:hover {text-decoration:none}   /* 重置链接a标签的鼠标滑动效果 */
+address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}  /* 重置样式标签的样式 */
+caption {display:none;}    /* 重置表格标题为隐藏 */
+table {border-collapse:collapse;border-spacing:0;table-layout:fixed;}    /* 重置table属性 */
+img{vertical-align:top}  /* 图片在当前行内的垂直位置 */
+.clearFloat:after{  content: "";  line-height: 0;  visibility: hidden;  display: block;  clear: both;  } /* 清除浮动*/
+/* 页面设置 */
+  /* 取消a标签点击后的虚线框 */
+input,button{outline:none;}
+a {outline: none;}  
+a:active {star:expression(this.onFocus=this.blur());}
+
+ /* 设置页面文字等在拖动鼠标选中情况下的背景色与文字颜色 */ 
+/*
+::selection {color: #fff;background-color: #4C6E78;}    
+::-moz-selection {color: #fff;background-color: #4C6E78;} 
+*/
+::-webkit-scrollbar
+{
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+    border-radius: 10px;
+}
+::-webkit-scrollbar-corner{
+    background-color: inherit;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    background-color: #b9babc;
+    border-radius: 10px;
+}
+
+/*按钮特效样式*/
+.button {
+    width: 124px;
+    height: 38px;
+    display: inline-block;
+    background: none;
+    vertical-align: text-bottom;
+    position: relative;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    color: #fff;
+    border-color: #62b503;
+    background-color: #62b503;
+    border: 1px solid;
+    border-radius: 5px;
+    overflow: hidden;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    font-size: 12px
+}
+.button:focus {
+    outline: none;
+}
+.button > span {
+    vertical-align: middle;
+}
+.button--winona .after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -5%!important;
+    left: 0;
+    opacity: 0;
+    border:0;
+    -webkit-transform: translate3d(0, 25%, 0);
+    transform: translate3d(0, 25%, 0);
+}
+.button--winona > span {
+    display: block;
+}
+.button--winona .after,
+.button--winona > span {
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+    margin:0;
+}
+.button--winona:hover .after {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.button--winona:hover > span {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -25%, 0);
+    transform: translate3d(0, -25%, 0);
+}
+
+
+/*bootstrap*/
+.modal{
+    /*left: 50%!important;
+    top: 50%!important;
+    transform: translate(-50%,-50%)!important;*/
+    /*width: 100%;
+    height: 100%;*/
+}
+.modal-dialog{
+	height: 100%;
+    display: flex;
+    -webkit-display: flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding: 0!important;
+}
+.modal-content{
+	width: 100%;
+}
+.modal-header{
+    margin: 0 15px;
+    padding: 10px 0;
+}
+.modal-header-no{
+    height: 0;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    border: none;
+}
+.modal-header-no>h4{
+    display: none;
+}
+.modal-title {
+    border-left: 5px solid #62b503;
+    padding-left: 10px;
+}
+.model-close{
+    padding: 4px;
+    background-color: white;
+    border-radius: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    z-index: 100;
+}
+.model-close a{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: 0;
+    color: white;
+    background-color: blue;
+    border-radius: 100%;
+    text-align: center;
+    position: relative;
+}
+.model-close a i{
+    font-size: 14px;
+    vertical-align: middle;
+}

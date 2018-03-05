@@ -1,0 +1,66 @@
+<style>
+    .startMain{       
+        background-position: 100px 100px;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+    .startMainImg{
+        margin-top: 40px;
+    }
+    .startMain{
+        width: 1200px;
+        padding-top: 20px;
+        border: 1px solid #e1e1e1;
+        margin: 70px auto 20px;
+        background-color: #fff;
+        text-align: center;
+        min-height: 470px;
+    }
+    .startMain p{
+        margin-top: 30px;
+        font-size: 24px;
+        color: #2a2a38;
+        line-height: 40px;
+    }
+    .dayeeQR{
+        display: block;
+        margin: 40px auto 0;
+    }
+    p.deliveringP{
+        color: #d4d4d4;
+        margin-top: 20px;
+    }
+    .button{
+        margin: 50px 20px 0;
+        line-height: 40px;
+    }
+    .tintBtn{
+        background-color: #b2da81;
+    }
+    .width180{
+        width: 180px;
+    }
+    .width320{
+        width: 320px;
+        height: 45px;
+        font-size: 16px;
+    }
+    p.hintInformation{
+        font-size: 14px;
+        color: #76757b;
+    }
+</style>
+
+<!-- 中间图片部分  start-->
+<div class="startMain" id="deliveryFail" set-min-height="162">
+    <img class="startMainImg" ng-src="{{wechatQRUrl}}"/>
+    <p>{{language.deliveryFail.deliveryFail}}<br/>{{language.deliveryFail.networkHasGap}}</p>
+    <div class="btnCon">
+        <button ng-click="reDelivery();" class="button button--winona width180 mc-bgc" data-text="{{language.deliveryFail.reDelivery}}">
+            <span>{{language.deliveryFail.reDelivery}}</span>
+            <div class="after">{{language.deliveryFail.reDelivery}}</div>
+        </button>
+    </div>
+
+</div>
+<!-- 中间图片部分  end-->

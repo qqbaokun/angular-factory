@@ -1,0 +1,827 @@
+<style>
+	.nav-main-other,#search{
+		display: none;
+	}
+    .person-main {
+        width: 1200px;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+
+    }
+    .position{
+        position: relative;
+    }
+    /*左边悬浮菜单样式 start*/
+    .person-main-left{
+        position: fixed;
+        width: 224px;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        top: 65px;
+    }
+    .PML-menu{
+        padding: 0 25px;
+        margin-bottom: 20px;
+    }
+    .PML-menu li{
+        width: 168px;
+        height: 36px;
+        line-height: 24px;
+        text-align: center;
+        margin: 16px 0 0;
+        border-bottom: 1px solid #e1e1e1;
+        border-left: 6px solid #e1e1e1;
+        font-size: 16px;
+        font-weight: 600;
+        color: #494949;
+        cursor: pointer;
+    }
+    .PML-menu li.choose{
+        border-color: #63b504;
+        color: #63b504;
+    }
+    .PML-qr{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 300px;
+    }
+    .PML-qr dt{
+        margin-bottom: 14px;
+    }
+    .PML-qr dd{
+        line-height: 30px;
+        font-size: 18px;
+        color: #999999;
+    }
+
+    /*左边悬浮菜单样式 end*/
+    /*右边部分start*/
+    .person-main-right{
+        width: 950px;
+        float: right;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .wt-switch.wt-switch-radio{
+        float: left;
+        width: 65px;
+        color: black;
+        font-weight: normal;
+    }
+    .wt-switch-radio span{
+        font-size: 14px;
+        font-weight: normal;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .wt-switch-radio input{
+        margin-top: 0;
+        margin-right: 5px;
+    }
+    .search input{
+        outline: none;
+        line-height: initial;
+    }
+
+    .login{
+        width: 40px;
+        height: 40px;
+    }
+    .login img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .next-step{
+        text-align: right;
+    }
+    .next-step a{
+        color: #ffa442;
+        margin-right: 15px;
+        vertical-align: super;
+    }
+    .next-step button{
+        width: 125px;
+        height: 40px;
+        background-color: #63b504;
+        border: none;
+        color: white;
+    }
+    /*左边导航部分start*/
+    .person-main-leftUL{
+        margin: 24px 0 24px 26px;
+    }
+    .leftUlTop{
+        font-size: 12px;
+        color: #2b2a3c;
+        line-height: 24px;
+    }
+    .positionName{
+        font-size: 16px;
+        color: #62b505;
+        line-height: 36px;
+    }
+    .positionInfo{
+        font-size: 12px;
+        color: #8e8e8e;
+        line-height: 24px;
+    }
+    .positionInfo span{
+        color: #2b2a3c;
+    }
+    /*左边导航部分end*/
+    /*右边改动部分start*/
+    .modify-left .mdf-tit span,.modify-left .mdf-tit p {
+        /*background-color: #f9f9f9;*/
+    }
+    .modify-left .mdf-tit {
+        margin: 0;
+        padding: 20px 0;
+    }
+    .rightTit{
+        color: #8f8f8f;
+        font-size: 14px;
+        height: 40px;
+        padding-left: 8px;
+    }
+    .colorOrange{
+        color: #ff9d14;
+    }
+    .applyPositionModel{
+        padding: 1px 8px 20px;
+        margin-bottom: 20px;
+    }
+    .applyPositionModel-close{
+        height: 20px;
+        overflow: hidden;
+    }
+    .applyPositionModel:hover{
+        background: #f9f9f9;
+    }
+    .applyPositionModel:hover .mdf-tit p,.wt-icon580-60{
+        background-color: #f9f9f9;
+    }
+    .applyPositionModel:hover .wt-icon160-560,.applyPositionModel:hover .wt-icon140-540,.applyPositionModel:hover .wt-icon140-560{
+        background-color: #f9f9f9;
+    }
+    .modify-left .tableDiv {
+        background-color: #fff;
+        border: none;
+    }
+    /*附件上传部分start*/
+    .uploadAtt{
+        height: 36px;
+        line-height: 36px;
+        padding-left: 210px;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .uploadAttLeft{
+        width: 180px;
+        text-align: right;
+        line-height: 36px;
+        position: absolute;
+        white-space: nowrap;
+    	overflow: hidden;
+    	left: 20px;
+    	text-overflow: ellipsis;
+    }
+    .uploadAttLeft b{
+        color: #62b503;
+        font-weight: 100;
+    }
+    .uploadAttLabel{
+        width:300px;
+        border: 1px solid #62b503;
+        border-radius: 1px;
+        height: 36px;
+        color: #ccc;
+        font-size: 14px;
+        font-weight: normal;
+        position: relative;
+        box-sizing: border-box;
+    }
+    .uploadAttLabel i{
+        display: block;
+        position: absolute;
+        right: 0;
+        top:0;
+        height: 34px;
+        width: 43px;
+        background-color: #62b503;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .uploadAttLabel input[type=file]{
+        width: 0;
+        height: 0;
+        outline: none;
+        filter:alpha(opacity=0);
+        opacity:0;
+    }
+    /*附件上传部分end*/
+
+    /*外部网站导入部分start*/
+    .extImport{
+        padding-left: 170px;
+    }
+    .extImportLeft{
+        left: 0;
+    }
+    .extImport input{
+        width: 100%;
+        height: 34px;
+        padding-left: 10px;
+        outline: none;
+        border: none;
+        vertical-align: top;
+        font-size: 14px;
+    }
+    .extImport select{
+        width: 100%;
+        height: 34px;
+        padding-left: 18px;
+        margin-left: -10px;
+        outline: none;
+        border: none;
+        vertical-align: top;
+    }
+    .uploadAttLabel .ipt-item span.wt-icon10-100{
+        float: right;
+        margin: 10px 15px 0 0;
+    }
+    .uploadAttLabel span{
+        margin-left: 10px;
+    }
+    .uploadAttLabel .file-show{
+        color: black;
+        display: inline-block;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    width: 240px;
+    }
+    .extImport .uploadAttLabel{
+        border-color: #eeeeee;
+        margin-left: 15px;
+    }
+    .uploadAtt button{
+        line-height: 38px;
+        margin-left: 15px;
+    }
+    .ipt-item-half,.ipt-item{
+        position: relative;
+    }
+    /*外部网站导入部分end*/
+    .uploadAttR{
+        line-height: 36px;
+        padding-left: 210px;
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .uploadAttR label{
+        display: block;
+        color: #777;
+        font-weight: 100;
+    }
+    .uploadAttR input{
+        width: 15px;
+        margin-right: 10px;
+    }
+    a.rightTextBtn{
+        vertical-align: text-bottom;
+        margin-left: 30px;
+    }
+    .button-hide{
+        background-color: #efefef;
+    }
+
+
+
+    .bs-caret{
+        display: none;
+    }
+    .bootstrap-select{
+        position: absolute;
+        left: 0;
+        width: 100%!important;
+        height: 34px;
+        margin-left: -10px;
+        background-color: transparent!important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+    }
+    .bootstrap-select .dropdown-toggle{
+        border: none;
+        width: 100%;
+        outline: none!important;
+        box-sizing: border-box;
+    }
+    .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark{
+        display: none;
+    }
+    .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default{
+        background-color: inherit;
+    }
+    .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus,.btn-group.open .dropdown-toggle,.bootstrap-select .dropdown-toggle:focus{
+        -webkit-box-shadow: none!important;
+        box-shadow: none!important;
+        outline: none!important;
+    }
+    .bootstrap-select > .dropdown-toggle.bs-placeholder,.bootstrap-select .dropdown-toggle{
+        height: 100%;
+        line-height: 100%;
+    }
+    .wt-switch-radio span{
+        font-size: 14px;
+        font-weight: normal;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .wt-switch-radio input{
+        margin-top: 0;
+    }
+    .search input{
+        outline: none;
+        line-height: initial;
+    }
+
+    .login{
+        width: 40px;
+        height: 40px;
+    }
+    .login img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .next-step{
+        text-align: right;
+        margin-top: 20px;
+    }
+    .next-step a{
+        color: #ffa442;
+        margin-right: 15px;
+        vertical-align: super;
+    }
+    .next-step button{
+        width: 125px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #63b504;
+        border: none;
+        color: white;
+    }
+    .next-dialog{
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    .next-dialog-m{
+        background-color: #fbfbfb;
+        display: inline-block;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 6px;
+        position: relative;
+        margin-right: 40px;
+        font-size: 16px;
+    }
+    .icon-dialog{
+        display: inline-block;
+        width: 20px;
+        height: 20px;        
+        vertical-align: middle;
+    }
+    .dialog-follow{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 20px;
+        bottom: -6px;
+        background-color: #fbfbfb;
+    }
+    .mdf-table-cell{
+        float: left;
+        width: 50%;
+    }
+    .mdf-table-cell-long{
+        width: 100%;
+    }
+    .mdf-table-cell-long .mdf-table-cell-l{
+        width: 13%;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r{
+        width: 86%;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r .ipt-item{
+        height: auto;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r .ipt-item .txt-content{
+        border: none;
+    }
+    .mdf-table-cell-l{
+        width: 26%;
+        display: inline-block;
+        text-align: right;
+        font-size: 14px;
+        padding: 8px 10px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+    	text-overflow: ellipsis;
+    }
+    .mdf-table-cell-r{
+        width: 72%;
+        display: inline-block;
+        padding: 8px 0;
+        vertical-align: middle;
+    }
+    .modify-left .mdf-table .ipt-item .wt-radio{
+        width: auto;
+    }
+    .modify-left .mdf-table .ipt-item3,.modify-left .mdf-table .ipt-item9{
+        background-color: inherit;
+        border: none;
+    }
+    .modify-left .mdf-tit .wt-icon60-80{
+        float: left;
+        margin-top: -5px;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r .txt-content{
+        padding: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .modify-left .mdf-table .ipt-item3{
+        width: 25%;
+        height: 34px;
+    }
+    .modify-left .tableDiv:not(:first-child){
+        margin-top: 20px;
+    }
+    .modify-left .tableDiv .delete-model{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+        color: #ccc;
+        font-size: 12px;
+    }
+    .itemHidden{
+        height: 70px;
+        overflow: hidden;
+    }
+    .update-file{
+	    border-top: 1px solid #f0f0f0;
+	    padding: 20px 0;
+	    margin-top: 20px;
+    }
+    .update-file .update-file-t1{
+        color: #666;
+	    font-size: 15px;
+	    width: 13%;
+	    display: inline-block;
+	    text-align: right;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+    }
+    .update-file .update-file-t2{
+    	color: #999;
+    	font-size: 15px;
+    }
+    .update-file .update-file-t button,.update-file .update-file-t span{
+    	vertical-align: middle;
+    }
+    .update-file .update-file-t button{
+    	height: 25px;
+    	line-height: 25px;
+    	padding: 0 15px;
+    	border-radius: 25px;
+    	color: white;
+    	font-size: 14px;
+    }
+    .update-file .update-file-b{
+    	padding-left: 14%;
+    	line-height: 25px;
+    }
+    .requireCheckbox{
+    	border: 1px solid #f8f8f8;
+    }
+</style>
+
+<!-- 申请职位 start-->
+<div class="person-main clearFloat">
+    <!-- 左边导航  start-->
+    <div class="person-main-left">
+        <ul class="person-main-leftUL">
+            <li class="leftUlTop">{{language.applyPosition.applyingFor}}</li>
+            <li class="positionName mc-c">{{workDetail.PostName}}</li>
+            <li class="positionInfo">{{language.workTitle.workingPlace}}：<span title="{{workDetail.WorkPlace}}">{{workDetail.WorkPlace | textLengthSet:true:40}}</span></li>
+            <li class="positionInfo">{{language.workTitle.numberOfApplicants}}：<span>{{workDetail.RecruitNumber}}人</span></li>
+            <li class="positionInfo">{{language.workTitle.positionCategory}}：<span>{{workDetail.PostType}}</span></li>
+            <li class="positionInfo">{{language.workTitle.recruitmentAgencies}}：<span>{{workDetail.OrgName}}</span></li>
+        </ul>
+    </div>
+    <!-- 左边导航  end-->
+    <!-- 右边主体部分 start-->
+    <div class="person-main-right" set-min-height="137">
+        <div class="wt-detail-main">
+            <div class="wt-dtl-container">
+                <div class="modify-main">
+                    <div class="modify-left">
+                        <div class="rightTit">{{language.applyPosition.chooseWays}}<span class="colorOrange">{{language.applyPosition.twoResumes}}</span></div>
+                        <!--Start 附件上传-->
+                        <div ng-if="getApplyPostWay.uploadResume != 1" class="applyPositionModel applyPositionModel-close">
+                            <div class="mdf-tit" apply-open-close>
+                                <font></font>
+                                <p>{{language.applyPosition.attachmentsUpload}}</p>
+                                <span class="wt-icon140-540"></span>
+                            </div>
+                            <div class="tableDiv">
+                                <form action="">
+                                    <div class="uploadAtt">
+                                    <span class="uploadAttLeft" style="" title="{{language.applyPosition.uploadAttachments}}">
+                                        <b class="mc-c" style=""></b>
+                                       {{language.applyPosition.uploadAttachments}}</span>
+                                        <label class="uploadAttLabel mc-bc" style="">
+                                            <span ng-show="!file">{{language.applyPosition.selectFile}}</span><span class="file-show" ng-show="file" title="{{file.name}}">{{file.name}}</span><i class="mc-bgc" style="" ></i>
+                                            <input ngf-select ng-change="uploadResume(file)" ng-model="file" type="file">
+                                        </label>
+                                    </div>
+                                    <div class="uploadAtt">
+                                    <span class="uploadAttLeft" style="">
+                                        <b class="mc-c" style=""></b>
+                                       {{language.applyPosition.languageTypes}}</span>
+                                        <label class="" style="">
+                                            <div class="wt-switch wt-switch-radio">
+                                                <input name="lanType" type="radio" value="1" ng-model="lanType"/>{{language.footer.cn}}
+                                            </div>
+                                            <div class="wt-switch wt-switch-radio">
+                                                <input name="lanType" type="radio" value="2" ng-model="lanType"/>{{language.footer.en}}
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="uploadAtt">
+                                        <p>{{language.applyPosition.uploadedFormats}}</p>
+                                    </div>
+                                    <div class="uploadAtt">
+                                        <button type="button" ng-show="file && lanType" ng-click="uploadAllFile(file,lanType);" class="button button--winona mc-bgc" data-text="{{language.applyPosition.determineUploading}}">
+                                            <span>{{language.applyPosition.determineUploading}}</span>
+                                            <div class="after">{{language.applyPosition.determineUploading}}</div>
+                                        </button>
+                                        <button type="button" ng-show="!file || !lanType" class="button button--winona button-hide" disabled data-text="{{language.applyPosition.determineUploading}}">
+                                            <span>{{language.applyPosition.determineUploading}}</span>
+                                            <div class="after">{{language.applyPosition.determineUploading}}</div>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--End 附件上传-->
+
+                        <!--Start 外部网站导入-->
+                        <div ng-if="getApplyPostWay.importResume != 1" class="applyPositionModel applyPositionModel-close">
+                            <div class="mdf-tit" apply-open-close>
+                                <font></font>
+                                <p>{{language.applyPosition.websiteImport}}</p>
+                                <span class="wt-icon140-540"></span>
+                            </div>
+                            <p style="color: #8f8f8f;margin-bottom: 10px;">({{importResumeAll}})</p>
+                            <div class="tableDiv" ng-show="stepIndex == 0">
+                                <form name="myApplyPosition">
+                                    <div class="uploadAtt extImport">
+                                    <span class="uploadAttLeft extImportLeft" style="">
+
+                                        {{language.applyPosition.selectWebsite}}</span>
+                                        <label class="uploadAttLabel ">
+                                            <div class="ipt-item">
+                                                <span class="wt-icon10-100" style="position: absolute;right: 0;z-index: 100;"></span>
+                                                <select name="external.channelId" ng-model="external.channelId" required>
+                                                    <option value="">{{language.applyPosition.pleaseChoose}}</option>
+                                                    <option ng-repeat="c in getApplyPostWay.importResume" value="{{c.value}}" repeat-finish>{{c.name}}</option>
+                                                </select>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="uploadAtt extImport">
+                                        <span class="uploadAttLeft extImportLeft" style="">{{language.applyPosition.userName}}</span>
+                                        <label class="uploadAttLabel ">
+                                            <div class="ipt-item"><input name="external.userName" ng-model="external.userName" type="text" placeholder="{{language.applyPosition.enterUserName}}" required/></div>
+                                        </label>
+                                    </div>
+                                    <div class="uploadAtt extImport">
+                                        <span class="uploadAttLeft extImportLeft">{{language.applyPosition.password}}</span>
+                                        <label class="uploadAttLabel ">
+                                            <div class="ipt-item"><input name="external.password" ng-model="external.password" type="password" placeholder="{{language.applyPosition.inputPassword}}" required/></div>
+                                        </label>
+                                    </div>
+                                    <div class="uploadAtt extImport hidden">
+                                        <span class="uploadAttLeft extImportLeft">{{language.applyPosition.verificationCode}}</span>
+                                        <label class="uploadAttLabel ">
+                                            <div class="ipt-item"><input name="external.validateCode" ng-model="external.validateCode" type="password" placeholder="{{language.login.verificationCode}}"/></div>
+                                        </label>
+                                    </div>
+                                    <div class="uploadAtt extImport">
+                                        <button ng-show="!myApplyPosition.$invalid" ng-click="jumpStep(1,external);" class="button button--winona mc-bgc" data-text="{{language.applyPosition.nextstep}}" type="button">
+                                            <span>{{language.applyPosition.nextstep}}</span>
+                                            <div class="after">{{language.applyPosition.nextstep}}</div>
+                                        </button>
+                                        <button ng-hide="!myApplyPosition.$invalid" disabled class="button button--winona button-hide" data-text="{{language.applyPosition.nextstep}}" type="button">
+                                            <span>{{language.applyPosition.nextstep}}</span>
+                                            <div class="after">{{language.applyPosition.nextstep}}</div>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tableDiv" ng-show="stepIndex == 1">
+                                <div class="uploadAttR extImport">
+                                    <span class="uploadAttLeft extImportLeft" style="">{{language.applyPosition.selectWebsite}}</span>
+                                    <label ng-repeat="r in webResume track by $index" class=" ">
+                                        <input ng-model="$parent.webResumeValue" value="{{r}}" type="radio" name="myResume"/>{{r.webResumeName}}({{r.languageStr}})
+                                    </label>
+                                </div>
+                                <div class="uploadAtt extImport">
+                                    <button ng-show="webResumeValue" ng-click="importResume(external,webResumeValue);" class="button button--winona mc-bgc" data-text="{{language.applyPosition.introductionResume}}" type="button">
+                                        <span>{{language.applyPosition.introductionResume}}</span>
+                                        <div class="after">{{language.applyPosition.introductionResume}}</div>
+                                    </button>
+                                    <button ng-show="!webResumeValue" class="button button--winona button-hide" data-text="{{language.applyPosition.introductionResume}}" type="button" disabled>
+                                        <span>{{language.applyPosition.introductionResume}}</span>
+                                        <div class="after">{{language.applyPosition.introductionResume}}</div>
+                                    </button>
+                                    <a ng-click="jumpStep(0);" class="rightTextBtn">{{language.applyPosition.lastStep}}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End 外部网站导入-->
+
+                        <!--Start 快捷简历-->
+                        <div ng-if="getApplyPostWay.quickResume != 1" class="applyPositionModel applyPositionModel-close">
+                            <div class="mdf-tit" apply-open-close>
+                                <font></font>
+                                <p>{{language.applyPosition.rapidApplication}}</p>
+                                <span class="wt-icon140-540"></span>
+                            </div>
+
+                            <form id="myForm" name="myForm" action="">
+                                <div class="modify-left">
+                                    <!--渲染模板-->
+                                    <div ng-repeat="option in resumeInfo track by $index">
+                                        <div ng-repeat="op in option track by $index">
+                                            <input type="hidden" name="{{op.id}}_{{$index+1}}_status" value="0"/>
+                                            <input type="hidden" name="{{op.id}}_{{$index+1}}_valid_status" value="0"/>
+                                            <input ng-if="op.recordId" type="hidden" name="{{op.id}}_{{$index+1}}_f_id" value="{{op.recordId}}"/>
+                                            <div class="tableDiv">
+                                                <span ng-hide="$index == 0" ng-click="deleteModel($parent.$index,$index,op.recordId,op.code);" style="" class="delete-model iconfont icon-shanchu1"></span>
+
+                                                <div class="mdf-table clearFloat">
+                                                    <div ng-repeat="o in op.infoItemList track by $index">
+
+                                                        <div ng-if="o.fillType != 6 &&(o.fillType == 1 || o.fillType == 2 || o.fillType == 3 || o.fillType == 4 || o.fillType == 5 || o.fillType == 9)" class="mdf-table-cell">
+                                                            <div class="mdf-table-cell-l" title="{{o.name}}"><span ng-show="o.required" class="wt-icon60-80"></span>{{o.name}}</div>
+                                                            <div class="mdf-table-cell-r">
+                                                                <dy-form code="{{o.dataSource}}" name-num="{{op.id}}_{{o.id}}_{{$parent.$parent.$index+1}}" data="{{o}}"></dy-form>
+                                                            </div>
+                                                        </div>
+
+                                                        <div ng-if="o.fillType == 6" class="mdf-table-cell mdf-table-cell-long">
+                                                            <div class="mdf-table-cell-l"><span ng-show="o.required" class="wt-icon60-80"></span>{{o.name}}</div>
+                                                            <div ng-if="o.fillType == 6" class="mdf-table-cell-r">
+                                                                <!--6－文本域-->
+                                                                <textarea name="{{op.id}}_{{o.id}}_{{$parent.$parent.$parent.$index+1}}" class="txt-content"></textarea>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="update-file">
+                                                	<div class="update-file-t">
+                                                		<span class="update-file-t1" title="{{updateFile.upfile}}">{{updateFile.upfile}}</span>
+                                                		<button ng-show="!file1" ngf-select ng-change="uploadQuickResume(file1)" ng-model="file1" class="mc-bgc" type="button">{{updateFile.chooseFile}}</button> 
+                                                		<span ng-show="!file1" class="update-file-t2">{{updateFile.unChooseFile}}</span>   
+                                                		<span ng-show="file1" ngf-select ng-change="uploadQuickResume(file1)" ng-model="file1" class="update-file-t3">{{file1.name}}</span>                                            		
+                                                	</div>
+                                                	<div class="update-file-b update-file-t2">{{updateFile.fileFormat}}</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="next-step">
+                                        <button ng-click="createResume();" type="button" class="button button--winona mc-bgc" data-text="{{updateFile.createQuick}}">
+                                            <span>{{updateFile.createQuick}}</span>
+                                            <div class="after">{{updateFile.createQuick}}</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                        <!--End 快捷简历-->
+
+                        <!--Start 在线填写-->
+                        <div ng-if="getApplyPostWay.addNewResume != 1" ng-click="fillOnline();" class="applyPositionModel" style="padding: 1px 8px 1px;">
+                            <div class="mdf-tit">
+                                <font></font>
+                                <p>{{language.applyPosition.fillOnline}}</p>
+                                <span class="wt-icon160-560"></span>
+                            </div>
+                        </div>
+                        <!--End 在线填写-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右边主体部分 end-->
+</div>
+<!-- 申请职位 end-->
+
+
+<!--start隐私声明-->
+<div id="myPrivacyStatement" class="modal" tabindex="-1" role="dialog" aria-labelledby="myPrivacyStatement" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-no">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+            </div>
+            <div class="modal-body">
+                <style>
+                    .main-content{
+                        width: 320px;
+                        margin: 0 auto;
+                        font-size: 12px;
+                        color: #6a696f;
+                        line-height: 30px;
+                    }
+                    .main-content form button{
+                        width: 100%;
+                        background-color: #e3e1de;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                    .main-content form label input,.main-content form label span{
+                        vertical-align: middle;
+                    }
+                    h2{
+                        font-size: 18px;
+                        color: #2a2a38;
+                        line-height: 60px;
+                        text-align: center;
+                    }
+                    #myPrivacyStatement p{
+                        font-size: 12px;
+                        line-height: 24px;
+                        color: #797979;
+                    }
+                    .main-content form label{
+                        display: block;
+                        height: 50px;
+                        line-height: 50px;
+                    }
+                </style>
+                <div class="main-content">
+                    <h2>{{language.applyPosition.privacyStatement}}</h2>
+                    <p>{{privacyStatement.content}}</p>
+
+                    <form>
+                        <label>
+                            <input ng-model="myPrivacy" type="checkbox" value="1">
+                            <span>{{language.applyPosition.readPrivacy}}</span>
+                        </label>
+                        <button ng-show="!myPrivacy" class="button button--winona" data-text="{{language.applyPosition.nextstep}}" type="button">
+                            <span>{{language.applyPosition.nextstep}}</span>
+                            <div class="after">{{language.applyPosition.nextstep}}</div>
+                        </button>
+                        <button data-dismiss="modal" ng-click="agreePrivacy();" ng-show="myPrivacy" class="button button--winona mc-bgc" data-text="{{language.applyPosition.nextstep}}" type="button">
+                            <span>{{language.applyPosition.nextstep}}</span>
+                            <div class="after">{{language.applyPosition.nextstep}}</div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end隐私声明-->
+
+<!--start简历列表弹窗-->
+<dy-resume-list resume-list="resumeList"></dy-resume-list>
+<!--end简历列表弹窗-->

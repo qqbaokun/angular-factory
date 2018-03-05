@@ -1,0 +1,116 @@
+<style>
+	.schoolOrSubject{position: absolute;width: 100%;background-color: white;z-index: 100;border: 1px solid #f0f0f0;box-sizing: border-box;max-height: 150px;overflow: auto;}
+	.schoolOrSubject ul li{padding: 7px 10px;font-size: 14px;cursor: pointer;}
+	.schoolOrSubject ul li:hover{background-color: #f0f0f0;}
+</style>
+<div class="ipt-item">
+	<input name="{{name}}" msg="{{dataInfo.name}}" type="hidden" ng-class="{'requireInput': dataInfo.required}"/>
+	<input ng-click="chooseSchool();"  type="text" readonly="readonly" school-or-subject="1"/>
+	<input ng-if="dataInfo.fillType ==1" type="text" school-or-subject="2" class="input-query" style="display:none;"/>
+	<div ng-show="option1 && option1.length != 0 && dataInfo.fillType ==1" class="schoolOrSubject">
+		<ul>
+			<li ng-repeat="a in option1 track by $index" ng-click="inputMethod(a);">{{a.name}}</li>
+		</ul>
+	</div>
+</div>	    
+<!--start fillType==9-->
+		<div ng-if="dataInfo.customDataSource == 'school'" id="choose-school" class="modal modal_{{name}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+		    <div class="modal-dialog" role="document" style="width: 600px;">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		            	<span class="model-close" data-dismiss="modal" style="font-size: inherit;">
+		                	<a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+		            	</span>
+		            	<h4 class="modal-title mc-bc">{{modelTitle}}</h4>
+		            </div>
+		            <div class="modal-body clearFloat" style="height: auto;overflow: hidden;">
+		            	<style>
+		            		#choose-school .school-m ul li{float: left;float: left;margin: 5px;cursor: pointer;font-size: 14px;}
+		            		#choose-school .school-b{padding: 10px;height: 200px;overflow: scroll;border: 1px solid #ccc;}
+		            		#choose-school .school-b ul li{float: left;width: 33.3%;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;cursor: pointer;padding-right: 10px;box-sizing: border-box;margin: 5px 0;font-size: 14px}
+		            		#choose-school .school-b ul li input{width: auto;}
+		            		#choose-school .school-b ul li input,#choose-school .school-b ul li span{}
+		            		#choose-school .school-s{margin-top: 10px;font-size: 14px;}
+		            		#choose-school .school-s .delete{margin-left: 10px;cursor: pointer;}
+		            	</style>
+		            	<div class="school-m">
+		            		<ul class="clearFloat">
+		            			<li ng-repeat="a in option1 track by $index" ng-class="{'mc-c':item1.id == a.id}" ng-click="chooseItem(a,1);">{{a.name}}</li>
+		            		</ul>
+		            	</div>
+		            	<div class="school-b">
+		            		<ul class="clearFloat">
+		            			<li ng-repeat="b in option2 track by $index" ng-click="chooseItem(b,2);" title="{{b.name}}">
+		            				<input ng-model="graduateSchool" value="{{b.name}}" type="radio"/>
+		            				<span>{{b.name}}</span>
+		            			</li>
+		            		</ul>
+		            	</div>
+		            	<div class="school-s" ng-show="schoolVal"><span>已选：</span><span class="mc-c">{{schoolVal.value}}</span><span ng-click="chooseItem('',3);" class="delete">清空</span></div>				
+		            </div>
+		        </div>
+		    </div>
+		</div>
+<!--end fillType==9-->	
+
+
+<!--start fillType==11-->
+		<div ng-if="dataInfo.customDataSource == 'subject'" id="choose-subject" class="modal modal_{{name}}" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+		    <div class="modal-dialog" role="document" style="width: 600px;">
+		        <div class="modal-content">
+		            <div class="modal-header">
+		            	<span class="model-close" data-dismiss="modal" style="font-size: inherit;">
+		                	<a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+		            	</span>
+		            	<h4 class="modal-title mc-bc">选择专业</h4>
+		            </div>
+		            <div class="modal-body clearFloat">
+		            	<style>
+		            		#choose-subject .modal-body{padding-right: 0;}
+		            		#choose-subject .main-data-l{width: 10%;}
+		            		#choose-subject .main-data-r{width: 88%;}
+		            		#choose-subject .main-data-l,#choose-subject .main-data-r{display: inline-block;vertical-align: middle;}
+		            		#choose-subject .main-data-r-cell{float: left;margin: 10px;font-size: 14px;cursor: pointer;position: relative;}
+		            		#choose-subject .choose-cell{display: none;position: absolute;border: 1px solid #ddd;background-color: white;z-index: 10000;max-height: 200px;overflow: auto;}
+		            		#choose-subject .choose-cell ul li{padding: 5px 10px;font-size: 14px;cursor: pointer;}
+		            		#choose-subject .choose-cell ul li:hover{background-color: #f0f0f0;}
+		            		#choose-subject .main-cell:not(:first-child){border-top: 1px solid #ddd;}
+		            		#choose-subject .school-s{margin-top: 10px;font-size: 14px;}
+		            		#choose-subject .school-s .delete{margin-left: 10px;cursor: pointer;}
+		            	</style>
+		            	<div style="max-height: 400px;overflow: auto;">
+		            		<div style="padding-right: 20px;">
+			            		<div class="main-data" ng-if="dataInfo.customDataSource == 'subject'">
+				            		<div class="main-cell" ng-repeat="a in option1 track by $index">
+				            			<div class="main-data-l mc-c">{{a.pYin}}</div>
+				            			<div class="main-data-r">
+				            				<ul class="clearFloat">
+				            					<li class="main-data-r-cell" ng-repeat="b in a.subject track by $index" ng-click="chooseItem(b,1);" choose-cell>{{b.name}}</li>
+				            				</ul>
+				            			</div>
+				            		</div>
+			            		</div>
+				            	<div class="main-data" ng-if="dataInfo.customDataSource == 'school'">
+				            		<div class="main-cell" ng-repeat="a in option1 track by $index">
+				            			<div class="main-data-l mc-c">{{a.name}}</div>
+				            			<div class="main-data-r">
+				            				<ul class="clearFloat">
+				            					<li class="main-data-r-cell" ng-repeat="b in a.area track by $index" ng-click="chooseItem(b,1);" choose-cell>{{b.name}}</li>
+				            				</ul>
+				            			</div>
+				            		</div>
+				            	</div>
+				            </div>
+		            	</div>
+		            	<div class="school-s" ng-show="schoolVal"><span>已选：</span><span class="mc-c">{{schoolVal.value}}</span><span ng-click="chooseItem('',3);" class="delete">清空</span></div>				            	            	
+		            </div>		            
+		        </div>
+		    </div>
+		    
+		    <div class="choose-cell">
+			    <ul>
+			    	<li ng-repeat="c in option2 track by $index" class="" ng-click="chooseItem(c,2);">{{c.name}}</li>
+			    </ul>
+		   	</div>	
+		</div>
+<!--end fillType==11-->	    

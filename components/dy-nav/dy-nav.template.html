@@ -1,0 +1,343 @@
+<style>
+    /*导航栏*/
+    
+    * {
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    
+    a:visited,
+    a:active,
+    a:hover,
+    a:link {
+        text-decoration: none!important;
+        outline:none!important;
+    }
+    
+    .nav {
+        width: 100%;
+        height: 56px;
+        position: fixed;
+        top: 0;
+        /* border-bottom: 1px solid #63b504; */
+        background-color: white;
+        z-index: 999;
+        box-sizing: border-box;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+        -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+    }
+    .nav .loginIn .dropdown-menu{
+    	min-width: auto;
+    }
+    .nav-bar {
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    
+    .logo,
+    .nav-main {
+        vertical-align: middle;
+        line-height: 55px;
+        display: inline-block;
+    }
+    
+    .logo img {
+        vertical-align: middle;        
+        max-height: 40px;
+        max-width: 160px;
+        cursor: pointer;
+    }
+    
+    .nav-main {
+        height: 100%;
+        margin-left: 30px;
+    }
+    
+    .nav-main ul {
+        float: left;
+        height: 100%;
+    }
+    
+    .nav-main ul li {
+        float: left;
+        height: 100%;
+    }
+    
+    .nav-main ul li a {
+        display: inline-block;
+        width: 110px;
+        height: 100%;
+        line-height: 55px;
+        text-align: center;
+        white-space: nowrap;
+    }
+    /*.nav-main ul li a:hover{
+        background-color: #63b504;
+        color: white;
+    }*/
+    
+    .login {
+        float: right;
+        line-height: 55px;
+    }
+    
+    .login span {
+        display: inline-block;
+        height: 30px;
+        width: 115px;
+        color: #63b504;
+        border: 1px solid #63b504;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+    
+    .login span:hover {
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        -o-border-radius: 30px;
+        border-radius: 30px;
+    }
+    
+    .search {
+        height: 55px;
+        line-height: 55px;
+        margin-left: 40px;
+        display: inline-block;
+    	vertical-align: middle;
+    }
+    
+    .search input {
+        height: 28px;
+        line-height: 28px;
+        border: none;
+        text-indent: 10px;
+        box-sizing: border-box;
+        width: 160px;
+    }
+    
+    .icon-search {
+        display: inline-block;
+        width: 25px;
+        height: 25px;        
+        vertical-align: middle;
+    }
+    
+    .loginIn {
+        float: right;
+        width: 40px;
+        height: 40px;
+        margin-top: 8px;
+    }
+    
+    .loginIn img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+    
+    .nav-icon-1 {
+        display: inline-block;
+        width: 20px;
+        height: 20px;       
+        vertical-align: middle;
+    }
+    
+    .nav-icon-2 {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    
+    .nav-icon-3 {
+        display: inline-block;
+        width: 20px;
+        height: 20px;        
+        vertical-align: middle;
+    }
+    
+    .nav-icon-4 {
+        display: inline-block;
+        width: 20px;
+        height: 20px;        
+        vertical-align: middle;
+    }
+    
+    .icon-sousuo1 {
+        font-size: 20px;
+        vertical-align: middle;
+    }
+    
+    .menu-position {
+        left: inherit;
+        right: 0;
+    }
+    .cWhite{
+        color: white!important;
+    }
+    .bWhite{
+        border-color: white!important;
+    }
+    .nav-main-main{
+        display: none;
+    }
+    .nav-main-other{
+        display: block;
+    }
+    #nav .dropdown-menu>li>a{
+    	padding: 10px 20px;
+    }
+</style>
+
+<!--Start--导航-->
+<div id="nav">
+    <div class="nav mc-bbc" ng-class="{true:'mc-bbc',false:'mc-bgc'}[className]">
+        <div class="nav-bar" style="position: relative">
+            <div class="logo" ng-click="gotoHomepage();"><img ng-src="{{corpLogoUrl}}" alt="" /></div>
+            <div class="nav-main">
+                <!--主页时使用此模板-->
+                <ul class="nav-main-main">
+                    <li ng-repeat="t in nav track by $index"><a id="{{t.id}}" href="javascript:void(0);" ng-click="changeOffset($index,1)">{{t.title}}</a></li>
+                </ul>
+                <!--非主页时使用此模板-->
+                <ul class="nav-main-other">
+                    <li ng-repeat="t in nav track by $index"><a href="javascript:void(0);" ng-click="changeOffset($index,2)">{{t.title}}</a></li>
+                </ul>
+            </div>
+            <div class="search" id="search">
+                <span class="icon iconfont icon-sousuo1" ng-class="{true:'mc-c',false:'cWhite'}[className]"></span>
+                <input ng-model="searchResult" class="search-result" ng-class="{true:'bWhite',false:'mc-bgc cWhite'}[className]" type="text" placeholder="{{language.nav.searchJobs}}" search-result/>
+            </div>
+            <div ng-show="!userName" class="login ng-cloak" ng-click="login()" ng-cloak>
+                <span class="" ng-class="{true:'mc-bc mc-c',false:'cWhite bWhite'}[className]">{{language.btn.signIn}}/{{language.btn.register}}</span>
+            </div>
+
+            <div ng-show="userName" class="loginIn">
+                <img data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ng-src="{{headimgUrl}}" alt="" />
+                <ul class="dropdown-menu menu-position" aria-labelledby="dropdownMenu1">
+                    <li><a href="javascript:void (0);" ng-click="personCenter();"><span class="nav-icon-1"></span>{{language.nav.personalCenter}}</a></li>
+                    <li ng-hide="canBindCode == 1"><a href="javascript:void (0);" ng-click="boundWeChat()"><span class="nav-icon-2"></span>{{language.nav.bindWeChat}}</a></li>
+                    <li ng-hide="canChangePassword == 1"><a href="javascript:void (0);" ng-click="modifyPassword()"><span class="nav-icon-3"></span>{{language.nav.modifyPassword}}</a></li>
+                    <li><a href="javascript:void (0);" ng-click="exitLogin()"><span class="nav-icon-4"></span>{{language.nav.signOut}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End--导航-->
+
+<!--Start--登陆-->
+<dy-login user-name="userName"></dy-login>
+<!--End--登陆-->
+
+<!--start修改密码-->
+<div id="change-password" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-no">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+            </div>
+            <div class="modal-body clearFloat" style="">
+				<style>
+			        #change-password .main-modal{text-align: center;padding-bottom: 20px;width: 350px;margin: auto;}
+			        #change-password .main-title{margin: 0;margin-top: 26px;line-height: 18px;font-size: 18px;color: #2a2a38;}
+			        #change-password .main-modal input{width: 306px;height: 44px;line-height: 44px;padding-left: 14px;font-size: 12px;border-radius: 3px;background-color: #efefef;color: #83838b;margin-top: 22px;border: 1px solid #efefef;}
+			        #change-password .button{display: inline-block;font-size: 14px;margin-top: 30px;width: 322px;height: 44px;line-height: 44px;text-align: center;border-radius: 2px;border: none;padding: 0;margin-left: 0;}			        
+			        #change-password .btn-ok{color: #fff;cursor: pointer;}
+			        #change-password .btn-no{background-color: #efefef;color: black;cursor: auto;}
+    				.onePassHint{display: block;position: absolute;color: #f66;font-size: 14px;right: 50px;top: 170px;}
+    			</style>
+    			<div class="main-modal">
+			        <p class="main-title">{{language.nav.modifyPassword}}</p>
+			        <form name="myFormChangePassword">
+			        	<input ng-model="modifyOldPass" class="oldPass" name="oldPass" type="password" placeholder="{{language.nav.oldPass}}" data-text="{{language.nav.oldPass}}" ng-required />
+			        	<input ng-model="modifyOnePass" class="onePass" name="onePass" type="password" placeholder="{{language.nav.newPass}}" data-text="{{language.nav.newPass}}" ng-required ng-minlength="6"/>
+			        	<span ng-show="myFormChangePassword.onePass.$error.minlength" class="onePassHint">请输入新密码，6位及以上</span>
+			        	<input ng-model="modifyTwoPass" class="twoPass" name="twoPass" type="password" placeholder="{{language.nav.againPass}}" data-text="{{language.nav.againPass}}" ng-required />
+			        	<button ng-show="modifyOldPass && modifyOnePass==modifyTwoPass && modifyOnePass" ng-click="changePassword(modifyOldPass,modifyOnePass);" class="button button--winona btn-ok mc-bgc" type="button" data-text="{{language.btn.ok}}">
+			            	<span>{{language.btn.ok}}</span>
+			            	<div class="after">{{language.btn.ok}}</div>
+			        	</button>
+			        	<button ng-hide="modifyOldPass && modifyOnePass==modifyTwoPass && modifyOnePass" class="button button--winona btn-no" type="button" data-text="{{language.btn.ok}}">
+			            	<span>{{language.btn.ok}}</span>
+			            	<div class="after">{{language.btn.ok}}</div>
+			        	</button>
+			        </form>
+    			</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end修改密码-->
+
+<!--start退出登录-->
+<div id="exit-login" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 420px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-no">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+            </div>
+            <div class="modal-body clearFloat">
+            	<style>
+            		#exit-login .main-modal{text-align: center;}
+        			#exit-login .text{margin: 0;margin-top: 26px;line-height: 18px;font-size: 18px;color: #2a2a38;}
+        			#exit-login .button{display: inline-block;font-size: 14px;color: #fff;margin-top: 30px;width: 90%;height: 44px;line-height: 44px;text-align: center;border-radius: 2px;background-color: #63b504;border: 0;}
+            	</style>
+				<div class="main-modal">
+			        <img src="images/personExit.png"/>
+			        <p class="text">{{language.nav.quit}}</p>
+			        <button ng-click="logoutLogin();" class="button button--winona mc-bgc" data-text="{{language.btn.ok}}">
+			            <span>{{language.btn.ok}}</span>
+			            <div class="after">{{language.btn.ok}}</div>
+			        </button>
+    			</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end退出登录-->
+
+<!--start修改密码-->
+<div id="bind-wechat" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 400px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-no">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+            </div>
+            <div class="modal-body clearFloat" style="">
+				<style>
+			        #bind-wechat .main-modal{text-align: center;padding-bottom: 20px;width: 350px;margin: auto;}
+			        #bind-wechat .main-title{margin: 0;margin-bottom: 25px;line-height: 18px;font-size: 18px;color: #2a2a38;}
+					#bind-wechat .bindSuccess{position: absolute;width: 200px;height: 200px;top: 60px;left: 50%;margin-left: -100px;background-color: rgba(255,255,255,.9);border: 1px solid #f0f0f0;}
+					#bind-wechat .bindSuccess img{position: absolute;top: 75px;width: 24px;left: 50%;margin-left: -12px;}
+					#bind-wechat .bindSuccess span{color: black;position: absolute;font-size: 16px;left: 50%;margin-left: -32px;top: 115px;}
+    			</style>
+    			<div class="main-modal">
+			        <p class="main-title">{{language.nav.bindWeChat}}</p>
+			        <img ng-src="{{bindImg}}">
+			        <div ng-show="bindSuccess" class="bindSuccess">
+			        	<img src="images/hook.png">
+			        	<span>{{language.nav.bindSuccess}}</span>
+			        </div>
+    			</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end修改密码-->

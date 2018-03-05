@@ -1,0 +1,74 @@
+
+<style>
+    /*底部版权所有*/
+    .footer{
+        width: 100%;
+        height: 50px;
+        background-color: #f2f2f2;
+    }
+    .footer-content{
+        width: 1200px;
+        margin: 0 auto;
+        height: 50px;
+        line-height: 50px;
+        /* overflow: hidden; */
+        font-size:14px;
+    }
+    .footer-content span{
+        color: black;
+        display: inline-block;
+    }
+    .footer-content span img{
+        vertical-align: middle;
+    }
+    .footer-content .visitorNumber{
+    	float: right;
+    	margin-right: 150px;
+    }
+    .language{
+        display: inline-block;
+        float: right;
+        position: relative;
+    }
+    #footer .menu-position{
+    	top: -67px;
+    }
+    #footer #dropdownMenu2{
+    	cursor: pointer;
+    }
+    #footer .dropdown-menu{
+    	width: 80px;
+    	min-width: 80px;
+    }
+    #footer .icon-down{
+    	line-height: 20px;
+    }
+    #footer .copyRight{
+        overflow: hidden;
+	    height: 50px;
+	    vertical-align: top;
+	    display:block;
+	    float:left;
+    }
+</style>
+
+
+<!--Start--版权所有-->
+<div id="footer">
+    <div class="footer">
+        <div class="footer-content">
+            <span class="copyRight" ng-bind-html="copyRight | toHtml"></span>
+             <div class="language clearFloat"> 
+             	<span><img ng-if="language.footer.imageUrl" ng-src="{{language.footer.imageUrl}}" alt=""/></span>              
+                <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{language.footer.lan}}</span>
+                <span class="iconfont icon-down"></span>
+                <ul class="dropdown-menu menu-position" aria-labelledby="dropdownMenu2">
+                    <li ng-click="changeLanType(1)"><a href="javascript:void (0);">{{language.footer.cn}}</a></li>
+                    <li ng-click="changeLanType(2)"><a href="javascript:void (0);">{{language.footer.en}}</a></li>
+                </ul>               
+            </div>
+            <span class="visitorNumber">{{language.footer.visitingToday}}：{{visitorNumber}}{{language.footer.personTimes}}</span>
+        </div>
+    </div>
+</div>
+<!--End--版权所有-->

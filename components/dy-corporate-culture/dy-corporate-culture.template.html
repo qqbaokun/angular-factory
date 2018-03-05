@@ -1,0 +1,175 @@
+<style>
+    .person-main {
+        width: 1200px;
+        margin: 84px auto 0;
+        position: relative;
+        overflow: hidden;
+
+    }
+    .position{
+        position: relative;
+    }
+    /*左边悬浮菜单样式 start*/
+    .person-main-left{
+        position: fixed;
+        width: 224px;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        top: 84px;
+        min-height: 484px!important;
+    }
+    .PML-menu{
+        padding: 27px 25px 0;
+    }
+    .PML-menu li{
+        width: 168px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        margin: 16px 0 0;
+        border-bottom: 1px solid #e1e1e1;
+        border-left: 6px solid #e1e1e1;
+        font-size: 16px;
+        font-weight: 600;
+        color: #494949;
+        cursor: pointer;
+        white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    }
+    .PML-menu li.choose{
+        border-color: #63b504;
+        color: #63b504;
+    }
+    .PML-qr{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 300px;
+    }
+    .PML-qr dt{
+        margin-bottom: 14px;
+    }
+    .PML-qr dd{
+        line-height: 30px;
+        font-size: 18px;
+        color: #999999;
+    }
+
+    /*左边悬浮菜单样式 end*/
+    /*右边部分start*/
+    .person-main-right{
+        width: 950px;
+        float: right;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        margin-bottom: 20px;
+    }
+    .person-main-right > div{
+        margin: 0 25px;
+        margin-top: 20px;
+    }
+    .PMR-myResume .about-title{
+        width: 100%;
+    }
+    .PMR-myResume .about-title:not(:first-child){
+        margin-top: 40px;
+    }
+    .title-m{
+        width: 190px;
+    }
+    .title-l img,.title-r img{
+        width: 100%;
+        vertical-align: middle;
+    }
+    .developLeft,.officeRight,.officeLeft,.developRight{
+        width: 420px;
+        margin-top: 0;
+    }
+    .developLeft,.officeLeft{
+        float: left;
+        margin-left: 10px;
+    }
+    .developRight,.officeRight{
+        float: right;
+        margin-right: 10px;
+    }
+    .developLeft img,.officeRight img,.officeLeft img,.developRight img{
+        width: 100%;
+    }
+    .cultureCon{
+        width: 880px;
+        margin: 0 auto;
+    }
+    .person-main-right{
+        font-size: 14px;
+        color: #555560;
+        line-height: 30px;
+    }
+    .aboutUsTitle{
+        font-size: 18px;
+        color: #2a2a38;
+        line-height: 42px;
+        margin-top: 30px;
+    }
+    .aboutUsTitle p{
+    	line-height: 30px;
+    }
+    .person-main-right dl{
+        margin-top: 30px;
+    }
+    .PMR-myApply,.PMR-myResume,.PMR-myCollect{
+        overflow: hidden;
+    }
+</style>
+
+<!-- 个人中心 start-->
+<div class="person-main" culture-scroll-target>
+    <!-- 左边导航  start-->
+    <div class="person-main-left" id="corporate-culture">
+        <ul class="PML-menu">
+            <li ng-repeat="o in option track by $index" ng-class="{'mc-c mc-bc': $index == 0}" culture-click-target="{{$index}}" title="{{o.title}}">{{o.title}}</li>
+        </ul>
+        <dl class="PML-qr">
+            <dt>
+                <img ng-src="{{wechatQRUrl}}"/>
+            </dt>
+            <dd>关注大易公众号</dd>
+            <dd>获取最新校招行程</dd>
+        </dl>
+    </div>
+    <!-- 左边导航  end-->
+    <!-- 右边主体部分 start-->
+    <div class="person-main-right" set-min-height="156">
+        <div class="PMR-myResume" ng-repeat="o in option track by $index">
+            <div class="about-title">
+                <div class="title-l"><img src="images/title-left.png" alt=""/></div>
+                <div class="title-m mc-c">{{o.title}}</div>
+                <div class="title-r"><img src="images/title-right.png" alt=""/></div>
+            </div>
+
+            <div ng-repeat="a in o.data track by $index">
+                <div class="developLeft" ng-if="a.type == 1 && a.leftOrRight == 0">
+                    <dl>
+                        <dt><img ng-src="{{a.imgUrl}}"/></dt>
+                        <dd class="aboutUsTitle">{{a.contentTitle}}</dd>
+                        <dd>{{a.contentDetailed}}</dd>
+                    </dl>
+                </div>
+                <div class="developRight" ng-if="a.type == 1 && a.leftOrRight == 1">
+                    <dl>
+                        <dt><img ng-src="{{a.imgUrl}}"/></dt>
+                        <dd class="aboutUsTitle">{{a.contentTitle}}</dd>
+                        <dd>{{a.contentDetailed}}</dd>
+                    </dl>
+                </div>
+
+                <div class="cultureCon" ng-if="a.type == 0">
+                    <P class="aboutUsTitle mt30" ng-bind-html="a.contentDetailed | toHtml"></P>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右边主体部分 end-->
+</div>
+<!-- 个人中心 end-->

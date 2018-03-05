@@ -1,0 +1,40 @@
+<style>
+    body{
+        background-color: #fbfbfb;
+    }
+    .main{
+        width: 1200px;
+        margin: 0 auto;
+        background-color: #fbfbfb;
+        padding: 0;
+        margin-top: 76px;
+        margin-bottom: 35px;
+        border: 1px solid #cccccc;
+    }
+    .main-right{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+    }
+    .search-keyword{
+        background-color: white;
+        padding: 20px 0 0 20px;
+        margin: 0;
+    }
+    .search-keyword span:first-child{
+        color: #ff9f15;
+    }
+    a{
+        color: black;
+    }
+    .nav-main-main,.nav-main-other{
+        display: none!important;
+    }
+</style>
+<div class="main clearFloat">
+    <p ng-if="searchResult" class="search-keyword">{{language.searchResult.searchingKeywords}} " <span class="mc-c">{{searchResult}}</span> "，{{language.searchResult.total}} <span>{{rowCount}}</span>{{language.searchResult.positions}} </p>
+    <div class="main-right">
+        <dy-position row-count="rowCount" search-result="searchResult"></dy-position>
+    </div>
+
+</div>

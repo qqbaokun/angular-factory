@@ -1,0 +1,257 @@
+<div class="about-us page">
+    <div class="about-title">
+        <div class="title-l"><img src="images/title-left.png" alt=""/></div>
+        <div class="title-m mc-c">{{aboutUs.componentName}}</div>
+        <div class="title-r"><img src="images/title-right.png" alt=""/></div>
+    </div>
+
+    <div ng-if="aboutUs.type == 'C2'">
+        <style type="text/css">
+            .about{
+                width: 1200px;
+                height: auto;
+                margin: 0 auto;
+            }
+            .about-top{
+                background-color: #63b504;
+                padding: 50px 50px;
+                display: table;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .about-top div{
+                display: table-cell;
+                color: white;
+                vertical-align: top;
+            }
+            .about-top-l{
+            	width: 20%;
+            }
+            .about-top-l img{
+            	width: auto;
+			    height: 150px;
+			    margin: 0 auto;
+			    text-align: center;
+			    display: block;
+            }
+            .about-top-r{
+                padding-left: 50px;
+                width: 80%;
+            }
+            .about-top-r p:first-child{
+                line-height: 32px;
+
+            }
+            .about-top-r p:last-child{
+                font-size: 40px;
+                font-weight: bold;
+                margin-top: 7px;
+            }
+            .about-bottom{
+                margin-top: 40px;
+                height: 310px;
+            }
+            .about-bottom div{
+
+            }
+            .about-bottom-l{
+                width: 410px;
+                height: 310px;
+                padding: 50px 35px 35px 30px;
+                background-color: #f2f2f2;
+                float: left;
+                position: relative;
+                box-sizing: border-box
+            }
+            .about-bottom-l p:nth-child(1){
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .about-bottom-l p:nth-child(2){
+                margin-top: 20px;
+            }
+            .about-bottom-l p:not(:first-child){
+                font-size: 18px;
+                line-height: 30px;
+            }
+            .about-bottom-l span{
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                background-color: #f2f2f2;
+                position: absolute;
+                top: 50%;
+                right: -20px;
+                margin-top: -20px;
+            }
+            .about-bottom-m{
+                width: 410px;
+                height: 310px;
+                float: left;
+            }
+            .about-bottom-m img{
+                width: 100%;
+                height: 100%;
+            }
+            .about-bottom-r{
+                width: 340px;
+                height: 310px;
+                background-color: black;
+                float: right;
+                position: relative;
+                padding: 0;
+            }
+            .about-bottom-r img{
+                width: 100%;
+                height: 100%;
+            }
+            .about-bottom-r span{
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-top: -40px;
+                margin-left: -40px;
+                cursor: pointer;
+            }
+            .about-bottom-r span img{
+            	height: auto;
+            }
+        </style>
+
+
+        <div class="about">
+            <div class="about-top mc-bgc">
+                <div ng-click="multipleEntry(aboutUsTop);" class="about-top-l">
+                    <img ng-if="aboutUsTop.imgUrl" ng-src="{{aboutUsTop.imgUrl}}" alt=""/>
+                </div>
+                <div class="about-top-r">
+                    <p ng-bind-html="aboutUsTop.content | toHtml"></p>
+                    <p>{{aboutUsTop.title}}</p>
+                </div>
+            </div>
+            <div class="about-bottom clearFloat">
+                <div class="about-bottom-l">
+                    <p>{{aboutUsLeft.title}}</p>
+                    <p ng-bind-html="aboutUsLeft.content | toHtml"></p>
+                    <span></span>
+                </div>
+                <div ng-click="multipleEntry(aboutUsLeft);" class="about-bottom-m">
+                    <img ng-if="aboutUsLeft.imgUrl" ng-src="{{aboutUsLeft.imgUrl}}" alt=""/>
+                </div>
+                <div class="about-bottom-r">
+                	<video ng-if="aboutUsRight.picOrVedio == 1 && !aboutUsRight.imgUrl" style="object-fit: fill" width="100%" height="100%" class="video" loop="" muted="" preload="auto" poster="" webkit-playsinline="">
+            			<source embed-src="{{aboutUsRight.videoUrl}}" src="video/720.mp4" type='video/mp4' />
+        			</video>
+                   	<img ng-if="aboutUsRight.picOrVedio == 1 && aboutUsRight.imgUrl" ng-src="{{aboutUsRight.imgUrl}}" />
+                    <img ng-if="aboutUsRight.picOrVedio == 0" ng-click="multipleEntry(aboutUsRight);" ng-src="{{aboutUsRight.imgUrl}}" alt=""/>
+                    <span ng-if="aboutUsRight.picOrVedio == 1" ng-click="videoPlay(1);"><img src="images/auto-play.png" alt=""/></span>
+                </div>
+            </div>
+        </div>
+        <!--start视频弹窗-->
+		<div id="video-play" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+		    <div class="modal-dialog" role="document" style="width:840px;">
+		        <div class="modal-content">
+		            <div class="modal-header modal-header-no">
+		            	<span class="model-close" data-dismiss="modal">
+		                	<a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+		            	</span>
+		            </div>
+		            <div class="modal-body clearFloat">
+						<video ng-if="aboutUsRight.picOrVedio == 1" style="object-fit: fill" width="100%" height="100%" class="video" muted="" controls="" preload="" poster="" webkit-playsinline="">
+		            		<source embed-src="{{aboutUsRight.videoUrl}}" src="video/720.mp4" type='video/mp4' />
+		        		</video>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!--end视频弹窗-->
+    </div>
+
+    <div ng-if="aboutUs.type == 'C1'">
+        <style type="text/css">
+            .about{
+                width: 1200px;
+                height: auto;
+                margin: 0 auto;
+            }
+            .about-top p:nth-of-type(1){
+                font-size: 30px;
+                margin-top:30px;
+                text-align: center;
+            }
+            .about-top p:not(:first-child){
+                text-indent: 32px;
+                text-align: center;
+                margin: 20px 0;
+                line-height: 30px;
+            }
+            .about-bottom{
+                width: 100%;
+                height: 400px;
+                position: relative;
+            }
+            .about-bottom img{
+                width: 100%;
+                height: 100%;
+            }
+            .about-bottom span{
+                width: 60px;
+                height: 60px;
+                color: #63b504;
+                text-align: center;
+                line-height: 60px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-top: -30px;
+                margin-left: -30px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            .about-bottom span.mc-c{
+            	background-color: white;
+            	width: 200px;
+            	margin-left: -100px;
+            }
+        </style>
+
+
+        <div class="about">
+            <div class="about-top">
+                <p>{{aboutUs.title}}</p>
+                <p ng-bind-html="aboutUs.content | toHtml"></p>
+            </div>
+            <div class="about-bottom">
+            	<video ng-if="aboutUs.picOrVedio == 1 && !aboutUs.imgUrl" style="object-fit: fill" width="100%" height="100%" class="video" loop="" muted="" preload="auto" poster="" webkit-playsinline="">
+            			<source embed-src="{{aboutUs.videoUrl}}" src="video/720.mp4" type='video/mp4' />
+        		</video>
+        		<img ng-if="aboutUs.picOrVedio == 1 && aboutUs.imgUrl" ng-src="{{aboutUs.imgUrl}}" />
+        		
+                <img ng-if="aboutUs.picOrVedio == 0" ng-src="{{aboutUs.imgUrl}}" alt=""/>
+                <span ng-if="aboutUs.picOrVedio == 0" ng-click="multipleEntry(aboutUs);" class="mc-c">查看详情</span>
+                <span ng-if="aboutUs.picOrVedio == 1" ng-click="videoPlay(2);"><img src="images/auto-play.png" alt=""/></span>
+            </div>
+        </div>
+        <!--start视频弹窗-->
+		<div id="video-play2" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+		    <div class="modal-dialog" role="document" style="width:840px;">
+		        <div class="modal-content">
+		            <div class="modal-header modal-header-no">
+		            	<span class="model-close" data-dismiss="modal">
+		                	<a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+		            	</span>
+		            </div>
+		            <div class="modal-body clearFloat">
+						<video ng-if="aboutUs.picOrVedio == 1" style="object-fit: fill" width="798px" height="399px" class="video" muted="" controls="" preload="" poster="" webkit-playsinline="">
+		            		<source embed-src="{{aboutUs.videoUrl}}" src="video/720.mp4" type='video/mp4' />
+		        		</video>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<!--end视频弹窗-->
+    </div>
+</div>

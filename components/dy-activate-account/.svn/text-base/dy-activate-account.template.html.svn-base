@@ -1,0 +1,139 @@
+<style>
+    .startMain{
+        width: 1200px;
+        padding-top: 20px;
+        border: 1px solid #e1e1e1;
+        margin: 70px auto 20px;
+        background-color: #fff;
+        text-align: center;
+    }
+    .startMain p{
+        margin-top: 30px;
+        font-size: 24px;
+        color: #2a2a38;
+        line-height: 40px;
+    }
+    .dayeeQR{
+        display: block;
+        margin: 40px auto 0;
+    }
+    p.deliveringP{
+        color: #d4d4d4;
+        margin-top: 20px;
+    }
+    .tintBtn{
+        background-color: #b2da81;
+    }
+    .width180{
+        width: 180px;
+    }
+    .width320{
+        width: 320px;
+        height: 45px;
+        line-height: 45px;
+        font-size: 16px;
+    }
+    p.hintInformation{
+        font-size: 14px;
+        color: #76757b;
+    }
+
+
+
+
+
+    .startMain{
+        padding-top: 0;
+        box-sizing: border-box;
+        text-align: left;
+    }
+    .startMain p{
+        font-size: 15px;
+        color: #b5b5b8;
+    }
+    .startMain-img{
+        margin-top: 20px;
+    }
+    h3{
+        color: black;
+        margin-top: 20px;
+        margin-left: 75px;
+    }
+    .button{
+        margin: 30px 75px 20px;
+    }
+    .logo-img{
+        border-bottom: 1px solid #cccccc;
+        text-align: left;
+        margin: 0 40px;
+        padding: 20px 0;
+    }
+    .diamond-main{
+        padding: 5px 0;
+    }
+    .diamond-main span:nth-child(odd){
+        background-color: #ffa488;
+    }
+    .diamond-main span:nth-child(even){
+        background-color: #5984b2;
+    }
+    .diamond{
+        display: inline-block;
+        width: 40px;
+        height: 10px;
+        margin: 0 6px;
+        transform: skew(-40deg);
+    }
+    .name{
+        margin-left: 40px;
+    }
+    .explain{
+        margin-left: 75px;
+    }
+</style>
+<!-- 中间图片部分  start-->
+<div class="startMain" set-min-height="140">
+    <div class="diamond-main">
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+
+    </div>
+
+
+
+
+
+    <div class="logo-img">
+        <img src="images/logo.png" alt=""/>
+    </div>
+
+    <p  class="name">hangjkeo@dayee.com：</p>
+    <h3>您好，欢迎注册上海大易招聘官网。</h3>
+    <p class="explain">点击按钮，进行账户激活→</p>
+    <div class="btnCon">
+        <button class="button button--winona width320 mc-bgc" data-text="直接登录">
+            <span>直接登录</span>
+            <div class="after">直接登录</div>
+        </button>
+    </div>
+</div>
+<!-- 中间图片部分  end-->

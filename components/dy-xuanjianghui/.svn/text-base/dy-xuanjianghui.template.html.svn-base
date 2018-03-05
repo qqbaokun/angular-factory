@@ -1,0 +1,602 @@
+<style type="text/css">
+    /*表格的样式调整*/
+    
+    table {
+        display: table;
+        border-collapse: separate;
+        border-spacing: 0;
+        border-color: grey;
+        width: 100%;
+        table-layout: auto;
+        border-top: 1px solid #eeeeee;
+    }
+    
+    tr {
+        display: table-row;
+        vertical-align: inherit;
+        position: relative;
+    }
+    
+    tr.haveBack {
+        background-color: #efeded;
+    }
+    
+    th {
+        height: 40px;
+        padding: 0 10px;
+        font-size: 14px;
+        text-align: left;
+        display: table-cell;
+        word-break: keep-all;
+        border-bottom: 1px solid #eeeeee;
+        color: #696973;
+    }
+    
+    td {
+        height: 68px;
+        line-height: 68px;
+        font-size: 16px;
+        text-align: left;
+        padding: 0 10px;
+        white-space: nowrap;
+        box-sizing: border-box;
+        display: table-cell;
+        vertical-align: inherit;
+        word-break: keep-all;
+        border-bottom: 1px solid #eeeeee;
+        color: #2a2a38;
+    }
+    
+    .main-right-t {
+        padding: 2%;
+        background-color: white;
+        height: auto;
+    }
+    
+    .main-right-t-m {
+        width: 100%;
+        height: auto;
+        background-color: #fbfbfb;
+    }
+    
+    .main-right-t-m img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .main-right-t-mt {
+        display: table;
+        padding: 0 20px;
+    }
+    
+    .main-right-t-mt div {
+        display: table-cell;
+        vertical-align: top;
+    }
+    
+    .main-right-t-m-l,
+    .main-right-t-m5-l {
+        width: 145px;
+    }
+    
+    .main-right-t-m-r ul,
+    .main-right-t-m5-r ul {
+        float: left;
+        width: 80%;
+        height: 36px;
+        overflow: hidden;
+        margin-top: -9px;
+    }
+    
+    .main-right-t-m5-r ul {
+        width: 100%;
+        height: auto;
+    }
+    
+    .main-right-t-m2 {
+        padding-bottom: 10px;
+    }
+    
+    .main-right-t-m-r ul li {
+        float: left;
+        /*background-color: #007aff;*/
+        padding: 5px 10px;
+        margin: 5px 5px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    .main-right-t-m5-r ul li {
+        float: left;
+        /*background-color: #007aff;*/
+        padding: 5px 10px;
+        margin: 5px 5px;
+        border-radius: 20px;
+        font-size: 14px;
+        border: 1px solid #ff9f15;
+        color: #ff9f15;
+    }
+    
+    .main-right-t-m-r span {
+        float: right;
+        cursor: pointer;
+        color: #ff9f15;
+    }
+    
+    .main-right-t-m2 {
+        border-bottom: 1px solid #f1f1f1;
+    }
+    
+    .main-right-t-m5-r ul li:last-child {
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    .main-right-t-m5-r ul li a {
+        color: #bdbdbd;
+        text-decoration: underline!important;
+    }
+    
+    .delete {
+        margin: 0 5px;
+        cursor: pointer;
+        color: #ff9f15;
+    }
+    
+    .main-right-t-m .main-right-t-mt:not(:first-child) {
+        margin-top: 20px;
+    }
+    
+    .main-right-t-m2 {
+        position: relative;
+    }
+    
+    #solid-bottom {
+        width: 80px;
+        height: 1px;
+        background-color: #ff9f15;
+        position: absolute;
+        bottom: -1px;
+        display: none;
+    }
+    
+    #solid-bottom span {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        left: 50%;
+        margin-left: -7px;
+        top: -7px;
+        transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        border-left: 1px solid #ff9f15;
+        border-top: 1px solid #ff9f15;
+        background-color: #fbfbfb;
+    }
+    
+    .main-right-b {
+        min-height: 555px;
+        background-color: white;
+        margin-top: 15px;
+        padding: 20px;
+    }
+    
+    .main-right-b p span {
+        cursor: pointer;
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #cccccc;
+        border-radius: 30px;
+        margin-right: 10px;
+        background-color: white;
+        font-size: 14px;
+        min-width: 80px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .main-right-b p .selected{
+    	color: white;
+    }
+    .main-right-b p span:first-child {
+        margin-left: 0;
+    }
+    
+    .icon {
+        fill: #ccc;
+    }
+    /*我的宣讲会部分start*/
+    .myTeachAddress a,.myTeachSchool a{
+    	display: block;
+    }
+    .list-myTeach-in {
+        margin-top: 20px;
+    }
+    
+    .list-myTeach-in table td {
+        height: 50px;
+        line-height: 50px;
+        font-size: 12px;
+    }
+    
+    .list-myTeach-in .myTeachCity {
+        position: relative;
+        padding-left: 50px;
+    }
+    
+    .myTeachCity a {
+        color: #c5c5c5;
+    }
+    
+    .icon-shalou {
+        position: absolute;
+        display: block;
+        top: 2px;
+        left: 12px;
+        font-size: 22px;
+    }
+    
+    .finish .icon-shalou {
+        color: #ccc;
+    }
+    
+    .list-myTeach-in .myTeachSchool {
+        font-size: 14px;
+        color: #2a2a38;
+        margin-left: 10px;
+    }
+    
+    .list-myTeach-in .myTeachBtn,
+    .list-myTeach-in .myTeachBtnY {
+        text-align: right;
+    }
+    
+    .myTeachBtnY button {
+        display: inline-block;
+        width: 93px;
+        height: 32px;
+        border: 1px solid #ffb03d;
+        border-radius: 2px;
+        text-align: center;
+        line-height: 32px;
+        color: #ffb03d;
+        cursor: pointer;
+        vertical-align: middle;
+        background-color: transparent;
+    }
+    
+    .myTeachBtn button {
+        display: inline-block;
+        width: 95px;
+        height: 34px;
+        border-radius: 2px;
+        text-align: center;
+        line-height: 34px;
+        color: #fff;
+        background-color: #70bc1a;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    
+    .finish .myTeachBtn button {
+        background-color: #d2d2d2;
+    }
+    
+    .finish .myTeachBtnY button {
+        background-color: #d2d2d2;
+        color: #70bc1a;
+        border-color: #d2d2d2;
+    }
+    /*我的宣讲会部分end*/
+    .main-right-b .choose-more{
+    	border: navajowhite;
+	    font-size: 16px;
+	    padding: 0;
+    }
+</style>
+
+
+<div class="main-right-t" ng-show="$ctrl.meetingImg">
+    <div class="main-right-t-m">
+        <img ng-src="{{$ctrl.meetingImg}}" alt="" />
+    </div>
+</div>
+
+<div class="main-right-b clearFloat">
+    <p>
+        <span ng-click="selectCity('',1)" ng-class="{'sc-bgc sc-bc selected': selectedCity == ''}">{{language.xjh.allCities}}</span>
+        <span ng-click="selectCity(a.name,1)" ng-repeat="a in allCareerFair track by $index" ng-class="{'sc-bgc sc-bc selected': a.name == selectedCity}">{{a.name}}</span>
+        <span class="choose-more sc-c" ng-show="preachingMeeting.length != 0" ng-click="showPreach();">{{language.position.more}}</span>
+    </p>
+    <div class="list-myTeach-in">
+        <table>
+        	<tr ng-repeat="a in allCareerFairList | orderBy:'rowNum'" ng-class="{'finish':a.careerFairDateStatus == 3 || a.careerFairDateStatus == 4}">
+                <td class="myTeachCity">
+                    <a>
+                        <i class="iconfont icon-shalou"></i> [{{a.careerFairCity}}]<span class="myTeachSchool">{{a.careerFairSchool}}</span>
+                    </a>
+                </td>               
+                <td class="myTeachAddress">
+                    <a title="{{a.careerFairAddress}}">{{a.careerFairAddress}}</a>
+                </td>
+                <td class="myTeachTime">
+                    <a title="{{a.careerFairDateStr}}">{{a.careerFairDateStr}}</a>
+                </td>
+
+                <td ng-class="{'myTeachBtn':a.careerFairDateStatus == 1 || a.careerFairDateStatus == 4,'myTeachBtnY':a.careerFairDateStatus == 2 || a.careerFairDateStatus == 3}">
+                    <button click-and-disable="" ng-click="CareerFair(a);" class="button button--winona" ng-class="{'mc-bgc': a.careerFairDateStatus == 1,'sc-c sc-bc':a.careerFairDateStatus == 2,'mc-c': a.careerFairDateStatus == 3}" data-text="{{a.careerFairDateStatusText}}">
+                        <span>{{a.careerFairDateStatusText}}</span>
+                        <div class="after">{{a.careerFairDateStatusText}}</div>
+                    </button>
+                </td>
+            </tr>                   
+        </table>
+    </div>
+</div>
+
+
+<!--start我已报名-->
+<div id="already-signup" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+                <h4 class="modal-title mc-bc">{{careerFairDetail.careerFairDateStatusText}}</h4>
+            </div>
+			<div class="modal-body clearFloat">	
+				<style>
+					#already-signup .main-top{width:96%;padding:2%;height:auto;background-color:#f9f9f9;position:relative}
+					#already-signup .main-top svg{width:60px;height:60px;position:absolute;top:0;right:0}
+					#already-signup .main-top-y svg polygon{fill: #ff9f14;}
+					#already-signup .main-top-c svg polygon{fill: #ccc;}
+					#already-signup .main-title{width: 60px;display: inline-block;text-align: center;}
+					#already-signup .main-top .icon-shalou{width:20px;position:absolute;top:7px;right:7px;z-index:1;left: inherit;color: white;}
+					#already-signup .main-top p{line-height:25px}#already-signup .main-top p span:nth-of-type(2){margin:0 10px 0 5px}
+					#already-signup .main-top p span:nth-of-type(3){font-size:14px;color:#000}#already-signup .main-middle{display:table;text-align:center;margin:20px auto;color:#63b504;font-size:14px}
+					#already-signup .main-middle div{display:table-cell;vertical-align:middle}#already-signup .main-middle div img{vertical-align:middle}#already-signup .main-middle div img:first-child{margin-right:20px}
+					#already-signup .main-middle div img:last-child{margin-left:20px}#already-signup .main-bottom p{margin:10px 0;line-height:30px;padding:0 2%}
+					#already-signup .main-bottom p input{border:1px solid #ccc;margin-top:-5px;width:80%;text-indent:20px;height:30px;color:#000;font-size: 14px;}
+					#already-signup .main-bottom p span:nth-of-type(2){margin:0 10px 0 5px}#already-signup .main-bottom p span:nth-of-type(3){font-size:14px;color:#000}
+					#already-signup .main-bottom-up{padding:2%}
+					#already-signup .main-bottom-up p{line-height:40px;padding:0 10px;cursor:pointer}
+					#already-signup .main-bottom-up p input{height:30px;width:60%;display:none;font-size: 14px;}
+					#already-signup .main-bottom-up p:hover{background-color:#f9f9f9}#already-signup .main-bottom-up p span:nth-of-type(2){margin:0 10px 0 5px}
+					#already-signup .main-bottom-up p span:nth-of-type(3){font-size:14px;color:#000}
+					#already-signup .main-bottom-up-a{float:right;display:none;font-size:14px}
+					#already-signup .main-bottom-up-a a:nth-of-type(1){color:#63b504}#already-signup .main-bottom-up-a a:nth-of-type(2){margin:0 10px;visibility:hidden}
+					#already-signup .main-bottom-up-a a:nth-of-type(3){color:#ccc;visibility:hidden}#already-signup .save-info{color:#63b504;float:right;font-size:12px;cursor:pointer;text-decoration:underline}
+					#already-signup .btn-group{text-align:center;margin-top:20px;width:100%;}
+					#already-signup .btn-group button{display:inline-block;width:120px;height:40px;text-align:center;line-height:40px;cursor:auto;font-size:14px;border-radius: 2px;border: none;background-color: #e0e0e0;color: #666;}
+					#already-signup .btn-group button.mc-bgc{cursor: pointer;color:white;}
+					#already-signup .btn-group .cancle-btn{background-color: #f9f9f9;color:#666;}
+					#already-signup .button--winona::after{top:-12px}#already-signup .btn-cancle{background-color:#ccc;color:#b6b7b7}#already-signup .btn-ok{background-color:#63b504;color:#fff}#already-signup .phone{position:relative}
+					#already-signup .phone-alert{position:absolute;color:red!important;right:45px;display:none;}
+					#already-signup .email-alert{position:absolute;color:red!important;right:65px;display:none;}
+					#already-signup .main-middle-svg{padding: 0 10px 5px 10px;}
+				</style>
+				<div class="main-top" ng-class="{'main-top-y':careerFairDetail.careerFairDateStatus == 1 || careerFairDetail.careerFairDateStatus == 2,'main-top-c':careerFairDetail.careerFairDateStatus == 3 || careerFairDetail.careerFairDateStatus == 4}">
+			            <i class="iconfont icon-shalou"></i>
+			            <svg viewbox="0 0 50 50">
+			                <polygon points="0 0 50 0 50 50"
+			                         stroke-width="1" stroke="" stroke-dasharray="350,700">
+			                </polygon>
+			            </svg>
+			            <p><span class="main-title">{{language.xjh.place}}</span><span>:</span><span>{{careerFairDetail.careerFairCity}}</span></p>
+			            <p><span class="main-title">{{language.xjh.school}}</span><span>:</span><span>{{careerFairDetail.careerFairSchool}}</span></p>
+			            <p><span class="main-title">{{language.xjh.adress}}</span><span>:</span><span>{{careerFairDetail.careerFairAddress}}</span></p>
+			            <p><span class="main-title">{{language.xjh.time}}</span><span>:</span><span>{{careerFairDetail.careerFairDateStr}}</span></p>
+			        </div>
+			        <div class="main-middle">
+			            <div class="main-middle-svg">
+			            	<svg version="1.1" id="" x="0px" y="0px"
+								 width="70px" height="5px" viewBox="0 0 70 5" enable-background="new 0 0 70 5" xml:space="preserve">
+							<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="2.5" x2="70" y2="2.5" gradientTransform="matrix(-1 0 0 -1 70 5)">
+								<stop  offset="0" style="stop-color:#000000"/>
+								<stop  offset="0.3793" style="stop-color:#231815"/>
+								<stop  offset="0.6404" style="stop-color:#231815;stop-opacity:0.8"/>
+								<stop  offset="0.6684" style="stop-color:#1F1513;stop-opacity:0.7377"/>
+								<stop  offset="0.8717" style="stop-color:#080605;stop-opacity:0.2855"/>
+								<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
+							</linearGradient>
+							<rect y="1.121" fill="url(#SVGID_1_)" width="70" height="2.758"/>
+							</svg>
+			            </div>
+			            <div class="mc-c">{{language.xjh.netShen}}</div>
+			            <div class="main-middle-svg">
+			            	<svg version="1.1" id="" x="0px" y="0px"
+								 width="70px" height="5px" viewBox="0 0 70 5" enable-background="new 0 0 70 5" xml:space="preserve">
+							<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="0" y1="2.5" x2="70" y2="2.5">
+								<stop  offset="0" style="stop-color:#000000"/>
+								<stop  offset="0.3793" style="stop-color:#231815"/>
+								<stop  offset="0.6404" style="stop-color:#231815;stop-opacity:0.8"/>
+								<stop  offset="0.6684" style="stop-color:#1F1513;stop-opacity:0.7377"/>
+								<stop  offset="0.8717" style="stop-color:#080605;stop-opacity:0.2855"/>
+								<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
+							</linearGradient>
+							<rect y="1.121" fill="url(#SVGID_2_)" width="70" height="2.758"/>
+							</svg>
+			            </div>
+			        </div>
+
+
+			        <div ng-show="careerFairDetail.careerFairDateStatus == 2" class="main-bottom-up">
+			            <p>
+			                <span class="main-title">{{language.xjh.name}}</span>
+			                <span>:</span>
+			                <span class="input-val">{{option.name}}</span>
+			                <input ng-model="obj.name" type="text"/>
+			                <span class="main-bottom-up-a">
+			                    <a class="edit mc-c" ng-click="edit($event,1,obj.name,option.name);" href="javascript:void(0);">{{language.xjh.modify}}</a>
+			                    <a class="fen-ge" href="javascript:void(0);">|</a>
+			                    <a class="cancle" ng-click="cancle(1,option.name);" href="javascript:void(0);">{{language.xjh.cancle}}</a>
+			                </span>
+			            </p>
+			            <p>
+			                <span class="main-title">{{language.xjh.phone}}</span>
+			                <span>:</span>
+			                <span class="input-val">{{option.phone}}</span>
+			                <input ng-model="obj.phone" type="text"/>
+			                <span class="main-bottom-up-a">
+			                    <a class="edit mc-c" ng-click="edit($event,2,obj.phone,option.phone);" href="javascript:void(0);">{{language.xjh.modify}}</a>
+			                    <a class="fen-ge" href="javascript:void(0);">|</a>
+			                    <a class="cancle" ng-click="cancle(2,option.phone);" href="javascript:void(0);">{{language.xjh.cancle}}</a>
+			                </span>
+			            </p>
+			            <p>
+			                <span class="main-title">{{language.xjh.email}}</span>
+			                <span>:</span>
+			                <span class="input-val">{{option.email}}</span>
+			                <input ng-model="obj.email" type="text"/>
+			                <span class="main-bottom-up-a">
+			                    <a class="edit mc-c" ng-click="edit($event,3,obj.email,option.email);" href="javascript:void(0);">{{language.xjh.modify}}</a>
+			                    <a class="fen-ge" href="javascript:void(0);">|</a>
+			                    <a class="cancle" ng-click="cancle(3,option.email);" href="javascript:void(0);">{{language.xjh.cancle}}</a>
+			                </span>
+			            </p>
+			            <p>
+			                <span class="main-title">{{language.xjh.school}}</span>
+			                <span>:</span>
+			                <span class="input-val">{{option.school}}</span>
+			                <input ng-model="obj.school" class="time-input" type="text"/>
+			                <span class="main-bottom-up-a">
+			                    <a class="edit mc-c" ng-click="edit($event,4,obj.school,option.school);" href="javascript:void(0);">{{language.xjh.modify}}</a>
+			                    <a class="fen-ge" href="javascript:void(0);">|</a>
+			                    <a class="cancle" ng-click="cancle(4,option.school);" href="javascript:void(0);">{{language.xjh.cancle}}</a>
+			                </span>
+			            </p>
+			            <div class="btn-group" >
+				            <button ng-show="option.name && option.phone && option.email && option.school" ng-click="submitForm(careerFairDetail);" class="button button--winona mc-bgc" data-text="{{language.btn.ok}}">
+				                <span>{{language.btn.ok}}</span>
+				                <div class="after">{{language.btn.ok}}</div>
+				            </button>
+				            <button ng-hide="option.name && option.phone && option.email && option.school" class="button button--winona" data-text="{{language.btn.ok}}">
+				                <span>{{language.btn.ok}}</span>
+				                <div class="after">{{language.btn.ok}}</div>
+				            </button>
+			        	</div>
+			        </div>
+
+
+
+			        <form ng-show="careerFairDetail.careerFairDateStatus == 1" action="">
+			            <div class="main-bottom">
+			                <p><span class="main-title">{{language.xjh.name}}</span><span>:</span><input ng-model="signUp.name" type="text" value="" placeholder="{{language.xjh.nameIs}}"/></p>
+			                <p class="phone"><span class="main-title">{{language.xjh.phone}}</span><span>:</span><input ng-model="signUp.phone" name="phone" type="text" value="" placeholder="{{language.xjh.phoneIs}}" maxlength="11"/><span class="phone-alert">{{language.xjh.phoneWrong}}</span></p>
+			                <p class="email"><span class="main-title">{{language.xjh.email}}</span><span>:</span><input ng-model="signUp.email" name="email" type="text" value="" placeholder="{{language.xjh.mailboxIs}}"/><span class="email-alert">{{language.login.incorrectMailboxFormat}}</span></p>
+			                <p><span class="main-title">{{language.xjh.school}}</span><span>:</span><input ng-model="signUp.school" type="text" value="" placeholder="{{language.xjh.schoolIs}}"/></p>
+			            </div>
+			         	<div class="btn-group" >
+				            <button ng-show="signUp.name && signUp.phone && signUp.email && signUp.school && signUp.phoneNumber && signUp.emailNumber" ng-click="submitForm(careerFairDetail);" class="button button--winona mc-bgc" type="button" data-text="{{language.btn.ok}}">
+				                <span>{{language.btn.ok}}</span>
+				                <div class="after">{{language.btn.ok}}</div>
+				            </button>
+				            <button ng-hide="signUp.name && signUp.phone && signUp.email && signUp.school && signUp.phoneNumber && signUp.emailNumber" class="button button--winona" type="button" data-text="{{language.btn.ok}}">
+				                <span>{{language.btn.ok}}</span>
+				                <div class="after">{{language.btn.ok}}</div>
+				            </button>
+			        	</div>
+			        </form>
+			
+			
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--end我已报名-->
+
+<!--start报名成功-->
+<div id="signup-success" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+                <h4 class="modal-title mc-bc">{{careerFairDetail.careerFairDateStatusText}}</h4>
+            </div>
+			<div class="modal-body clearFloat">	
+				<style>
+					#signup-success .main-success{margin-top:20px;margin-bottom:20px;text-align:center}
+					#signup-success .main-success img{width: 300px;}
+					#signup-success .main-success p:nth-of-type(1){color:#000;font-size:24px;margin:20px 0}
+					#signup-success .main-success p:nth-of-type(2){color:#000;font-size:18px}
+					#signup-success .main-success P:nth-of-type(3){font-size:25px;color:#63b504;margin:20px 0}
+				</style>
+				<div class="main-success">
+			        <img src="images/bg-6.jpg" alt=""/>
+			        <p>{{language.xjh.successfulRegistration}}</p>
+			        <p>{{language.xjh.have}}<span>{{totalNumber}}</span>{{language.xjh.haveSignedUp}}</p>
+			        <p class="mc-c"><span class="time">5</span>S{{language.xjh.autoClose}}</p>
+    			</div>
+    			
+            </div>
+        </div>
+    </div>
+</div>
+<!--end报名成功-->
+
+<!--start选择城市-->
+<div id="preaching-city" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+                <h4 class="modal-title mc-bc">{{language.position.selectCity}}</h4>
+            </div>
+            <div class="modal-body clearFloat" style="max-height: 400px;overflow: scroll;position: initial;">
+                <style>
+                	#preaching-city .modal-body{padding: 0 20px 20px 20px;}
+                	#preaching-city .input{width: 96%;background-color: white;position: absolute;}
+                	#preaching-city .input .input-group{width: 97%;margin-top: 20px;}
+					#preaching-city .input input{width: 100%;height: 30px;border:1px solid #63b504;border-radius: 6px;text-indent: 50px;outline: none;font-size: 14px;}
+					#preaching-city .search-result-li{border: 1px solid #cccccc;background-color: white;width: 97%;max-height: 120px;overflow-y: scroll;display: none;}
+					#preaching-city .search-result-li li{text-indent: 50px;font-size: 14px;height: 20px;line-height: 20px;cursor: pointer;}
+					#preaching-city .search-result-li li span:first-child{color: black;}
+					#preaching-city .search-result-li li:hover{background-color: #f5f5f5;}
+					#preaching-city .search-no{text-align: center;margin: 10px 0;}
+					#preaching-city .search-no p{color: #a9a9a9;line-height: 2;}
+					#preaching-city .input-group{position: relative;}
+					#preaching-city .search-img{display: inline-block;position: absolute;left: 15px;top: 50%;margin-top: -8px;font-size: 16px;}
+                    #preaching-city .city-all{margin-top: 20px;}
+					#preaching-city .city-group{float: left;width: 100%;}
+					#preaching-city .city-group p{margin: 10px 0;color: #666666;font-size: 14px;}
+					#preaching-city .city{padding: 0 20px;}
+					.city-name{float: left;min-width: 14%;height: 25px;line-height: 25px;border: 1px solid #ccc;border-radius: 15px;color: #666;text-align: center;margin: 5px;font-size: 14px;cursor: pointer;padding: 0 10px;}
+					.city-name.selected{color: white;}
+                </style>
+                <!-- <div class="input" city-search>
+			        <div class="input-group">
+			            <input ng-model="citySearch" class="mc-bc" type="text" placeholder="{{language.position.search}}"/>
+			            <span class="search-img iconfont icon-sousuo1 mc-c"></span>
+			        </div>
+			
+			        <ul class="search-result-li">
+			            <li ng-repeat="a in citySearchResult | filter:citySearch" ng-click="addCity(a.name,a.code);"><span>{{a.name}}</span></li>
+			            <div ng-show="(citySearchResult | filter:citySearch).length == 0" class="search-no">
+                				<img src="images/search-no.png" alt=""/>
+                				<p>{{language.position.noResult}}</p>
+            			</div>
+			        </ul>
+    			</div> -->
+    			<div class="city-all">
+    				<div class="city-group">
+	            		<!-- <p>{{a.name}}</p> -->
+			            <ul class="city">
+			                <li class="city-name" ng-class="{'sc-bgc sc-bc selected': selectedCity == a.content}" ng-repeat="a in preachingMeeting track by $index" ng-click="selectCity(a.content,2);">{{a.content}}</li> 
+			            </ul>
+        			</div> 
+    			</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end选择城市-->

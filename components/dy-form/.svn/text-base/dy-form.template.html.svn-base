@@ -1,0 +1,70 @@
+<div ng-if="dataInfo.customDataSource">
+	<!--学校/专业 /特殊模板-->
+	<dy-form-special name="{{name}}" data="{{dataInfo}}"></dy-form-special>
+</div>
+<div ng-if="!dataInfo.customDataSource">
+	<!--1－文本框-->
+	<div ng-if="fillType == 1" class="ipt-item">
+	    <input name="{{name}}" formatId="{{dataInfo.id}}" msg="{{dataInfo.name}}" ng-class="{'requireInput': dataInfo.required,'requireFormat': dataInfo.id == 36 || dataInfo.id == 37 || dataInfo.id == 100}" type="text"/>
+	</div>
+	<!--2－日期-->
+	<div ng-if="fillType == 2" class="ipt-item">
+	    <input name="{{name}}" msg="{{dataInfo.name}}" ng-class="{'requireInput': dataInfo.required,'startDate':dataInfo.id == 49 || dataInfo.id == 56 || dataInfo.id == 72 || dataInfo.id == 206,'endDate':dataInfo.id == 50 || dataInfo.id == 57 || dataInfo.id == 73 || dataInfo.id == 207}" class="dayType" type="text" readonly="readonly" choose-date/>
+	    <span class="wt-icon660-20"></span>
+	</div>
+	<!--3-单选组件-->
+	<div ng-if="fillType == 3" class="ipt-item clearFloat" style="background-color: inherit;border-color: transparent;">
+	    <div class="wt-switch wt-switch-radio ipt-item3" ng-repeat="o in option track by $index" repeat-finish>
+	        <input type="radio" name="{{name}}" msg="{{dataInfo.name}}" ng-class="{'requireRadio': dataInfo.required}" value="{{o.code}}" class="wt-radio"/>
+	        <span title="{{o.name}}">{{o.name}}</span>
+	    </div>
+	</div>
+	<!--4-下拉组件-->
+	<div ng-if="fillType == 4" style="position: relative;" class="ipt-item">
+	    <span class="wt-icon10-100"></span>
+	    <select msg="{{dataInfo.name}}" ng-class="{'requireSelect': dataInfo.required}" ng-model="selectVal" name="{{name}}"  class="selectpicker show-tick form-control">
+	        <option value="" selected>{{lanTypeChoose}}</option>
+	        <option ng-repeat="o in option track by $index" name="{{o.name}}" text="{{o.name}}" value="{{o.code}}" repeat-finish>{{o.name}}</option>
+	    </select>
+	</div>
+	<!--5-复选组件-->
+	<div ng-if="fillType == 5" style="position: relative;" ng-class="{'requireCheckbox': dataInfo.required}" checkboxName="{{name}}" class="wt-switch wt-switch-checkbox ipt-item5">
+		<div ng-repeat="o in option" repeat-finish>
+			<input msg="{{dataInfo.name}}" type="checkbox" name="{{name}}" value="{{o.code}}" class="wt-checkbox"/>
+	    	<span title="{{o.name}}" style="vertical-align: middle;">{{o.name}}</span>
+		</div>
+	</div>
+	
+	<!--8-文件-->
+	<div ng-if="fillType == 8" class="ipt-item ipt-item9">
+	    <div class="enclosure mc-c" ng-show="!fileShow">
+	        <input ngf-select ng-change="uploadUser(file);" ng-model="file" name="{{name}}" data="{{dataInfo}}" msg="{{dataInfo.name}}" type="file" ng-class="{'requireFile': dataInfo.required}" class="get-file-val" style="position: absolute;opacity: 0;"/>
+	        <span class="iconfont icon-tupian mc-c"></span>{{dataInfo.name}}
+	        <font title="{{lanTypeFile}}"> ({{lanTypeFile}})</font>
+	    </div>
+	    <!--上传照片后的状态-->
+	    <div class="enclosure-g" ng-show="fileShow">
+	        <a href="javascript: void(0);">{{file.name}}</a>
+	        <a href="javascript: void(0);" ng-click="deleteFile(file);">{{lanTypeDelete}}</a>
+	    </div>
+	</div>
+	
+	<!--9-二级联动组件-->
+	<div ng-if="fillType == 9" style="position: relative;" class="ipt-item9">
+	    <div class="ipt-item-half">
+	        <span class="wt-icon10-100"></span>
+	        <select ng-model="selectVal1" ng-change="selectValChange(selectVal1,name)" class="selectpicker show-tick form-control">
+	            <option value="" selected>{{lanTypeChoose}}</option>
+	            <option ng-repeat="o in option track by $index" name="{{o.name}}" text="{{o.name}}" value="{{o.code}}" repeat-finish>{{o.name}}</option>
+	        </select>
+	    </div>
+	    <div class="ipt-item-half">
+	        <span class="wt-icon10-100"></span>
+	        <select id="{{name}}"  msg="{{dataInfo.name}}" ng-class="{'requireSelect requireSelect2': dataInfo.required}" id="{{name}}" name="{{name}}" class="selectpicker show-tick form-control">
+	            <option value="" default-style>{{lanTypeChoose}}</option>
+	        </select>
+	    </div>
+	</div>	
+</div>
+
+

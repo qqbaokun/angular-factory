@@ -1,0 +1,1611 @@
+<div class="social-recruitment page" ng-if="option.type == 'B1' || option.type == 'B4'">
+    <div class="social-title">
+        <div class="title-l"><img src="images/title-left.png" alt="" /></div>
+        <div class="title-m mc-c">{{option.componentName}}</div>
+        <div class="title-r"><img src="images/title-right.png" alt="" /></div>
+    </div>
+    <!--Start--六边形-->
+    <div ng-if="option.type == 'B4'">
+        <style>
+            .hexagon {
+                width: 250px;
+                height: 250px;
+                position: absolute;
+                z-index: 10;
+            }
+            
+            .hexagon-title {
+                width: 136px;
+                height: 136px;
+                position: absolute;
+                left: 0;
+                top: 192px;
+            }
+            
+            .hexagon-title span {
+                display: inline-block;
+                position: absolute;
+                left: 25px;
+                top: 44px;
+                font-size: 20px;
+                font-weight: bold;
+                color: white;
+            }
+            
+            .hexagon-text {
+                width: 100%;
+                position: absolute;
+                left: -10px;
+                top: 90px;
+                cursor: pointer;
+                transition: .2s linear;
+                text-align: center;
+            }
+            
+            .hexagon-text div {
+                display: inline-block;
+            }
+            
+            .hexagon-text div p {
+                font-size: 18px;
+                color: #c4c4c4;
+                text-align: center;
+                word-break: break-all;
+            }
+            
+            .hexagon-text div:first-child {
+                font-size: 60px;
+                font-weight: 300;
+                max-width: 55%;
+            }
+            
+            .hexagon-01 {
+                top: 301px;
+                left: -79px;
+            }
+            
+            .hexagon-text-01 {}
+            
+            .hexagon-02 {
+                top: 200px;
+                left: 95px;
+            }
+            
+            .hexagon-03 {
+                top: 397px;
+                left: 95px;
+            }
+            
+            .hexagon-04 {
+                top: 296px;
+                left: 269px;
+            }
+            
+            .hexagon-05 {
+                top: 196px;
+                left: 443px;
+            }
+            
+            .hexagon-06 {
+                top: 297px;
+                left: 617px;
+            }
+            
+            .hexagon-07 {
+                top: 197px;
+                left: 791px;
+            }
+            
+            .hexagon-08 {
+                top: 403px;
+                left: 791px;
+            }
+            
+            .hexagon-09 {
+                top: 101px;
+                left: 965px;
+            }
+            
+            .hexagon-10 {
+                top: 297px;
+                left: 965px;
+            }
+            
+            .hexagon-11 {
+                top: 0;
+                left: 1139px;
+            }
+            /*点缀多边形*/
+            
+            .hexagon-bg {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+            }
+            
+            .hexagon-bg-01 {
+                left: 431px;
+                top: 120px;
+            }
+            
+            .hexagon-bg-02 {
+                left: 478px;
+                top: 404px;
+            }
+            
+            .hexagon-bg-03 {
+                left: 653px;
+                top: 221px;
+            }
+            
+            .hexagon-bg-04 {
+                left: 966px;
+                top: 564px
+            }
+            
+            @keyframes hexHover {
+                0% {
+                    stroke-dasharray: 0, 0, 700;
+                }
+                10% {
+                    stroke-dasharray: 0, 20, 700;
+                }
+                100% {
+                    stroke-dasharray: 0, 700, 20;
+                }
+            }
+            /*
+            .hexagon svg polygon:hover{
+                -webkit-animation: hexHover .5s;
+                animation: hexHover .5s;
+                cursor: pointer;
+                stroke-width: 2;
+                z-index: 100;
+            }*/
+        </style>
+        <!--svg图-->
+        <div class="social">
+            <div class="hexagon-title">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="58 0 174 0 232 101 174 202 58 202 0 101" fill="#63b504"
+                             stroke-width="1" stroke="transparent" stroke-dasharray="0,0,700">
+                    </polygon>
+                </svg>
+                <span>{{option.titleName}}</span>
+            </div>
+            <div ng-click="multipleEntry(option.data[0])" class="hexagon hexagon-01">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="174 0 232 101 174 202 58 202 0 101 58 0 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="234,700">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-01">
+                    <div>
+                        <p>{{option.data[0].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[1])" class="hexagon hexagon-02">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="232 101 174 202 58 202 0 101 58 0 174 0 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="350,700">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-02">
+                    <div>
+                        <p>{{option.data[1].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[2])" class="hexagon hexagon-03">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="0 106 58 5 174 5 232 106 174 207 58 207 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="350,700">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-01">
+                    <div>
+                        <p>{{option.data[2].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[3])" class="hexagon hexagon-04">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="0 106 58 5 174 5 232 106 174 207 58 207 " fill="white"
+                             stroke-width="1" stroke="#63b504">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-04">
+                    <div>
+                        <p>{{option.data[3].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[4])" class="hexagon hexagon-05">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="0 106 58 5 174 5 232 106 174 207 58 207 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-05">
+                    <div>
+                        <p>{{option.data[4].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[5])" class="hexagon hexagon-06">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="0 106 58 5 174 5 232 106 174 207 58 207 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-06">
+                    <div>
+                        <p>{{option.data[5].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[6])" class="hexagon hexagon-07">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="0 106 58 5 174 5 232 106 174 207 58 207 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-07">
+                    <div>
+                        <p>{{option.data[6].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[7])" class="hexagon hexagon-08">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="0 101 58 0 174 0 232 101 174 202 58 202 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-08">
+                    <div>
+                        <p>{{option.data[7].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[8])" class="hexagon hexagon-09">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="174 0 232 101 174 202 58 202 0 101 58 0 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="465,700">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-09">
+                    <div>
+                        <p>{{option.data[8].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[9])" class="hexagon hexagon-10">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="58 207 0 106 58 5 174 5 232 106 174 207 " fill="white"
+                             stroke-width="1" stroke="#63b504" stroke-dasharray="350,700">
+                    </polygon>
+                </svg>
+                <div class="hexagon-text hexagon-text-10">
+                    <div>
+                        <p>{{option.data[9].content}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hexagon hexagon-11">
+                <svg viewbox="0 0 250 250">
+                    <line x1="0" y1="101" x2="58" y2="0"
+                          style="stroke:#63b504;stroke-width:1"></line>
+                </svg>
+            </div>
+
+            <div class="hexagon-bg hexagon-bg-01">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="58 0 174 0 232 101 174 202 58 202 0 101" fill="#ebf6e0"
+                             stroke-width="1" stroke="transparent" stroke-dasharray="0,0,700">
+                    </polygon>
+                </svg>
+            </div>
+            <div class="hexagon-bg hexagon-bg-02">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="58 0 174 0 232 101 174 202 58 202 0 101" fill="#ebf6e0"
+                             stroke-width="1" stroke="transparent" stroke-dasharray="0,0,700">
+                    </polygon>
+                </svg>
+            </div>
+            <div class="hexagon-bg hexagon-bg-03">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="58 0 174 0 232 101 174 202 58 202 0 101" fill="#ebf6e0"
+                             stroke-width="1" stroke="transparent" stroke-dasharray="0,0,700">
+                    </polygon>
+                </svg>
+            </div>
+            <div class="hexagon-bg hexagon-bg-04">
+                <svg viewbox="0 0 250 250">
+                    <polygon points="58 0 174 0 232 101 174 202 58 202 0 101" fill="#ebf6e0"
+                             stroke-width="1" stroke="transparent" stroke-dasharray="0,0,700">
+                    </polygon>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!--End--六边形-->
+
+    <!--Start--单个入口-->
+    <div ng-if="option.type == 'B1'">
+        <style type="text/css">
+            .social-one {
+                /* display: table; */
+            }
+            
+            .socila-left,
+            .socila-right {
+                display: inline-block;
+                width: 588px;
+                vertical-align: middle;
+                position: relative;
+            }
+            .socila-right {
+            	height: 588px;
+            }
+            .socila-left-title {
+                font-size: 20px;
+            }
+            
+            .socila-left div {
+                display: block;
+                width: 100%;
+                margin: 30px 0;
+            }
+            
+            .socila-left div p {
+                line-height: 32px;
+            }
+            
+            .socila-left button {
+                display: inline-block;
+                width: 200px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                border: 1px solid #63b504;
+                border-radius: 6px;
+                cursor: pointer;
+                background: transparent;
+                color: #63b504;
+            }
+            
+            .socila-right .slash-small{
+                /*width: 66%;*/
+			    border-radius: 100%;
+			    display: block;
+			    
+            }
+            
+            .socila-left button {
+                font-size: 16px;
+            }
+            
+            .slash-big {
+                position: absolute;
+			    width: 100%;
+			    height: 100%;
+			    overflow:hidden;
+            }
+            .mainCircle {
+				width:100%;
+				height:100%;
+				position:absolute;
+				z-index:100;
+			}
+			.secondaryCircle {
+				width:100%;
+				height:100%;
+				position:absolute;
+				z-index:100;
+			}
+			.top_line {
+				width:100%;
+				height:100%;
+				position:absolute;
+				z-index:101;
+				top: -309px;
+    			left: -120px;
+			}
+			.bottom_line {
+				width:60%;
+				height:60%;
+				position:absolute;
+				z-index:101;
+				bottom: -42px;
+    			right: 65px;
+			}
+			@media screen and (max-width: 1400px) {
+				.socila-left,
+            	.socila-right{
+            		width:441px;
+            	}
+            	.socila-right {
+            		height:441px;
+            	}
+            	.top_line {
+            		top:-205px;
+            	}
+            	.bottom_line {
+            		bottom: -31px;
+    				right: 48px;
+            	}
+			}
+			.mainCircle .st0{fill:<s:property value="configVr.webStyle400TheMainColor"/>;}
+			.mainCircle .st1{clip-path:url(#SVGID_2_);}
+			.mainCircle .st2{clip-path:url(#SVGID_4_);}
+			.top_line .st0{fill:white;}  
+			.bottom_line .st0{fill:white;}
+        </style>
+        <!--svg图-->
+        <div class="social-one">
+            <div class="socila-left">
+                <p class="socila-left-title">{{option.title}}</p>
+                <div>
+                    <p ng-bind-html="option.content | toHtml"></p>
+
+                </div>
+                <button ng-click="multipleSingleEntry(option);" class="button button--winona mc-c mc-bc" data-text="{{option.btnLabel}}" type="button">
+                    <span>{{option.btnLabel}}</span>
+                    <div class="after">{{option.btnLabel}}</div>
+                </button>
+            </div>
+            <div class="socila-right">
+                <div class="slash-big">
+                	<div class="mainCircle" style="">
+						<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<!-- <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+
+<style type="text/css">
+	.mainCircle .st0{fill:<s:property value="configVr.webStyle400TheMainColor"/>;}
+	.mainCircle .st1{clip-path:url(#SVGID_2_);}
+	.mainCircle .st2{clip-path:url(#SVGID_4_);}
+</style>
+
+<path class="st0" d="M424.6,79c-11.7,0-21.1,9.5-21.1,21.1c0,11.7,9.5,21.1,21.1,21.1c11.7,0,21.1-9.5,21.1-21.1S436.2,79,424.6,79z
+
+	 M424.6,119.4c-10.6,0-19.3-8.6-19.3-19.3s8.6-19.3,19.3-19.3c10.6,0,19.3,8.6,19.3,19.3S435.2,119.4,424.6,119.4z"/>
+
+<path class="st0" d="M676.9,351.4c-25.4,0-46.1,20.6-46.1,46.1c0,25.4,20.6,46.1,46.1,46.1S723,423,723,397.5
+
+	S702.4,351.4,676.9,351.4z M676.9,439.5c-23.2,0-42-18.8-42-42s18.8-42,42-42s42,18.8,42,42S700.1,439.5,676.9,439.5z"/>
+
+<g>
+
+	<g>
+
+		<g>
+
+			<defs>
+
+				<path id="SVGID_1_" d="M124.9,558c-28.5,0-51.6,23.1-51.6,51.6s23.1,51.6,51.6,51.6s51.6-23.1,51.6-51.6S153.4,558,124.9,558z
+
+					 M125,643.4c-18.6,0-33.6-15.1-33.6-33.6s15.1-33.6,33.6-33.6c18.6,0,33.6,15.1,33.6,33.6S143.6,643.4,125,643.4z"/>
+
+			</defs>
+
+			<clipPath id="SVGID_2_">
+
+				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+
+			</clipPath>
+
+			<g class="st1">
+
+				
+
+					<rect x="5.7" y="565.8" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -276.5573 125.5047)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="8.7" y="570" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -278.2863 127.623)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="10.7" y="574.2" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -280.1628 129.2507)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="12.5" y="578.4" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -282.0303 130.7593)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="14.5" y="582.5" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -283.8488 132.3366)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="17.4" y="586.7" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -285.5947 134.4081)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="19.6" y="590.8" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -287.403 136.0962)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="23.2" y="595.1" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -289.066 138.54)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="25.1" y="599.3" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -290.9586 140.1175)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="27.7" y="603.5" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -292.7341 142.0332)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="30.3" y="607.7" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -294.509 143.9483)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="31.9" y="611.8" transform="matrix(0.8598 -0.5106 0.5106 0.8598 -296.4324 145.3931)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="33.9" y="616" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -298.2288 146.9386)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="35.7" y="620.2" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -300.1046 148.4352)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="36.8" y="624.3" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -302.0668 149.5933)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="38.6" y="628.4" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -303.925 151.0782)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="40.5" y="632.6" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -305.784 152.6405)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="42.4" y="636.8" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -307.6558 154.2073)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="44.4" y="640.9" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -309.4739 155.7848)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="46.2" y="645.1" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -311.3629 157.3053)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="48.3" y="649.2" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -313.1858 158.9426)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="50.5" y="653.4" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -315.0073 160.6543)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="53" y="657.6" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -316.7995 162.5214)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="55.2" y="661.8" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -318.6422 164.2455)" class="st0" width="169.3" height="1.5"/>
+
+			</g>
+
+		</g>
+
+	</g>
+
+</g>
+
+<path class="st0" d="M661.1,465.4c-23,0-41.7,18.7-41.7,41.7c0,23,18.7,41.7,41.7,41.7s41.7-18.7,41.7-41.7
+
+	C702.8,484.1,684.2,465.4,661.1,465.4z M661.2,534.4c-15,0-27.2-12.2-27.2-27.2s12.2-27.2,27.2-27.2s27.2,12.2,27.2,27.2
+
+	S676.2,534.4,661.2,534.4z"/>
+
+<g>
+
+	<g>
+
+		<g>
+
+			<defs>
+
+				<path id="SVGID_3_" d="M680.9,168.1c-28.5,0-51.6,23.1-51.6,51.6s23.1,51.6,51.6,51.6s51.6-23.1,51.6-51.6
+
+					S709.4,168.1,680.9,168.1z M681.1,253.5c-18.6,0-33.6-15.1-33.6-33.6s15.1-33.6,33.6-33.6c18.6,0,33.6,15.1,33.6,33.6
+
+					S699.6,253.5,681.1,253.5z"/>
+
+			</defs>
+
+			<clipPath id="SVGID_4_">
+
+				<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+
+			</clipPath>
+
+			<g class="st2">
+
+				
+
+					<rect x="561.8" y="175.9" transform="matrix(0.8599 -0.5105 0.5105 0.8599 0.4006 354.7536)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="564.8" y="180.2" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -1.3657 356.91)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="566.9" y="184.3" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -3.1668 358.5364)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="568.6" y="188.5" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -5.0725 360.0082)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="570.6" y="192.6" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -6.8914 361.5856)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="573.5" y="196.9" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -8.6736 363.6951)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="575.7" y="201" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -10.478 365.3844)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="579.3" y="205.3" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -12.1431 367.8268)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="581.3" y="209.4" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -13.9628 369.4034)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="583.8" y="213.6" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -15.7763 371.2821)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="586.4" y="217.8" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -17.5517 373.1972)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="587.9" y="221.9" transform="matrix(0.8598 -0.5106 0.5106 0.8598 -19.4172 374.6322)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="590" y="226.1" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -21.2717 376.1875)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="591.8" y="230.3" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -23.1797 377.7231)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="592.9" y="234.4" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -25.109 378.8423)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="594.7" y="238.6" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -27.0044 380.3652)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="596.6" y="242.7" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -28.8252 381.8893)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="598.5" y="246.9" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -30.6979 383.4562)" class="st0" width="169.3" height="1.5"/>
+
+				<polygon class="st0" points="757.5,207.9 611.9,294.3 625.8,321.2 771.2,233 				"/>
+
+				
+
+					<rect x="602.3" y="255.2" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -34.4051 386.5542)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="604.4" y="259.4" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -36.2646 388.2296)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="606.6" y="263.5" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -38.0496 389.9035)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="609.1" y="267.7" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -39.8422 391.7703)" class="st0" width="169.3" height="1.5"/>
+
+				
+
+					<rect x="611.3" y="271.9" transform="matrix(0.8599 -0.5105 0.5105 0.8599 -41.6844 393.4944)" class="st0" width="169.3" height="1.5"/>
+
+			</g>
+
+		</g>
+
+	</g>
+
+</g>
+
+</svg> -->
+
+						
+					</div>
+					<div class="secondaryCircle" style="">
+						<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+<style type="text/css">
+	.secondaryCircle .st0{fill:<s:property value="configVr.webStyle400TheSecondaryColor"/>;}
+</style>
+<path class="st0" d="M325.4,586.8c-15.6,0-28.3,12.7-28.3,28.3s12.7,28.3,28.3,28.3c15.6,0,28.3-12.7,28.3-28.3
+	C353.7,599.5,341,586.8,325.4,586.8z M325.4,641c-14.3,0-25.8-11.6-25.8-25.8c0-14.3,11.6-25.8,25.8-25.8
+	c14.3,0,25.8,11.6,25.8,25.8C351.2,629.4,339.6,641,325.4,641z"/>
+<path class="st0" d="M538.1,581.4c-28.5,0-51.6,23.1-51.6,51.6s23.1,51.6,51.6,51.6s51.6-23.1,51.6-51.6S566.6,581.4,538.1,581.4z
+	 M538.2,666.8c-18.6,0-33.6-15.1-33.6-33.6s15.1-33.6,33.6-33.6c18.6,0,33.6,15.1,33.6,33.6S556.8,666.8,538.2,666.8z"/>
+</svg>
+						
+					</div>
+					<div class="top_line">
+						<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+<style type="text/css">
+	.top_line .st0{fill:white;}
+</style>
+<polygon class="st0" points="2,458 601.8,10.6 604.1,15.2 4.3,462.7 "/>
+<polygon class="st0" points="10.3,475.1 610.3,27.6 612.6,32.3 12.5,479.7 "/>
+<polygon class="st0" points="18.7,492.1 618.7,44.7 621,49.4 20.9,496.8 "/>
+<polygon class="st0" points="27.2,509.2 627,61.8 629.2,66.4 29.4,513.9 "/>
+<polygon class="st0" points="35.5,526.1 635.3,79 637.6,83.4 37.8,530.8 "/>
+<polygon class="st0" points="43.8,543.4 643.8,95.9 646.1,100.6 46,548 "/>
+<polygon class="st0" points="52.3,560.4 652.3,113 654.3,117.6 54.5,565.1 "/>
+<polygon class="st0" points="60.7,577.5 660.4,130.1 662.7,134.7 62.9,582.1 "/>
+<polygon class="st0" points="69,594.6 669.1,147.1 671.1,151.8 71.3,599.2 "/>
+<polygon class="st0" points="77.3,611.6 677.3,164.2 679.6,168.9 79.5,616.3 "/>
+<polygon class="st0" points="85.7,628.7 685.7,181.3 688,185.9 87.9,633.3 "/>
+<polygon class="st0" points="94.2,645.8 693.9,198.3 696.2,203 96.4,650.4 "/>
+<polygon class="st0" points="102.4,662.8 702.4,215.4 704.7,220.1 104.7,667.5 "/>
+<polygon class="st0" points="110.9,679.9 710.7,232.5 713,237.1 113.2,684.6 "/>
+<polygon class="st0" points="119.3,697 719.3,249.6 721.3,254.2 121.5,701.6 "/>
+<polygon class="st0" points="127.5,714 727.6,266.6 729.8,271.3 129.8,718.7 "/>
+<polygon class="st0" points="135.9,731.1 735.9,283.7 738.2,288.3 138.2,735.8 "/>
+<polygon class="st0" points="144.3,748.2 744.3,300.8 746.6,305.4 146.5,752.8 "/>
+<polygon class="st0" points="152.8,765.3 752.6,317.8 754.8,322.5 154.8,769.9 "/>
+<polygon class="st0" points="161.2,782.3 761.2,334.9 763.2,339.5 163.4,787 "/>
+<polygon class="st0" points="169.4,799.4 769.4,352 771.7,356.6 171.7,804 "/>
+<polygon class="st0" points="177.9,816.5 777.7,369 780,373.7 180.2,821.1 "/>
+<polygon class="st0" points="186.3,833.5 786.1,386.1 788.3,390.8 188.5,838.2 "/>
+<polygon class="st0" points="194.5,850.6 794.6,403.2 796.8,407.8 196.8,855.2 "/>
+</svg>
+						
+					</div>
+					<div class="bottom_line">
+					<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 800" style="enable-background:new 0 0 800 800;" xml:space="preserve">
+<style type="text/css">
+	.bottom_line .st0{fill:white;}
+</style>
+<g>
+	<polygon class="st0" points="6,593.3 746.3,111.2 747.2,112.8 6.9,594.9 	"/>
+	<polygon class="st0" points="9.4,598.5 749.8,116.4 750.7,118 10.3,600.1 	"/>
+	<polygon class="st0" points="11.8,603.6 752.2,121.5 753.1,123.1 12.7,605.2 	"/>
+	<polygon class="st0" points="13.8,608.7 754.1,126.6 755,128.2 14.7,610.3 	"/>
+	<polygon class="st0" points="16.1,613.8 756.4,131.8 757.3,133.3 17,615.4 	"/>
+	<polygon class="st0" points="19.4,619 759.8,136.9 760.7,138.5 20.3,620.6 	"/>
+	<polygon class="st0" points="22,624.1 762.4,142 763.2,143.6 22.9,625.7 	"/>
+	<polygon class="st0" points="26.1,629.3 766.4,147.2 767.3,148.8 27,630.9 	"/>
+	<polygon class="st0" points="28.4,634.5 768.8,152.4 769.6,154 29.3,636.1 	"/>
+	<polygon class="st0" points="31.3,639.5 771.7,157.4 772.6,159 32.2,641.1 	"/>
+	<polygon class="st0" points="34.3,644.7 774.7,162.6 775.6,164.2 35.2,646.3 	"/>
+	<polygon class="st0" points="36.1,649.7 776.4,167.6 777.3,169.2 37,651.3 	"/>
+	<polygon class="st0" points="38.3,654.9 778.7,172.8 779.6,174.4 39.2,656.5 	"/>
+	<polygon class="st0" points="40.5,660 780.8,177.9 781.7,179.5 41.4,661.6 	"/>
+	<polygon class="st0" points="41.7,665.1 782.1,183 782.9,184.6 42.6,666.7 	"/>
+	<polygon class="st0" points="43.8,670.2 784.2,188.1 785.1,189.7 44.7,671.8 	"/>
+	<polygon class="st0" points="45.9,675.3 786.3,193.2 787.2,194.8 46.8,676.9 	"/>
+	<polygon class="st0" points="48.1,680.5 788.5,198.4 789.4,200 49,682.1 	"/>
+	<polygon class="st0" points="50.5,685.6 790.8,203.5 791.7,205.1 51.3,687.2 	"/>
+	<polygon class="st0" points="52.5,690.7 792.9,208.6 793.7,210.2 53.4,692.3 	"/>
+	<polygon class="st0" points="55,695.8 795.4,213.7 796.3,215.3 55.9,697.4 	"/>
+	<polygon class="st0" points="57.5,701 797.8,218.9 798.7,220.5 58.4,702.6 	"/>
+	<polygon class="st0" points="60.3,706.1 800.6,224 801.5,225.6 61.2,707.7 	"/>
+	<polygon class="st0" points="62.9,711.2 803.3,229.1 804.2,230.7 63.8,712.8 	"/>
+</g>
+</svg>
+					
+					</div>
+                </div>
+                <img class="slash-small" ng-src="{{option.imgUrl}}" alt="" />
+            </div>
+        </div>
+    </div>
+    <!--End--单个入口-->
+</div>
+
+
+<div class="campus-recruitment page" ng-if="option.type == 'B2' || option.type == 'B3'" ng-style="option.expression">
+    <div class="campus-bg" ng-if="option.type == 'B3'"></div>
+    <div class="campus-title">
+        <div class="title-l"><img src="images/title-left.png" alt="" /></div>
+        <div class="title-m mc-c">{{option.componentName}}</div>
+        <div class="title-r"><img src="images/title-right.png" alt="" /></div>
+    </div>
+    <!--Start--2个正方形-->
+    <div ng-if="option.type == 'B3' && option.data.length == 2">
+        <style type="text/css">
+            /*校园招聘*/
+            
+            .campus-recruitment {
+                background-size: 100%;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
+            
+            .campus {
+                width: 1200px;
+                height: auto;
+                position: relative;
+            }
+            
+            .campus-bg {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background-color: rgba(0, 0, 0, .5);
+            }
+            
+            .square-l {
+                width: 275px;
+                height: 275px;
+                position: absolute;
+                cursor: pointer;
+                text-transform: uppercase;
+                text-align: center;
+                display: table;
+            }
+            
+            .square-l-div {
+                vertical-align: middle;
+                display: table-cell;
+            }
+            
+            .square-l-div p:first-child {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .square-l-div p:last-child {
+                font-size: 20px;
+            }
+            
+            .square-l-03 {
+                background-color: white;
+            }
+            
+            .square-s {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+            }
+            
+            .square-m {
+                width: 115px;
+                height: 115px;
+                background-color: rgba(99, 181, 4, .7);
+                position: absolute;
+            }
+            
+            html .square-l:before,
+            html .square-l:after,
+            .square-l div:before,
+            .square-l div:after {
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+            
+            *:before,
+            *:after {
+                z-index: -1;
+            }
+            
+            .square-l:after {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent #63b504 transparent transparent;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            
+            .square-l:before {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent transparent transparent #63b504;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            
+            .square-l:before,
+            .square-l:after {
+                border-color: #63b504;
+            }
+            
+            .square-l div:after {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: #63b504 transparent transparent transparent;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            .square-l div:before {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent transparent #63b504 transparent;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            
+            .square-l div:before,
+            .square-l div:after {
+                border-color: #63b504;
+            }
+            
+            .square-l:hover {
+                background-color: transparent;
+            }
+            
+            .square-l:hover:before {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover:after {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover div:before {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover div:after {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:active {
+                background: inherit;
+            }
+        </style>
+
+        <div class="campus">
+            <div ng-click="multipleEntry(option.data[0]);" class="square-l square-l-02" style="background-color: rgba(99, 181, 4,.7); top: 325px; left: 325px; color: white;">
+                <div class="square-l-div">
+                    <p>{{option.data[0].content}}</p>
+                    <p>{{option.data[0].contentEN}}</p>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[1]);" class="square-l square-l-03" style="top: 50px;left: 600px;">
+                <div class="square-l-div">
+                    <p>{{option.data[1].content}}</p>
+                    <p>{{option.data[1].contentEN}}</p>
+                </div>
+            </div>
+
+
+            <div class="square-s square-s-02" style="background-color: rgba(255,255,255,.7);top: 600px;left: 275px;"></div>
+            <div class="square-s square-s-08 mc-bgc" style="background-color: rgba(99, 181, 4,.5);top: 0;left: 875px;"></div>
+
+        </div>
+    </div>
+    <!--End--2个正方形-->
+
+    <!--Start--3个正方形-->
+    <div ng-if="option.type == 'B3' && option.data.length == 3 ">
+        <style type="text/css">
+            /*校园招聘*/
+            
+            .campus-recruitment {
+                background-size: 100%;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
+            
+            .campus {
+                width: 1200px;
+                height: auto;
+                position: relative;
+            }
+            
+            .campus-bg {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                background-color: rgba(0, 0, 0, .5);
+            }
+            
+            .square-l {
+                width: 275px;
+                height: 275px;
+                position: absolute;
+                cursor: pointer;
+                text-transform: uppercase;
+                text-align: center;
+                display: table;
+            }
+            
+            .square-l-div {
+                vertical-align: middle;
+                display: table-cell;
+            }
+            
+            .square-l-div p:first-child {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .square-l-div p:last-child {
+                font-size: 20px;
+            }
+            
+            .square-l-03 {
+                background-color: white;
+            }
+            
+            .square-s {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+            }
+            
+            .square-m {
+                width: 115px;
+                height: 115px;
+                position: absolute;
+            }
+            
+            html .square-l:before,
+            html .square-l:after,
+            .square-l div:before,
+            .square-l div:after {
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+            
+            *:before,
+            *:after {
+                z-index: -1;
+            }
+            
+            .square-l:after {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent #63b504 transparent transparent;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            
+            .square-l:before {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent transparent transparent #63b504;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            
+            .square-l:before,
+            .square-l:after {
+                border-color: #63b504;
+            }
+            
+            .square-l div:after {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: #63b504 transparent transparent transparent;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            .square-l div:before {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent transparent #63b504 transparent;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            
+            .square-l div:before,
+            .square-l div:after {
+                border-color: #63b504;
+            }
+            
+            .square-l:hover {
+                background-color: transparent;
+            }
+            
+            .square-l:hover:before {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover:after {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover div:before {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover div:after {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:active {
+                background: inherit;
+            }
+        </style>
+
+        <div class="campus">
+            <div ng-click="multipleEntry(option.data[1]);" class="square-l square-l-02" style="background-color: rgba(99, 181, 4,.7);top: 325px;left: 187px;color: white;">
+                <div class="square-l-div">
+                    <p>{{option.data[1].content}}</p>
+                    <p>{{option.data[1].contentEN}}</p>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[0]);" class="square-l square-l-03" style="top: 50px;left: 462px;">
+                <div class="square-l-div">
+                    <p>{{option.data[0].content}}</p>
+                    <p>{{option.data[0].contentEN}}</p>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[2]);" class="square-l square-l-04" style="background-color: rgba(99, 181, 4,.7);top: 325px;left: 737px;color: white;">
+                <div class="square-l-div">
+                    <p>{{option.data[2].content}}</p>
+                    <p>{{option.data[2].contentEN}}</p>
+                </div>
+            </div>
+
+            <div class="square-s square-s-02" style="background-color: rgba(255,255,255,.7);top: 600px;left: 137px;"></div>
+            <div class="square-s square-s-05" style="background-color: rgba(255,255,255,.7);top: 440px;left: 462px;"></div>
+            <div class="square-s square-s-06" style="background-color: rgba(255,255,255,.7);top: 490px;left: 687px;"></div>
+            <div class="square-s square-s-07" style="background-color: rgba(255,255,255,.7);top: 600px;left: 687px;"></div>
+            <div class="square-s square-s-08 mc-bgc" style="background-color: rgba(99, 181, 4,.5);top: 0;left: 737px;"></div>
+            <div class="square-s square-s-09" style="background-color: rgba(255,255,255,.7);top: 275px;left: 1012px;"></div>
+            <div class="square-s square-s-10 mc-bgc" style="background-color: rgba(99, 181, 4,.5);top: 545px;left: 637px;"></div>
+
+            <div class="square-m mc-bgc" style="background-color: rgba(99, 181, 4,.7);position: absolute;left: 512px;top: 325px;"></div>
+        </div>
+    </div>
+    <!--End--3个正方形-->
+
+    <!--Start--4个正方形-->
+    <div ng-if="option.type == 'B3' && option.data.length == 4 ">
+        <style type="text/css">
+            /*校园招聘*/
+            
+            .campus-recruitment {
+                background-size: 100%;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
+            
+            .campus {
+                width: 1200px;
+                height: auto;
+                position: relative;
+            }
+            
+            .campus-bg {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background-color: rgba(0, 0, 0, .5);
+            }
+            
+            .square-l {
+                width: 275px;
+                height: 275px;
+                position: absolute;
+                cursor: pointer;
+                text-transform: uppercase;
+                text-align: center;
+                display: table;
+            }
+            
+            .square-l-div {
+                vertical-align: middle;
+                display: table-cell;
+            }
+            
+            .square-l-div p:first-child {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+            
+            .square-l-div p:last-child {
+                font-size: 20px;
+            }
+            
+            .square-l-01,
+            .square-l-03 {
+                background-color: white;
+            }
+            
+            .square-s {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+            }
+            
+            .square-m {
+                width: 115px;
+                height: 115px;
+                position: absolute;
+            }
+            
+            html .square-l:before,
+            html .square-l:after,
+            .square-l div:before,
+            .square-l div:after {
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+            
+            *:before,
+            *:after {
+                z-index: -1;
+            }
+            
+            .square-l:after {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent #63b504 transparent transparent;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            
+            .square-l:before {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent transparent transparent #63b504;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            
+            .square-l:before,
+            .square-l:after {
+                border-color: #63b504;
+            }
+            
+            .square-l div:after {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: #63b504 transparent transparent transparent;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            
+            .square-l div:before {
+                content: '';
+                width: 0;
+                height: 0;
+                -webkit-transform: rotate(360deg);
+                border-style: solid;
+                border-width: 0 0 0 0;
+                border-color: transparent transparent #63b504 transparent;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            
+            .square-l div:before,
+            .square-l div:after {
+                border-color: #63b504;
+            }
+            
+            .square-l:hover {
+                background-color: transparent;
+            }
+            
+            .square-l:hover:before {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover:after {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover div:before {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:hover div:after {
+                border-width: 69px 69px;
+            }
+            
+            .square-l:active {
+                background: inherit;
+            }
+        </style>
+
+        <div class="campus">
+            <div ng-click="multipleEntry(option.data[0]);" class="square-l square-l-01" style="top: 50px;left: 50px;">
+                <div class="square-l-div">
+                    <p>{{option.data[0].content}}</p>
+                    <p>{{option.data[0].contentEN}}</p>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[2]);" class="square-l square-l-02" style="background-color: rgba(99, 181, 4,.7);top: 325px;left: 325px;color: white;">
+                <div class="square-l-div">
+                    <p>{{option.data[2].content}}</p>
+                    <p>{{option.data[2].contentEN}}</p>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[1]);" class="square-l square-l-03" style="top: 50px;left: 600px;">
+                <div class="square-l-div">
+                    <p>{{option.data[1].content}}</p>
+                    <p>{{option.data[1].contentEN}}</p>
+                </div>
+            </div>
+            <div ng-click="multipleEntry(option.data[3]);" class="square-l square-l-04" style="background-color: rgba(99, 181, 4,.7);top: 325px;left: 875px;color: white;">
+                <div class="square-l-div">
+                    <p>{{option.data[3].content}}</p>
+                    <p>{{option.data[3].contentEN}}</p>
+                </div>
+            </div>
+
+            <div class="square-s square-s-01 mc-bgc" style="background-color: rgba(99, 181, 4,.5);top: 0;left: 0;"></div>
+            <div class="square-s square-s-02" style="background-color: rgba(255,255,255,.7);top: 600px;left: 275px;"></div>
+            <div class="square-s square-s-03 mc-bgc" style="background-color: rgba(99, 181, 4,.7);top: 225px;left: 412px;"></div>
+            <div class="square-s square-s-04" style=" background-color: rgba(255,255,255,.7);top: 275px;left: 462px;"></div>
+            <div class="square-s square-s-05" style="background-color: rgba(255,255,255,.7);top: 440px;left: 600px;"></div>
+            <div class="square-s square-s-06" style="background-color: rgba(255,255,255,.7);top: 490px;left: 825px;"></div>
+            <div class="square-s square-s-07" style="background-color: rgba(255,255,255,.7);top: 600px;left: 825px;"></div>
+            <div class="square-s square-s-08 mc-bgc" style="background-color: rgba(99, 181, 4,.5);top: 0;left: 875px;"></div>
+            <div class="square-s square-s-09" style="background-color: rgba(255,255,255,.7);top: 275px;left: 1150px;"></div>
+            <div class="square-s square-s-10 mc-bgc" style="background-color: rgba(99, 181, 4,.5);top: 545px;left: 775px;"></div>
+
+            <div class="square-m mc-bgc" style="background-color: rgba(99, 181, 4,.7);left: 650px;top: 325px;"></div>
+        </div>
+
+    </div>
+    <!--End--4个正方形-->
+
+    <!--Start--圆形-->
+    <div ng-if="option.type == 'B2'">
+        <style type="text/css">
+            /*校园招聘*/
+            
+            #campus-recruitment {
+                /*background-color: #fafafa;*/
+            }
+            
+            .campus01 {
+                width: 1200px;
+                height: auto;
+                position: relative;
+                text-align: center;
+                white-space: nowrap;
+            }
+            
+            .campus-bg {
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background-color: rgba(0, 0, 0, .5);
+            }
+            
+            .campus-round,
+            .campus-line {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            
+            .campus-line span {
+                display: inline-block;
+                width: 55px;
+                height: 5px;
+                border-top: 2px dotted #63b504;
+            }
+            
+            .campus-round {
+                width: 250px;
+                height: 250px;
+                position: relative;
+            }
+            
+            .campus-round-c {
+                position: relative;
+                width: 250px;
+                height: 250px;
+                border-radius: 250px;
+                border: 1px solid #63b504;
+                box-sizing: border-box;
+                padding: 35px;
+            }
+            
+            .campus-round-c-c {
+                width: 80%;
+                height: 80%;
+                background-color: #63b504;
+                border-radius: 100%;
+                position: absolute;
+                top: 10%;
+                left: 10%;
+                cursor: pointer;
+            }
+            
+            .campus-round-c-d {
+                display: inline-block;
+                height: 30px;
+                width: 30px;
+                padding: 5px;
+                border-radius: 100%;
+                background-color: #fafafa;
+                position: absolute;
+                box-sizing: border-box;
+            }
+            
+            .campus-round-c-d span {
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                border-radius: 100%;
+                background-color: #63b504;
+            }
+            /*.campus-round-c{
+                animation: circle 6s linear infinite;
+            }*/
+            
+            @keyframes circle {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+            
+            .campus-round-t {
+                width: 180px;
+                text-align: center;
+                top: 40%;
+                left: 50%;
+                margin-left: -90px;
+                color: white;
+                position: absolute;
+                text-transform: uppercase;
+            }
+            
+            .campus-round-t p:first-child {
+                font-size: 25px;
+                margin-bottom: 10px;
+            }
+        </style>
+
+        <div class="campus01 campus" turn-around>
+            <div ng-hide="option.data[0].content == undefined || option.data[0].content == ''" class="campus-round">
+                <div class="campus-round-c mc-bc">
+                    <span class="campus-round-c-d" style="left: -5px;top: 61px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 234px;top: 110px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 105px;top: 235px;"><span class="mc-bgc"></span></span>
+                </div>
+                <div ng-click="multipleEntry(option.data[0]);" class="campus-round-c-c mc-bgc">
+                    <div class="campus-round-t">
+                        <p>{{option.data[0].content}}</p>
+                        <p>{{option.data[0].contentEN}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-hide="option.data[0].content == undefined || option.data[0].content == ''" class="campus-line"><span class="mc-bc"></span></div>
+            <div ng-hide="option.data[1].content == undefined || option.data[1].content == ''" class="campus-round">
+                <div class="campus-round-c mc-bc">
+                    <span class="campus-round-c-d" style="left: -16px;top: 110px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 234px;top: 110px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 26px;top: 17px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 188px;top: 207px;"><span class="mc-bgc"></span></span>
+                </div>
+                <div ng-click="multipleEntry(option.data[1]);" class="campus-round-c-c mc-bgc">
+                    <div class="campus-round-t">
+                        <p>{{option.data[1].content}}</p>
+                        <p>{{option.data[1].contentEN}}</p>
+                    </div>
+                </div>
+            </div>
+            <div ng-hide="option.data[2].content == undefined || option.data[2].content == ''" class="campus-line"><span class="mc-bc"></span></div>
+            <div ng-hide="option.data[2].content == undefined || option.data[2].content == ''" class="campus-round">
+                <div class="campus-round-c mc-bc">
+                    <span class="campus-round-c-d" style="left: -16px;top: 110px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 234px;top: 110px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 197px;top: 21px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 121px;top: 234px;"><span class="mc-bgc"></span></span>
+                </div>
+                <div class="campus-round-c-c mc-bgc">
+                    <div ng-click="multipleEntry(option.data[2]);" class="campus-round-t">
+                        <p>{{option.data[2].content}}</p>
+                        <p>{{option.data[2].contentEN}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div ng-hide="option.data[3].content == undefined || option.data[3].content == ''" class="campus-line"><span class="mc-bc"></span></div>
+            <div ng-hide="option.data[3].content == undefined || option.data[3].content == ''" class="campus-round">
+                <div class="campus-round-c mc-bc">
+                    <span class="campus-round-c-d" style="left: -16px;top: 110px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 121px;top: -16px;"><span class="mc-bgc"></span></span>
+                    <span class="campus-round-c-d" style="left: 121px;top: 234px;"><span class="mc-bgc"></span></span>
+                </div>
+                <div ng-click="multipleEntry(option.data[3]);" class="campus-round-c-c mc-bgc">
+                    <div class="campus-round-t">
+                        <p>{{option.data[3].content}}</p>
+                        <p>{{option.data[3].contentEN}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End--圆形-->
+</div>

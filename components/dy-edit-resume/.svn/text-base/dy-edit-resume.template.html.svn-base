@@ -1,0 +1,464 @@
+
+<style>
+	.nav-main-other,.search,.login,.loginIn{
+		display:none;
+	}
+    .person-main {
+        width: 1200px;
+        margin: auto;
+        position: relative;
+    }
+    .position{
+        position: relative;
+    }
+    /*左边悬浮菜单样式 start*/
+    .person-main-left{
+        position: fixed;
+        width: 224px;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        top: 65px;
+        overflow: scroll;
+    }
+    .PML-menu{
+        padding: 0 25px;
+        margin-bottom: 20px;
+    }
+    .PML-menu li{
+        width: 168px;
+        height: 36px;
+        line-height: 24px;
+        text-align: center;
+        margin: 16px 0 0;
+        border-bottom: 1px solid #e1e1e1;
+        border-left: 6px solid #e1e1e1;
+        font-size: 16px;
+        font-weight: 600;
+        color: #e1e1e1;
+        cursor: pointer;
+        white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    }
+    .PML-menu li.choose{
+        border-color: #63b504;
+        color: #63b504;
+    }
+    .PML-qr{
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        top: 300px;
+    }
+    .PML-qr dt{
+        margin-bottom: 14px;
+    }
+    .PML-qr dd{
+        line-height: 30px;
+        font-size: 18px;
+        color: #999999;
+    }
+
+    /*左边悬浮菜单样式 end*/
+    /*右边部分start*/
+    .person-main-right{
+        width: 950px;
+        float: right;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .wt-switch.wt-switch-radio{
+        
+    }
+    .wt-switch-radio span{
+        font-size: 14px;
+        font-weight: normal;
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 90%;
+    	white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    }
+    .wt-switch-radio input{
+        margin-top: 0;
+    }
+    .search input{
+        outline: none;
+        line-height: initial;
+    }
+
+    .login{
+        width: 40px;
+        height: 40px;
+    }
+    .login img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+    .next-step{        
+        position: fixed;
+    	bottom: 50px;
+    	z-index: 100;
+    }
+    .next-step .next-step-save{
+        background-color: white;
+    	border: 1px solid;
+    	box-sizing: border-box;
+    }
+    .next-step button{
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+        background-color: #63b504;
+        border: none;
+        color: white;
+    }
+    button.button--winona > span{
+        padding: 0 10px;
+    }
+    .next-dialog{
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    .next-dialog-m{
+        background-color: #fbfbfb;
+        display: inline-block;
+        border: 1px solid #cccccc;
+        padding: 10px;
+        border-radius: 6px;
+        position: relative;
+        margin-right: 40px;
+        font-size: 16px;
+    }
+    .icon-dialog{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    .dialog-follow{
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 20px;
+        bottom: -6px;
+        background-color: #fbfbfb;
+    }
+    .mdf-table-cell{
+        float: left;
+        width: 50%;
+    }
+    .mdf-table-cell-long{
+        width: 100%;
+    }
+    .mdf-table-cell-long .mdf-table-cell-l{
+        width: 13%;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r{
+        width: 86%;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r .ipt-item{
+        height: auto;
+    }
+    .mdf-table-cell-long .mdf-table-cell-r .ipt-item .txt-content{
+        border: none;
+    }
+    .mdf-table-cell-l{
+        width: 26%;
+        display: inline-block;
+        text-align: right;
+        font-size: 14px;
+        padding: 8px 10px;
+        box-sizing: border-box;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+    	text-overflow: ellipsis;
+    }
+    .mdf-table-cell-r{
+        width: 72%;
+        display: inline-block;
+        padding: 8px 0;
+        vertical-align: middle;
+    }
+    .modify-left .mdf-table .ipt-item .wt-radio{
+        width: auto;
+    }
+    .modify-left .mdf-table .ipt-item3,.modify-left .mdf-table .ipt-item9{
+        background-color: inherit;
+        border: none;
+        position: relative;
+    }
+    .modify-left .mdf-table .ipt-item9 .enclosure,.modify-left .mdf-table .ipt-item9 .enclosure-g{
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+        position: relative;
+        white-space: nowrap;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    }
+    .modify-left .mdf-tit .wt-icon60-80{
+        float: left;
+        margin-top: -5px;
+    }
+    .bootstrap-select{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: transparent!important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+    }
+    .modify-left .mdf-table .ipt-item-half{
+        position: relative;
+    }
+    .bootstrap-select .dropdown-toggle{
+        border: none;
+        width: 100%;
+        outline: none!important;
+        box-sizing: border-box;
+    }
+    .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark{
+        display: none;
+    }
+    .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default{
+        background-color: inherit;
+    }
+    .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus,.btn-group.open .dropdown-toggle,.bootstrap-select .dropdown-toggle:focus{
+        -webkit-box-shadow: none!important;
+        box-shadow: none!important;
+        outline: none!important;
+    }
+    .bs-caret{
+        display: none;
+    }
+    .modify-left .mdf-table .ipt-item .wt-checkbox{
+        width: auto;
+    }
+    .modify-left .mdf-table .ipt-item span{
+        font-size: 12px;
+    }
+    .modify-left .mdf-table .ipt-item .icon-tupian{
+    	font-size: 18px;
+    }
+    .bootstrap-select > .dropdown-toggle.bs-placeholder,.bootstrap-select .dropdown-toggle{
+        height: 100%;
+        line-height: 100%;
+        border-radius: 0;
+    }
+    .bootstrap-select > .dropdown-toggle.bs-placeholder:hover, .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, .bootstrap-select > .dropdown-toggle.bs-placeholder:active, .btn-group .dropdown-toggle:active{
+
+    }
+    .mdf-table-cell-long .mdf-table-cell-r .txt-content{
+        padding: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .modify-left .mdf-table .ipt-item3{
+        min-width: 20%;
+        max-width: 100%;
+        background-color: transparent;
+        float: left;
+        height: 34px;
+        line-height: 34px;
+    }
+    .modify-left .tableDiv:not(:first-child){
+        margin-top: 20px;
+    }
+    .modify-left .tableDiv .delete-model{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+        color: #ccc;
+        font-size: 12px;
+    }
+    .itemHidden{
+        height: 70px;
+        overflow: hidden;
+    }
+    .iconGoRight{
+	    display: inline-block;
+	    margin-left: 3px;
+	    width: 18px;
+	    height: 11px;	    
+    }
+    .requireCheckbox{
+    	border: 1px solid #f8f8f8;
+    }
+</style>
+<div class="person-main clearFloat" set-min-height="50">
+    <!-- 左边导航  start-->
+    <div class="person-main-left" set-max-height="115">
+        <div class="resume-btn">
+            <!--<div class="btn-group" style="width: 100%">
+                <button style="width: 100%;border-radius: 0;box-sizing: border-box;" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    中文简历
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">中文简历</a></li>
+                    <li><a href="#">英文简历</a></li>
+                </ul>
+            </div>-->
+        </div>
+        <ul class="PML-menu">
+            <li ng-repeat="option in resumeInfo track by $index" edit-click-target="nav_{{option[0].id}}" ng-class="{'mc-c mc-bc': $index == 0}" title="{{option[0].name}}">{{option[0].name}}</li>
+        </ul>
+    </div>
+    <!-- 左边导航  end-->
+    <!-- 右边主体部分 start-->
+    <div class="person-main-right" id="edit-resume" edit-scroll-target>
+        <div class="wt-detail-main">
+            <div class="wt-dtl-container">
+                <div class="modify-main">
+                    <form id="myForm" name="myForm" action="">
+                        <div class="modify-left">
+                            <!--渲染模板-->
+                            <!--1－文本框，2－日期，3—单选按钮，4－下拉框，5－复选框，
+                                6－文本域 ,7-多选列表框, 8-文件类型,9-二级联动下拉,
+                                10-多级多选,11-多级单选-->
+                            <div class="edit-resume-div" id="nav_{{option[0].id}}" ng-repeat="option in resumeInfo track by $index">
+                                <div ng-repeat="op in option track by $index">
+                                    <input type="hidden" name="{{op.id}}_{{$index+1}}_status" value="0"/>
+                                    <input type="hidden" name="{{op.id}}_{{$index+1}}_valid_status" value="0"/>
+                                    <input ng-if="op.recordId && urlParams.resumeId && !urlParams.goPerfect" type="hidden" name="{{op.id}}_{{$index+1}}_f_id" value="{{op.recordId}}"/>
+
+                                    <div ng-show="$index == 0" class="mdf-tit">
+                                        <font></font>
+                                        <span ng-show="op.required" class="wt-icon60-80"></span>
+                                        <p>{{op.name}}</p>
+                                        <span class="wt-icon580-60"></span>
+                                    </div>
+                                    <div class="tableDiv">
+                                        <span ng-hide="$index == 0" ng-click="deleteModel($parent.$index,$index,op.recordId,op.code);" style="" class="delete-model iconfont icon-shanchu1"></span>
+
+                                        <div class="mdf-table clearFloat">
+                                            <div ng-repeat="o in op.infoItemList track by $index">
+
+                                                <div ng-if="o.fillType != 6 &&(o.fillType == 1 || o.fillType == 2 || o.fillType == 3 || o.fillType == 4 || o.fillType == 5 || o.fillType == 8 || o.fillType == 9 || o.fillType == 11)" class="mdf-table-cell">
+                                                    <div class="mdf-table-cell-l" title="{{o.name}}"><span ng-show="o.required" class="wt-icon60-80"></span>{{o.name}}</div>
+                                                    <div class="mdf-table-cell-r">
+                                                        <dy-form code="{{o.dataSource}}" name-num="{{op.id}}_{{o.id}}_{{$parent.$parent.$index+1}}" data="{{o}}"></dy-form>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="o.fillType == 6" class="mdf-table-cell mdf-table-cell-long">
+                                                    <div class="mdf-table-cell-l" title="{{o.name}}"><span ng-show="o.required" class="wt-icon60-80"></span>{{o.name}}</div>
+                                                    <div ng-if="o.fillType == 6" class="mdf-table-cell-r">
+                                                        <!--6－文本域-->
+                                                        <div>
+                                                            <textarea msg="{{o.name}}" ng-class="{'requireInput': o.required}" name="{{op.id}}_{{o.id}}_{{$parent.$parent.$parent.$index+1}}" class="txt-content"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div ng-click="addModel($index,option[0]);" ng-if="(option[0].id >= 14 && option[0].id <= 21) || option[0].id == 40 || option[0].id == 43 || option[0].id == 44 || option[0].id == 45 || option[0].id ==100701 || option[0].id ==100802|| option[0].id == 100803" class="add-exp"><span class="wt-icon640-40"></span><a class="sc-c" href="">{{lanTypeAddMore}} {{option[0].name}}</a></div>                              
+                            </div>
+
+                            <div class="next-step">                                
+                                <button ng-click="save(1);" class="button button--winona sc-c sc-bc next-step-save" data-text="{{lanTypeExit}}" type="button">
+                                    <span>{{lanTypeExit}}</span>
+                                    <div class="after">{{lanTypeExit}}</div>
+                                </button>
+                                <button click-and-disable="" ng-show="urlParams.postId" ng-click="save(2);" class="button button--winona mc-bgc" data-text="{{lanTypeApply}}" type="button">
+                                    <span>{{lanTypeApply}}</span>
+                                    <div class="after">{{lanTypeApply}}</div>
+                                </button>
+                            </div>                        
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右边主体部分 end-->
+</div>
+
+<!--start提示英文简历-->
+<div id="choose-lantype" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-no">
+            	<span class="model-close" data-dismiss="modal">
+                	<a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+            	</span>
+            </div>
+            <div class="modal-body clearFloat" style="max-height: 400px;overflow: hidden;">
+            	<style>
+            		.lantype-mian-top{
+            		    width: 310px;
+    					margin: 20px auto;
+    					line-height: 30px;
+    					font-size: 16px;
+    					color: black;
+            		}
+            		.lantype-mian-top span{
+            			font-size: 14px;
+    					cursor: pointer;
+    					border-bottom: 1px solid;
+    					vertical-align: top;
+            		}
+            		.hint-btn{
+                        margin-top: 30px;
+                        text-align: center;
+                    }
+                    .hint-btn .button--winona{
+                        width: 120px;
+    					height: 40px;
+    					line-height: 40px;
+    					margin: 0 10px;
+    					box-sizing: border-box;
+                    }
+                    .tintBtn{
+                        filter:alpha(opacity=50); 
+                        -moz-opacity:0.5; 
+                        opacity:0.5;
+                    }
+            	</style>
+				<div class="lantype-mian">
+					<div class="lantype-mian-top" ng-if="urlParams.lanType == 1">
+						 {{language.editResume.toImproveEn}}<span class="mc-c mc-bc" ng-click="goModifyResume();">{{language.editResume.resumeEnglish}}<i class="iconGoRight"></i></span>
+					</div>
+		           	<div class="lantype-mian-top" ng-if="urlParams.lanType == 2">
+						 {{language.editResume.toImproveCn}}<span class="mc-c mc-bc" ng-click="goModifyResume();">{{language.editResume.resumeChinese}}<i class="iconGoRight"></i></span>
+					</div>
+		           	<div class="hint-btn">
+                        <button data-dismiss="modal" class="btn-cancle button button--winona tintBtn mc-bgc" data-text="{{language.editResume.cancel}}">
+                            <span>{{language.editResume.cancel}}</span>
+                            <div class="after">{{language.editResume.cancel}}</div>
+                        </button>
+                        <button ng-click="directDelivery();" class="btn-ok button button--winona mc-bgc" data-text="{{language.editResume.directDelivery}}">
+                            <span>{{language.editResume.directDelivery}}</span>
+                            <div class="after">{{language.editResume.directDelivery}}</div>
+                        </button>
+                    </div>
+        		</div> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--end提示英文简历-->
+
+
+<!--start简历列表弹窗-->
+<dy-resume-list resume-list="resumeList"></dy-resume-list>
+<!--end简历列表弹窗-->

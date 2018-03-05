@@ -1,0 +1,102 @@
+<style>
+    .startMain{
+        width: 1200px;
+        padding-top: 10px;
+        border: 1px solid #e1e1e1;
+        margin: 70px auto 10px;
+        background-color: #fff;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .startMain p{
+        margin-top: 20px;
+        font-size: 20px;
+        color: #2a2a38;
+        line-height: 40px;
+    }
+    .dayeeQR{
+        display: block;
+        margin: 20px auto 0;
+    }
+    p.deliveringP{
+        color: #d4d4d4;
+        margin-top: 20px;
+    }
+    .button{
+        margin: 20px;
+        line-height: 38px;
+    }
+    .tintBtn{
+        background-color: #b2da81;
+    }
+    .width180{
+        width: 180px;
+    }
+    .width320{
+        width: 320px;
+        height: 45px;
+        font-size: 16px;
+    }
+    p.hintInformation{
+        font-size: 14px;
+        color: #76757b;
+    }
+    .button--winona::after {
+        top: 0;
+    }
+    .tintBtn{
+        filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+        -moz-opacity:0.5; /*Firefox私有，透明度50%*/
+        opacity:0.5;/*其他，透明度50%*/
+    }
+    .startMain-img{
+        width: 400px;
+        height: auto;
+        margin: 0 auto;
+        position: relative;
+    }
+    .startMain-img img{
+        width: 100%;
+        height: auto;
+    }
+    .icon-feiji{
+        position: absolute;
+        font-size: 90px;
+        left: 0px;
+        bottom: 0;
+    }
+    .startMain-img-span{
+        font-size: 30px;
+        position: absolute;
+        top: 45px;
+        left: 30%;
+    }
+    .icon-chenggong{
+        font-size: 40px;
+        vertical-align: middle;
+
+    }
+</style>
+
+<!-- 中间图片部分  start-->
+<div class="startMain" set-min-height="130">
+    <div class="startMain-img">
+        <img ng-src="images/delivering1.png"/>
+        <span class="iconfont icon-feiji mc-c"></span>
+        <span class="startMain-img-span sc-c"><i class="iconfont icon-chenggong sc-c"></i>{{language.deliverySuccess.deliverySuccessful}}</span>
+    </div>
+
+    <img class="dayeeQR" ng-src="{{wechatQRUrl}}">
+    <p class="deliveringP">{{language.deliverySuccess.applyingDynamic}}</p>
+    <div>
+        <button ng-click="seeOtherJob();" class="button button--winona tintBtn mc-bgc" data-text="{{language.deliverySuccess.otherPositions}}">
+            <span>{{language.deliverySuccess.otherPositions}}</span>
+            <div class="after">{{language.deliverySuccess.otherPositions}}</div>
+        </button>
+        <button ng-click="seeApply();" class="button button--winona mc-bgc" data-text="{{language.deliverySuccess.applicationProgress}}">
+            <span>{{language.deliverySuccess.applicationProgress}}</span>
+            <div class="after">{{language.deliverySuccess.applicationProgress}}</div>
+        </button>
+    </div>
+</div>
+<!-- 中间图片部分  end-->

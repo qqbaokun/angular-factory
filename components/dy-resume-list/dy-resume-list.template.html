@@ -1,0 +1,302 @@
+<div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 470px;">
+        <div class="modal-content">
+            <div class="modal-header modal-header-no"><!-- ng-class="{'modal-header-no': !$ctrl.resumeList.hasCompleteResume}" -->
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+                <!-- <h4 class="modal-title mc-bc">选择简历</h4> -->
+            </div>
+            <div class="modal-body">
+                <style>
+                    .main-content-model{
+                        margin: 0 auto;
+                        font-size: 12px;
+                        color: #6a696f;
+                        line-height: 30px;
+                        text-align: center;
+                    }
+                    .main-content-model .hint-one{
+                        border: 1px dashed #e1e1e1;
+                        padding: 20px 0;
+                    }
+                    h2{
+                        font-size: 16px;
+                        color: #2c2d3a;
+                        font-weight: 100;
+                        margin-bottom: 10px;
+                        font-family: "微软雅黑";
+                    }
+                    .radioC{
+                        text-align: left;
+                        padding-left: 60px;
+                        font-size: 14px;
+                        margin: 10px 0;
+                    }
+                    .radioC span,.radioC a,.radioC i{
+                    	vertical-align: middle;
+                    }
+                    .radioU{
+                        display: inline-block;
+   						border-bottom: 1px solid;
+   						line-height: 18px;
+    					cursor: pointer;
+                    }
+                    .radioC .radioC-r{
+                    	width: 150px;
+    					display: inline-block;
+    					white-space: nowrap;
+    					overflow: hidden;
+    					text-overflow: ellipsis;
+                    }
+                    .fontColorC{
+                        color:#ff9f15 ;
+                        cursor: pointer;
+                        font-size: 18px;
+    					margin-left: 5px;
+                    }
+                    .iconGoRight{
+                        display: inline-block;
+                        margin-left: 3px;
+                        width: 18px;
+                        height: 11px;                        
+                    }
+
+
+                    .hint-btn{
+                        margin-top: 30px;
+                    }
+                    .hint-btn .button--winona{
+                        width: 144px;
+                        height: 36px;
+                        line-height: 36px;
+                        margin: 0 12px;
+                    }
+                    .tintBtn{
+                        filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+                        -moz-opacity:0.5; /*Firefox私有，透明度50%*/
+                        opacity:0.5;/*其他，透明度50%*/
+                    }
+                    input[type="radio"], input[type="checkbox"]{
+                        margin: 0;
+                    }
+
+                    /*单个简历*/
+                    .hint-title{
+                        font-size: 18px;
+                        color: #2a2a38;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .hint-title b{
+                        font-weight: 100;
+                    }
+                    .hint-title i{
+                        font-size: 40px;
+                    }
+                    .hint-title i,.hint-title span{
+                        vertical-align: middle;
+                    }
+                    .hint-perfect-resume{
+                        margin-top: 20px;
+                        font-size: 16px;
+                    }
+                    .hint-perfect-resume p a i{
+                    	font-size: 18px;
+                    }
+                    .hint-perfect-resume button{
+                        line-height: 40px;
+                    }
+                    .changeResume{
+                        font-size: 14px;
+                    }
+                    .createResume{
+                        height: 36px;
+                        width: 170px;
+                        border: 1px solid #ff9f15;
+                        color: #ff9f15;
+                        font-size: 14px;
+                        background-color: transparent;
+                        border-radius: 40px;
+                        margin-top: 10px;
+                    }
+                    .createResume:hover{
+                        color: #fff;
+                        background-color: #ff9f15;
+                    }
+                    .hint-use-resume{                        
+                        font-size: 14px;
+                    }
+                    .hint-use-resume a{
+                        color: #ff9f15;
+                        margin: 0 5px;
+                    }
+                    .hintPosition{
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+                    .hint-volunteer{
+                        color: #2a2a38;
+                        font-size: 12px;
+                        margin-top: 20px;
+                    }
+                    .hint-volunteer a{
+                        display: inline-block;
+                        margin: 0 5px;
+                        width: 16px;
+                        height: 16px;
+                        border: 1px solid #63b504;
+                        font-size: 14px;
+                        text-decoration: none;
+                        vertical-align: text-bottom;
+                        line-height: 16px;
+                        color: #63b504;
+                        cursor: pointer;
+                        position: relative;
+                    }
+                    .hint-volunteer a.choose::after,.hint-volunteer a.onChoose::after{
+                        content: "";
+                        border: 3px solid;
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        border-top: 3px solid transparent;
+                        border-left: 3px solid transparent;
+                    }
+                    .hint-volunteer a.choosed{
+                        background-color: #c9c9c9;
+                        border-color: #c9c9c9;
+                        color: #fff;
+                        cursor: no-drop;
+                    }
+                    .volunteerInfo{
+                        /* display: none; */
+                    }
+                    .hint-btn{
+                        margin-top: 30px;
+                    }
+                    .hint-btn .button--winona{
+                        width: 170px;
+                        height: 36px;
+                        margin: 0 12px;
+                    }
+                    .tintBtn{
+                        filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+                        -moz-opacity:0.5; /*Firefox私有，透明度50%*/
+                        opacity:0.5;/*其他，透明度50%*/
+                    }
+                </style>
+                <div class="main-content-model">
+                	<!-- 可投递数 -->
+                	<div ng-show="$ctrl.resumeList.data.maxApplyNum <= 3" class="hint-title hint-one">
+                        <i class="icon-dengpao iconfont sc-c" style="color:#ff9f15;"></i>
+                        <span>{{language.resumeList.alsoDeliver}}<b class="sc-c">{{$ctrl.resumeList.data.maxApplyNum}}</b>{{language.resumeList.positions}}</span>
+                    </div>
+                    <!-- 有简历 -->
+                    <div ng-if="!($ctrl.resumeList.data.resumeList.length == 1 && $ctrl.resumeList.hasCompleteResume) && !$ctrl.resumeList.data.resumeId" >
+                        <h2 ng-show="!$ctrl.resumeList.hasCompleteResume">{{language.resumeList.needPerfect}}</h2>
+                        <h2 ng-show="$ctrl.resumeList.hasCompleteResume">{{language.resumeList.chooseResumeDeliver}}【{{$ctrl.resumeList.PostName}}】</h2>
+                        <div class="radioC" ng-repeat="info in $ctrl.resumeList.data.resumeList" ng-hide="!info.finishStatus && $ctrl.resumeList.hasCompleteResume">
+                            <label>
+                            	<input ng-show="info.finishStatus" ng-model="$parent.$parent.listResumeVal" type="radio" name="radio1" value="{{info.resumeId}}"/>
+                            	<span ng-click="goPreviewResume(info);" class="radioU mc-c mc-bc">
+                            		<span class="radioC-l">【{{info.recruitTypeName}}】</span>
+                            		<span class="radioC-r" title="{{info.resumeName}}">{{info.resumeName}}</span>
+                            	</span>       	
+                            </label>
+                            <a ng-show="!info.finishStatus" ng-click="goModify(info);" class="fontColorC sc-c">{{language.resumeList.toImprove}}<i class="iconfont icon-youjiantou1 sc-c"></i></a>
+                        </div>
+                    </div>
+                    
+                   	<!--  没有简历其他招聘类型有简历 -->
+                    <div ng-if="($ctrl.resumeList.data.resumeId && !$ctrl.resumeList.quickApply)?true:false" class="hint-perfect-resume hint-one">
+                        <p>{{language.resumeList.oneNeedsPerfected}}&nbsp;<a class="fontColorC sc-c" ng-click="goPerfect($ctrl.resumeList.data);">{{language.resumeList.toImprove}}<i class="iconfont icon-youjiantou1 sc-c"></i></a></p>
+                        <p class="changeResume">{{language.resumeList.orRecreate}}</p>
+                        <button ng-click="createResume($ctrl.resumeList);" class="btn-ok button button--winona mc-bgc" data-text="{{language.resumeList.createResume}}" type="button">
+                            <span>{{language.resumeList.createResume}}</span>
+                            <div class="after">{{language.resumeList.createResume}}</div>
+                        </button>
+                    </div>
+                    
+                  	<!--  只有一份简历且完整 -->
+                    <div ng-if="$ctrl.resumeList.data.resumeList.length == 1 && $ctrl.resumeList.hasCompleteResume" class="hint-use-resume hint-one">
+                        <p>{{language.resumeList.whetherUse}}<a ng-click="goPreviewResume($ctrl.resumeList.data.resumeList[0]);" class="fontColorC sc-c"><span ng-show="$ctrl.resumeList.data.resumeList[0].resumeLanguage == 1">【{{language.footer.cn}}】</span><span ng-show="$ctrl.resumeList.data.resumeList[0].resumeLanguage == 2">【{{language.footer.en}}】</span>{{$ctrl.resumeList.data.resumeList[0].resumeName}}</a>{{language.resumeList.deliveryPosition}}</p>
+                        <p class="hintPosition">{{$ctrl.resumeList.PostName}}</p>
+                    </div>
+					<!-- 选择志愿 -->
+					<div ng-if="$ctrl.resumeList.hasCompleteResume &&  ($ctrl.resumeList.RecruitType == 1 || $ctrl.resumeList.RecruitType == 13)&& $ctrl.resumeList.data.wishNum.length != 0" class="hint-volunteer hint-one" >
+            			<p>
+            				{{language.resumeList.willBe}}
+            				<a ng-repeat="a in $ctrl.resumeList.data.wishNum track by $index" ng-click="choosewishNum(a);" ng-class="{'choosed':a.selected == 0 && a.canEditCampWishNum == 1,'mc-c mc-bc': a.canEditCampWishNum == 0 || a.selected == 1}" choose-wish>{{a.num}}</a>
+            				{{language.resumeList.volunteer}}
+            			</p>
+            			<span ng-repeat="b in $ctrl.resumeList.data.wishNum track by $index" ng-show="b.canEditCampWishNum == 0 && wishNum == b.num && b.selected == 0" class="volunteerInfo sc-c">（{{language.resumeList.willReplace}}{{b.num | changeNum}}{{language.resumeList.volunteerPositions}}{{b.positionName}}）</span>
+        			</div>
+                    <div class="hint-btn" ng-show="$ctrl.resumeList.hasCompleteResume">
+                        <button data-dismiss="modal" class="btn-cancle button button--winona tintBtn mc-bgc" data-text="{{language.resumeList.considerAgain}}">
+                            <span>{{language.resumeList.considerAgain}}</span>
+                            <div class="after">{{language.resumeList.considerAgain}}</div>
+                        </button>
+                        <button ng-click="confirmDelivery(listResumeVal);" class="btn-ok button button--winona mc-bgc" data-text="{{language.resumeList.confirmationDelivery}}">
+                            <span>{{language.resumeList.confirmationDelivery}}</span>
+                            <div class="after">{{language.resumeList.confirmationDelivery}}</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--start选择站点-->
+<div id="mySite" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width: 500px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <span class="model-close" data-dismiss="modal">
+                        <a href="javascript:void(0);" class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></a>
+                    </span>
+                <h4 class="modal-title mc-bc">{{language.resumeList.selectSite}}</h4>
+            </div>
+            <div class="modal-body clearFloat">
+            	<style>
+            		#mySite .main-site>p{    font-size: 16px;line-height: 25px;color: black;}
+            		#mySite .main-site .row{margin: 10px;line-height: 25px;}
+            		#mySite .main-site .col-xs-1 input{width: 16px;height: 16px;}
+            		#mySite .main-site .col-xs-1,#mySite .main-site .col-xs-10{padding: 0;}
+            		#mySite .main-site .site-t{font-size: 16px;}
+            		#mySite .main-site .site-b{font-size: 14px;color: #aaa;}
+            		#mySite .site-footer{text-align: center;margin-top: 30px;} 
+            		#mySite .site-footer button{width: 66%;height: 40px;line-height: 40px;cursor: default;background-color: #e0e0e0;}   
+            		#mySite .site-footer .btn-ok{cursor: pointer;}
+            		#mySite .site-footer p{text-align: center;font-size: 14px;margin-top: 20px;}
+            	</style>
+				<div class="main-site" style="max-height: 400px;overflow: auto;">
+		        	<p>【{{$ctrl.resumeList.PostName}}】{{language.resumeList.nearestSite}}</p>
+		        	<div ng-repeat="a in $ctrl.resumeList.site track by $index" class="row">
+		        		<div class="col-xs-1"></div>
+		        		<div class="col-xs-1">
+		        			<input ng-model="$parent.site" value="{{a.id}}" name="site" type="radio"/>
+		        		</div>
+		        		<div class="col-xs-10">
+		        			<p class="site-t">{{a.name}}</p>
+		        			<p class="site-b">{{a.time}}</p>
+		        		</div>
+		        	</div>		        	
+        		</div>
+        		<div class="site-footer">
+						<button ng-show="!site" class="btn-ok button button--winona" data-text="{{language.applyPosition.nextstep}}">
+                            <span>{{language.applyPosition.nextstep}}</span>
+                            <div class="after">{{language.applyPosition.nextstep}}</div>
+                        </button>
+						<button ng-show="site" ng-click="chooseSite(site);" class="btn-ok button button--winona mc-bgc" data-text="{{language.applyPosition.nextstep}}">
+                            <span>{{language.applyPosition.nextstep}}</span>
+                            <div class="after">{{language.applyPosition.nextstep}}</div>
+                        </button>
+                        <p class="sc-c">{{language.resumeList.note}}</p>
+					</div> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--end选择站点-->

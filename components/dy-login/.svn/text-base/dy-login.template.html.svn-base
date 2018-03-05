@@ -1,0 +1,524 @@
+<style>
+    @-webkit-keyframes flip {
+        0% {
+            -webkit-transform:perspective(2000px) rotateY(0deg)
+        }
+        100% {
+            -webkit-transform:perspective(2000px) rotateY(90deg)
+        }
+    }    
+    @keyframes flip {
+        0% {
+            transform:perspective(2000px) rotateY(0deg)
+        }
+        100% {
+            transform:perspective(2000px) rotateY(90deg)
+        }
+    }
+    @-webkit-keyframes flip_out {
+        0% {
+            -webkit-transform:perspective(2000px) rotateY(-90deg)
+        }
+        100% {
+            -webkit-transform:perspective(2000px) rotateY(0deg)
+        }
+    }
+    @keyframes flip_out {
+        0% {
+            transform: perspective(2000px) rotateY(-90deg)
+        }
+        100% {
+            transform: perspective(2000px) rotateY(0deg)
+        }
+    }
+    .loginContent{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 99998;
+        display: none;
+    }
+    .loginContentBack{
+    	display:none;
+    	position:fixed;
+    	width:100%;
+    	height:100%;
+    	top:0;
+    	left:0;
+        background: rgba(0,0,0,.3);
+    	z-index:100;
+    }
+    .login-main.switching{        
+        -webkit-animation: flip .4s linear, flip_out .4s .4s linear;        
+        animation: flip .4s linear, flip_out .4s .4s linear;
+    }
+    .login-main,.findPass{
+        width: 420px;
+        font-size: 12px;
+        box-shadow: 0 2px 5px rgba(0,0,0,.3);
+        border-radius: 4px;
+        background: #fff;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin: -177px 0 0 -210px;
+        text-align: center;
+        padding: 30px 0 20px;
+    }
+
+    .closeBtn{
+        position: absolute;
+        background-color: white;
+        right: -10px;
+        top: -10px;
+        padding: 4px;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+    .closeBtn .mc-bgc{
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+        line-height: 20px;
+        display: inline-block;
+        text-align: center;
+    }
+    .closeBtn .mc-bgc i{
+        color: white;
+        font-size: 14px;
+        display: inline-block;
+        width: 20px;
+    	height: 20px;
+    	line-height: 20px;
+    	vertical-align: top;
+    }
+    .closeBtn .icon-delete{
+        font-size: 25px;
+    }
+	.login-logo img{
+		max-width: 120px;
+		max-height: 40px;
+	}
+    .login-page input,.findPass input,.register input{
+        width: 320px;
+        box-sizing: border-box;
+        height: 42px;
+        line-height: 42px;
+        padding-left: 10px;
+        margin-top: 30px;
+        border: 1px solid #efefef;
+        background-color: #efefef;
+        color: #555560;
+        border-radius: 3px;
+    }
+    .login-page{
+        height: 264px
+    }
+    .login-page .row{
+        position: relative;
+        padding: 0;
+    }
+    .login-page button{
+        width: 320px;
+        cursor: auto;
+        height: 44px;
+        line-height: 44px;
+        margin-top: 30px;
+        background-color: #e0e0e0;
+        color: #2a2a38;
+        border: 0;
+        border-radius: 3px;
+        margin-left: 0;
+    }
+    .login-page button.mc-bgc{
+    	cursor: pointer;
+    }
+    .login-foot{
+        width: 320px;
+        margin:30px auto;
+    }
+    .left{
+        float: left;
+        color: #ffb03d;
+        cursor: pointer;
+    }
+    .right,.rememberPass{
+        float: right;
+        color: #63b504;
+        cursor: pointer;
+    }
+    .login-hook1,.login-hook2,.login-hook3{
+        position: absolute;        
+        width: 14px;
+        height: 14px;
+        left: 350px;
+        top: 46px;
+    }
+    .login-hook4{
+    	position: absolute;
+    	right: 72px;
+    	top: 45px;
+    	font-size: 14px;
+    	cursor: pointer;    	
+    }
+    .login-hook4 i{
+    	font-style: normal;
+    	vertical-align: middle;
+    	display: inline-block;
+    	height: 16px;
+    	line-height: 16px;
+    }
+    .login-hook5{
+    	position: absolute;
+    	font-size: 14px;
+    	right: 72px;
+    	top: 46px;
+    }
+    .login-hook6{
+    	position: absolute;
+    	right: 71px;
+    	top: 45px;
+    }
+    .passLogin,.QRLogin{
+        position: absolute;
+        background: #fff;
+        width: 100%;
+    }
+    .qh-QR{
+        display: block;
+        width: 59px;
+        height: 59px;
+        position: absolute;
+        right: 0;
+        top: 225px;
+        background-position: -59px 0;
+        border: 0;border-radius: 0 0 3px 0;
+        z-index: -1;
+        cursor: pointer;
+    }
+    .qh-pass{
+        display: block;
+        width: 59px;
+        height: 59px;
+        position: absolute;
+        right: 0;
+        top: 225px;
+        background-position:0 -59px ;
+        border: 0;
+        border-radius: 0 0 3px 0;
+        cursor: pointer;
+    }
+
+    .QRLoginImg{
+        margin-top: 27px;
+        width: 167px;
+        height: auto;
+    }
+    .QRLoginText{
+        line-height: 70px;
+        color: #61b505;
+        font-size: 12px;
+    }
+    .errorPass,.noFindEmail,.errorCode,.userErrorCode{       
+        position: absolute;
+        font-size: 14px;
+        line-height: 12px;
+        text-align: left;
+        right: 76px;
+        top: 46px;
+    }
+    .errorPass{
+    	display: none;
+    }
+    .errorCode{
+        top: 47px;
+        right: 178px;
+    }
+    .userErrorCode{
+        top: 46px;
+        right: 176px;
+    }
+    /*��¼���ֵ��뵭��Ч��*/
+
+    .login-page .img-1 {opacity:1;z-index: 100}
+    .login-page .img-2 {opacity:0;z-index: 50}
+    div.div-opacity .img-1 {opacity:0}
+    div.div-opacity .img-2 {opacity:1}
+
+    .login-page > *
+    {
+        transition:all .6s ease-in-out;
+        -webkit-transition:all .6s ease-in-out;
+        -moz-transition:all .6s ease-in-out;
+        -ms-transition:all .6s ease-in-out;
+        -o-transition:all .6s ease-in-out;
+    }
+
+    div.div-opacity > *
+    {
+        transition:all 1.2s ease-in-out;
+        -webkit-transition:all 1.2s ease-in-out;
+        -moz-transition:all 1.2s ease-in-out;
+        -ms-transition:all 1.2s ease-in-out;
+        -o-transition:all 1.2s ease-in-out;
+    }
+
+    /*ע�Ჿ��*/
+    .register .captchaInput,.findPass .userInput{
+        width: 218px;
+    }
+    .register .row{
+        position: relative;
+    }
+    .findPass .row{
+        position: relative;
+    }
+    .captchaImg{
+        display: inline-block;
+        width: 90px;
+        height: 44px;
+        margin-left: 8px;
+        background-color: #efefef;
+        color: #fff;
+        border: 0;
+        border-radius: 3px;
+        position: relative;
+        vertical-align: bottom;
+        cursor: pointer;
+    }
+    .captchaImg img{
+        width: 58px;
+        height: 24px;
+        margin-top: 10px;
+    }
+    .register{
+        display: none;
+    }
+    .register button{
+        width: 320px;
+        height: 44px;
+        line-height: 44px;
+        margin-top: 30px;
+        background-color: #e0e0e0;
+        color: black;
+        border: 0;
+        border-radius: 3px;
+        margin-left: 0;
+    }
+    button.login-btn{
+        color: #fff;
+        cursor: pointer;
+    }
+    .goRight{
+        display: inline-block;
+        margin-left: 3px;
+        width: 0;
+        height: 0;
+        border:6px solid #63b504;
+        border-right: 0;
+        border-top: 5px solid #fff!important;
+        border-bottom: 5px solid #fff!important;
+    }
+    /*�һ����벿��*/
+
+    .findPass{
+        display: none;
+        margin-top: -200px;
+    }
+    .findPass-title{
+        font-size: 18px;
+    }
+    button.register-btn{
+        width: 320px;
+        height: 44px;
+        line-height: 44px;
+        margin-top: 30px;
+        background-color: #e0e0e0;
+        color: black;
+        border: 0;
+        border-radius: 3px;
+        cursor: auto;
+    }
+    .register-btn.mc-bgc{
+    	cursor: pointer;
+    	color: white;
+    }
+    /*���伤���*/
+    .activateAccount{
+        display: none;
+        height: 310px;
+    }
+    .activateAccount img{
+        height: 198px;
+        width: 192px;
+    }
+    .activateAccountHint{
+        font-size: 24px;
+        color:#63b504;
+        line-height: 24px;
+        display: none;
+    }
+    .activateAccountInfo{
+        font-size: 16px;
+        line-height: 36px;
+        color: #555560;
+    }
+    .activateAccountKnow{
+        font-size: 16px;
+        line-height: 52px;
+        color: #ff9f15;
+        cursor: pointer;
+    }
+    .activateAccountKnow:hover{
+    	text-decoration: underline!important;
+    }
+</style>
+<div class="loginContentBack"></div>
+<div class="loginContent">
+    <div class="login-main">
+        <div class="closeBtn">
+            <span class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></span>
+        </div>
+        <div class="login-logo">
+            <img ng-src="{{corpLogoUrl}}">
+        </div>
+        <!-- 登录部分start-->
+        <div class="login-page">
+            <div class="passLogin img-1">
+                <form name="myFormLogin">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <input ng-model="login.email" name="email" class="userName" type="text" ng-required placeholder="{{language.login.enterMailbox}}" data-text="{{language.login.enterMailbox}}" ng-focus="focus=true" ng-blur="focus=false">
+                            <span class="noFindEmail sc-c">{{language.login.incorrectMailboxFormat}}</span>
+                            <i class="login-hook2"></i>
+                            <span class="login-hook5 sc-c">{{language.login.mailboxNotExist}}</span>
+                        </div>
+                        <div class="row">
+                            <input ng-model="login.password" name="login" class="userPass" type="password" placeholder="{{language.login.inputPassword}}" data-text="{{language.login.inputPassword}}"/>
+                            <span class="errorPass sc-c">{{language.login.passwordError}}</span>
+                        </div>
+                        <div class="row">
+                            <button ng-hide="!myFormLogin.$invalid && login.password !=='' && login.password!=undefined && !loginHook5" class="button button--winona denglu" data-text="{{language.login.signIn}}">
+                                <span>{{language.login.signIn}}</span>
+                                <div class="after">{{language.login.signIn}}</div>
+                            </button>
+                            <button ng-show="!myFormLogin.$invalid && login.password !=='' && login.password!=undefined && !loginHook5" ng-click="loginUser(login)" ng-disabled="myFormLogin.$invalid || login.password=='' || login.password==undefined" class="button button--winona denglu login-btn mc-bgc" data-text="{{language.login.signIn}}" type="button">
+                                <span>{{language.login.signIn}}</span>
+                                <div class="after">{{language.login.signIn}}</div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!--<button>登录</button>-->
+                <div class="login-foot">
+                    <a class="left forgetPass sc-c" ng-click="refreshCode(2);">{{language.login.forgetPassword}}</a>
+                    <a class="right mc-c" ng-click="refreshCode(1);">{{language.login.goToRegistration}}</a>
+                </div>
+                <div class="qh-QR"></div>
+            </div>
+            <div class="QRLogin img-2">
+                <!-- <img class="QRLoginImg" src="images/loginQR.png"> -->
+                <img class="QRLoginImg" ng-src="{{qrImg}}">
+                <p class="QRLoginText mc-c">{{language.login.weChatSweep}}</p>
+                <div class="qh-pass"></div>
+            </div>
+        </div>
+        <!-- 登录部分end-->
+        <!-- 注册部分start-->
+        <div class="register">
+            <form name="myFormRegister">
+                <div class="row">
+                    <input ng-model="register.email" name="email" type="text" class="registerEmail" ng-required placeholder="{{language.login.enterAccount}}" data-text="{{language.login.enterAccount}}" ng-focus="focus2=true" ng-blur="focus2=false">
+                    <span class="noFindEmail noFindEmailThe sc-c">{{language.login.incorrectMailboxFormat}}</span>
+                    <i class="login-hook2 login-hookOen"></i>
+                    <span class="login-hook6 sc-c">{{language.login.mailboxExisted}}</span>
+                </div>
+
+                <div class="row">
+                    <input ng-model="register.password" name="password" type="password" class="registerPassword" ng-required placeholder="{{language.login.setPassword}}" data-text="{{language.login.setPassword}}">
+                </div>
+
+                <div class="row">
+                    <input ng-model="register.password2" name="password2" type="password" class="registerPassword2" ng-required placeholder="{{language.login.setPasswordAgain}}" data-text="{{language.login.setPasswordAgain}}" ng-focus="focus3=true" ng-blur="focus3=false">
+                    <span class="noFindEmail contrastCipher sc-c">{{language.login.twoInconsistencies}}</span>
+                    <i class="login-hook2 hidden"></i>
+                </div>
+
+                <div class="row">
+                    <input ng-model="register.validateCode" name="validateCode" class="captchaInput" type="text" ng-required ng-maxlength="4" ng-minlength="4" placeholder="{{language.login.verificationCode}}" data-text="{{language.login.verificationCode}}">
+                    <span ng-show="myFormRegister.validateCode.$error.maxlength || myFormRegister.validateCode.$error.minlength" class="errorCode sc-c">{{language.login.verificationCodeError}}</span>
+                    <span ng-click="refreshCode(1);" class="captchaImg">
+                        <img ng-src="{{registerCodeUrl}}">
+                    </span>
+                </div>
+
+                <button ng-hide="!myFormRegister.$invalid && register.password==register.password2 && register.validateCode!='' && !loginHook6" ng-disabled="myFormRegister.$invalid || register.password!=register.password2 || register.validateCode ==''" class="button button--winona register-btn zhuce" data-text="{{language.login.register}}" type="button">
+                    <span>{{language.login.register}}</span>
+                    <div class="after">{{language.login.register}}</div>
+                </button>
+                <button ng-show="!myFormRegister.$invalid && register.password==register.password2 && register.validateCode!='' && !loginHook6" ng-click="registerUser(register)" ng-disabled="myFormRegister.$invalid || register.password!=register.password2 || register.validateCode ==''" class="button button--winona register-btn zhuce login-btn mc-bgc" data-text="{{language.login.register}}" type="button">
+                    <span>{{language.login.register}}</span>
+                    <div class="after">{{language.login.register}}</div>
+                </button>
+                <div class="login-foot">
+                    <a class="right mc-c" ng-click="refreshCode(3);">{{language.login.toLogIn}}<i class="goRight"></i></a>
+                </div>
+            </form>
+
+        </div>
+        <div class="activateAccount">
+            <img src="images/registerImg.png">
+            <p class="activateAccountHint activateAccountHint-1 mc-c">{{language.login.activateAccount}}</p>
+            <p class="activateAccountHint activateAccountHint-2 mc-c">{{language.login.followNewPassword}}</p>
+            <p class="activateAccountInfo">{{register.email}}</p>
+            <a class="activateAccountKnow sc-c">{{language.login.iGotIt}}</a>
+        </div>
+        <!-- 注册部分end-->
+
+    </div>
+    <!-- 找回密码部分start-->
+    <div class="findPass">
+        <div class="closeBtn">
+            <span class="mc-bgc"><i class="icon-shanchu1 iconfont"></i></span>
+        </div>
+        <h3 class="findPass-title">{{language.login.retrievePassword}}</h3>
+
+        <form name="myFormFindPass">
+            <div class="row">
+                <input ng-model="findPass.userEmail" name="userEmail" class="userEmail" type="text" ng-required ng-pattern="/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/" placeholder="{{language.login.enterMailbox}}" data-text="{{language.login.enterMailbox}}" check-findpass>
+                <i ng-show="myFormFindPass.userEmail.$dirty && !myFormFindPass.userEmail.$error.pattern && findPass.userEmail != '' && findPass.userEmail != undefined && !loginHook4" class="login-hook3"></i>
+                <span ng-click="refreshCode(1);" ng-show="loginHook4" class="login-hook4 sc-c"><i>{{language.login.mailboxNotExist}}</i><i class="iconfont icon-youjiantou1 sc-c"></i><i>{{language.login.goToRegistration}}</i></span>
+            </div>
+            <div class="row">
+                <input ng-model="findPass.validateCode" name="validateCode" class="userInput" type="text" ng-required ng-maxlength="4" ng-minlength="4" placeholder="{{language.login.verificationCode}}" data-text="{{language.login.verificationCode}}"/>
+                <span ng-show="myFormFindPass.validateCode.$error.maxlength || myFormFindPass.validateCode.$error.minlength" class="userErrorCode sc-c">{{language.login.verificationCodeError}}</span>
+                <span ng-click="refreshCode(2);" class="captchaImg">
+                    <img ng-src="{{findPassCodeUrl}}">
+                </span>
+            </div>
+            <div class="row">
+                <button ng-hide="!myFormFindPass.$invalid && findPass.validateCode!='' && findPass.validateCode!=undefined && !loginHook4" class="button button--winona register-btn chongzhi" data-text="{{language.login.passwordReset}}">
+                    <span>{{language.login.passwordReset}}</span>
+                    <div class="after">{{language.login.passwordReset}}</div>
+                </button>
+                <button ng-show="!myFormFindPass.$invalid && findPass.validateCode!='' && findPass.validateCode!=undefined && !loginHook4" ng-click="findPassUser(findPass)" class="button button--winona register-btn chongzhi mc-bgc" ng-disabled="myFormFindPass.$invalid || findPass.validateCode ==''" data-text="{{language.login.passwordReset}}">
+                    <span>{{language.login.passwordReset}}</span>
+                    <div class="after">{{language.login.passwordReset}}</div>
+                </button>
+            </div>
+        </form>
+
+
+
+
+        <!--<button class=""></button>-->
+        <div class="login-foot">
+            <a class="rememberPass mc-c">{{language.login.thinkPassword}}<i class="goRight mc-bc"></i></a>
+        </div>
+    </div>
+    <!-- 找回密码部分end-->
+</div>
